@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     public float speed;
     public float maxSpeed;
-    public float gravity;
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
+
+    [Header("Jumping")]
+    public float gravity;
+    public Transform bottomPlayer;
+    public RaycastHit groundHit;
+    public bool isGrounded;
+    public float jumpSpeed;
+    public float timeInAirGravity;
+    private float normalGravity;
+
     private void Start()
     {
         normalDrag = GetComponent<Rigidbody>().drag;
+        normalGravity = gravity;
     }
 
     void Update()
@@ -24,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * speed);
 
         //add drag when player not moving
-        if(sideSpeed < 0.6f && forwardSpeed < 0.6f)
+        if(sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
         {
             GetComponent<Rigidbody>().drag = dragWhenPlayerNotMoving;
         }
@@ -33,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<Rigidbody>().drag = normalDrag;
         }
+
     }
 
     private void FixedUpdate()
@@ -44,6 +56,34 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //change gravity
-        GetComponent<Rigidbody>().AddForce(-transform.up * gravity);
+        GetComponent<Rigidbody>().AddForce(-transform.up * gravity * Time.deltaTime);
+        if(isGrounded == false)
+        {
+            gravity += timeInAirGravity;
+        }
+
+        else
+        {
+            gravity = normalGravity;
+        }
+
+        //isGrounded
+        Physics.Raycast(bottomPlayer.position, -transform.up, out groundHit, 100);
+        if (groundHit.distance < 0.3f)
+        {
+            isGrounded = true;
+        }
+
+        else
+        {
+            isGrounded = false;
+        }
+
+        //jumping
+        if (Input.GetButton("Jump") && isGrounded)
+        {
+            GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
+            print("jumping");
+        }
     }
 }
