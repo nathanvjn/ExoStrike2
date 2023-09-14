@@ -29,13 +29,16 @@ public class PlayerMovement : MonoBehaviour
     {
         //movement
         float forwardSpeed = Input.GetAxis("Vertical");
-        GetComponent<Rigidbody>().AddForce(transform.forward * forwardSpeed * speed);
-
         float sideSpeed = Input.GetAxis("Horizontal");
-        GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * speed);
+
+        // Calculate the new velocity based on input
+        Vector3 movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+
+        // Set the Rigidbody's velocity directly
+        GetComponent<Rigidbody>().velocity = new Vector3(movement.x, GetComponent<Rigidbody>().velocity.y, movement.z);
 
         //add drag when player not moving
-        if(sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
+        if (sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
         {
             GetComponent<Rigidbody>().drag = dragWhenPlayerNotMoving;
         }
