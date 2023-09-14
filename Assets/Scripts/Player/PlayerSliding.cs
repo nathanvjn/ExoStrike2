@@ -7,7 +7,7 @@ public class PlayerSliding : MonoBehaviour
 {
 
     public Slider slider;
-
+    public float amountOfSlowingDown;
     public float slidingTime;
     private float beginningSlidingTime;
 
@@ -25,12 +25,14 @@ public class PlayerSliding : MonoBehaviour
         {
             //sliding
             slidingTime -= Time.deltaTime;
+            GetComponent<PlayerMovement>().speed -= amountOfSlowingDown;
         }
 
         else
         {
             //reset sliding time
-            if(slidingTime < beginningSlidingTime)
+            GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().beginningSpeed;
+            if (slidingTime < beginningSlidingTime)
             {
                 slidingTime += Time.deltaTime;
             }
@@ -40,5 +42,11 @@ public class PlayerSliding : MonoBehaviour
                 slidingTime = beginningSlidingTime;
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //speed value needs to stay positive
+        Mathf.Clamp(GetComponent<PlayerMovement>().speed, 0, GetComponent<PlayerMovement>().beginningSpeed);
     }
 }

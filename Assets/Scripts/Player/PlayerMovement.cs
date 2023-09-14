@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+    public float beginningSpeed;
     public float maxSpeed;
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        beginningSpeed = speed;
         normalDrag = GetComponent<Rigidbody>().drag;
         normalGravity = gravity;
     }
@@ -76,6 +78,9 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
             print("jumping");
         }
+
+        //bij sliding kan de value van speed in de min gaan
+        Mathf.Clamp(GetComponent<PlayerMovement>().speed, 0, GetComponent<PlayerMovement>().beginningSpeed);
     }
 
     //isGrounded
