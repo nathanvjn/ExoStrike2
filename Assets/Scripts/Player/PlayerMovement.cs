@@ -76,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //isGrounded
+    private void OnTriggerEnter(Collider other)
+    {
+        //player does not get forced into ground
+        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0f, GetComponent<Rigidbody>().velocity.z);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         isGrounded = true;
