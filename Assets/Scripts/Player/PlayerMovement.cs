@@ -67,23 +67,22 @@ public class PlayerMovement : MonoBehaviour
             gravity = normalGravity;
         }
 
-        //isGrounded
-        Physics.Raycast(bottomPlayer.position, -transform.up, out groundHit, 100);
-        if (groundHit.distance < 0.3f)
-        {
-            isGrounded = true;
-        }
-
-        else
-        {
-            isGrounded = false;
-        }
-
         //jumping
         if (Input.GetButton("Jump") && isGrounded)
         {
             GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
             print("jumping");
         }
+    }
+
+    //isGrounded
+    private void OnTriggerStay(Collider other)
+    {
+        isGrounded = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isGrounded = false;
     }
 }

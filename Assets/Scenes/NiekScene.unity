@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 131153078}
   - component: {fileID: 131153077}
   - component: {fileID: 131153081}
+  - component: {fileID: 131153082}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -489,8 +490,29 @@ MonoBehaviour:
   gravity: 1
   bottomPlayer: {fileID: 1237195054}
   isGrounded: 0
-  jumpSpeed: 80000
+  jumpSpeed: 60000
   timeInAirGravity: 100
+--- !u!65 &131153082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131153075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.05180657, z: 1}
+  m_Center: {x: 0, y: -1.0523033, z: 0}
 --- !u!1 &252141552
 GameObject:
   m_ObjectHideFlags: 0
