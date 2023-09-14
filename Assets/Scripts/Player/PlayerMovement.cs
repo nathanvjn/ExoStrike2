@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+
+    public float forwardSpeed;
+    public float sideSpeed;
+
     public float beginningSpeed;
     public float maxSpeed;
     private float normalDrag;
@@ -30,8 +34,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //movement
-        float forwardSpeed = Input.GetAxis("Vertical");
-        float sideSpeed = Input.GetAxis("Horizontal");
+        forwardSpeed = Input.GetAxis("Vertical");
+
+        if(GetComponent<PlayerSliding>().isSliding == false)
+        {
+            sideSpeed = Input.GetAxis("Horizontal");
+        }
 
         // Calculate the new velocity based on input
         Vector3 movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
@@ -55,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //limit speed
-        if(GetComponent<Rigidbody>().velocity.magnitude > maxSpeed)
+        if(GetComponent<Rigidbody>().velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
         {
             GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody>().velocity, maxSpeed);
         }
@@ -78,9 +86,6 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
             print("jumping");
         }
-
-        //bij sliding kan de value van speed in de min gaan
-        Mathf.Clamp(GetComponent<PlayerMovement>().speed, 0, GetComponent<PlayerMovement>().beginningSpeed);
     }
 
     //isGrounded

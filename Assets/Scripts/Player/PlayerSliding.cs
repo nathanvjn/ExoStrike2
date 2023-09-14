@@ -5,42 +5,51 @@ using UnityEngine.UI;
 
 public class PlayerSliding : MonoBehaviour
 {
-
-    public Slider slider;
+    public bool isSliding;
     public float amountOfSlowingDown;
-    public float slidingTime;
-    private float beginningSlidingTime;
+    public float slidingSpeed;
+    private float slidingBeginSpeed;
+
+    public Transform camPosition;
+    public Transform camSlidingPosition;
+    public Transform cam;
 
     // Start is called before the first frame update
     void Start()
     {
-        beginningSlidingTime = slidingTime;
+        slidingBeginSpeed = slidingSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = slidingTime;
-        if(Input.GetKey(KeyCode.LeftShift) && slidingTime > 0)
+        if(Input.GetKey(KeyCode.LeftShift))
         {
             //sliding
-            slidingTime -= Time.deltaTime;
-            GetComponent<PlayerMovement>().speed -= amountOfSlowingDown;
+            isSliding = true;
+
+            //sliding speed is the speed the player begins with when sliding
+            GetComponent<PlayerMovement>().speed = slidingSpeed;
+
+            if (GetComponent<PlayerMovement>().speed > 0)
+            {
+                //cam position (sliding effect)
+                cam.position = camSlidingPosition.position;
+                
+                //slowing down
+                slidingSpeed -= amountOfSlowingDown;
+            }
         }
 
         else
         {
-            //reset sliding time
-            GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().beginningSpeed;
-            if (slidingTime < beginningSlidingTime)
-            {
-                slidingTime += Time.deltaTime;
-            }
+            //no more sliding
+            isSliding = false;
 
-            else
-            {
-                slidingTime = beginningSlidingTime;
-            }
+            slidingSpeed = slidingBeginSpeed;
+            GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().beginningSpeed;
+            //cam position (normal walking)
+            cam.position = camPosition.position;
         }
     }
 
