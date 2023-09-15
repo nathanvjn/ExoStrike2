@@ -88,19 +88,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //change gravity
-        r.AddForce(-transform.up * gravity * Time.deltaTime);
-        if(isGrounded == false)
+        if(GetComponent<Jetpack>().usingJetpack == false)
         {
-            gravity += timeInAirGravity;
+            r.AddForce(-transform.up * gravity * Time.deltaTime);
+            if (isGrounded == false)
+            {
+                gravity += timeInAirGravity;
 
-            //als te lang in de lucht komt er meer gravity
-            gravity = gravity * 1.03f;
-        }
+                //als te lang in de lucht komt er meer gravity
+                gravity = gravity * 1.03f;
+            }
 
-        else
-        {
-            gravity = normalGravity;
+            else
+            {
+                gravity = normalGravity;
+            }
         }
+        
 
         //jumping
         if (Input.GetButton("Jump") && isGrounded)

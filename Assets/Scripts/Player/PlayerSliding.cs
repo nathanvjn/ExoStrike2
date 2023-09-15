@@ -89,7 +89,7 @@ public class PlayerSliding : MonoBehaviour
                         Vector3 slideDirection = Vector3.Cross(Vector3.Cross(Vector3.up, hit.normal), hit.normal).normalized;
 
                         // Apply force opposite to the slope direction
-                        r.AddForce(slideDirection * slideForce, ForceMode.Force);
+                        r.AddForce(slideDirection * slideForce, ForceMode.Acceleration);
                     }
                 }
             }
