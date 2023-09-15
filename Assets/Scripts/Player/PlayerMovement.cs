@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player")]
+    public Rigidbody r;
+
     [Header("Movement")]
     public float speed;
     private Vector3 movement;
@@ -18,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jumping")]
     public float gravity;
-    public Transform bottomPlayer;
     public RaycastHit groundHit;
     public bool isGrounded;
     public float jumpSpeed;
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         beginningSpeed = speed;
-        normalDrag = GetComponent<Rigidbody>().drag;
+        normalDrag = r.drag;
         normalGravity = gravity;
     }
 
@@ -37,7 +39,16 @@ public class PlayerMovement : MonoBehaviour
         //movement
         if(isGrounded)
         {
-            forwardSpeed = Input.GetAxis("Vertical");
+            if(GetComponent<PlayerSliding>().isSliding == false)
+            {
+                forwardSpeed = Input.GetAxis("Vertical");
+            }
+
+            else
+            {
+                forwardSpeed = 1;
+            }
+           
 
             if (GetComponent<PlayerSliding>().isSliding == false)
             {
@@ -53,17 +64,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Set the Rigidbody's velocity directly
-        GetComponent<Rigidbody>().velocity = new Vector3(movement.x, GetComponent<Rigidbody>().velocity.y, movement.z);
+        r.velocity = new Vector3(movement.x, r.velocity.y, movement.z);
 
         //add drag when player not moving
         if (sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
         {
-            GetComponent<Rigidbody>().drag = dragWhenPlayerNotMoving;
+            r.drag = dragWhenPlayerNotMoving;
         }
 
         else
         {
-            GetComponent<Rigidbody>().drag = normalDrag;
+            r.drag = normalDrag;
         }
 
     }
@@ -71,13 +82,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //limit speed
-        if(GetComponent<Rigidbody>().velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
+        if(r.velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
         {
-            GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody>().velocity, maxSpeed);
+            GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(r.velocity, maxSpeed);
         }
 
         //change gravity
-        GetComponent<Rigidbody>().AddForce(-transform.up * gravity * Time.deltaTime);
+        r.AddForce(-transform.up * gravity * Time.deltaTime);
         if(isGrounded == false)
         {
             gravity += timeInAirGravity;
@@ -94,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         //jumping
         if (Input.GetButton("Jump") && isGrounded)
         {
-            GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
+            r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
             print("jumping");
         }
     }
@@ -103,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //player does not get forced into ground
-        GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0f, GetComponent<Rigidbody>().velocity.z);
+        r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
     }
 
     private void OnTriggerStay(Collider other)

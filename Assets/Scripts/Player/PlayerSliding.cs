@@ -5,16 +5,33 @@ using UnityEngine.UI;
 
 public class PlayerSliding : MonoBehaviour
 {
+    //player
+    public Rigidbody r;
+
+    //standard sliding
     public bool isSliding;
     public float amountOfSlowingDown;
     public float slidingSpeed;
     private float slidingBeginSpeed;
 
+    //check distance to ground
+    public RaycastHit hit;
+    public float hitDistance;
+
+    //move cam position
     public Transform camPosition;
     public Transform camSlidingPosition;
     public Transform cam;
 
+    //test
     public Vector3 velocity;
+    public float magnitude;
+    //test
+
+
+    //sliding physics code
+    public float slideForce = 10f;
+    public float maxSlideAngle = 45f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +42,21 @@ public class PlayerSliding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+   
         //test
-        velocity = GetComponent<Rigidbody>().velocity;
+        velocity = r.velocity;
+        magnitude = r.velocity.magnitude;
+        //test
 
-        if(Input.GetKey(KeyCode.LeftShift) && GetComponent<PlayerMovement>().isGrounded)
+        //limit velocity when sliding and jumping
+        if(r.velocity.y > 30)
+        {
+            r.velocity = new Vector3(r.velocity.x, 30, r.velocity.z);
+        }
+
+        //sliding
+        Physics.Raycast(transform.position, -transform.up, out hit, 7);
+        if(Input.GetKey(KeyCode.LeftShift) && hit.distance < hitDistance)
         {
             //sliding
             isSliding = true;
@@ -44,6 +72,29 @@ public class PlayerSliding : MonoBehaviour
                 //slowing down
                 slidingSpeed -= amountOfSlowingDown;
             }
+
+            //sliding off hills happens when no more force
+            if(slidingSpeed < 20)
+            {
+                RaycastHit hit;
+                Vector3 playerBottom = transform.position - new Vector3(0f, GetComponent<CapsuleCollider>().height / 2f - GetComponent<CapsuleCollider>().radius, 0f);
+
+                if (Physics.Raycast(playerBottom, Vector3.down, out hit))
+                {
+                    float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+                    if (slopeAngle > maxSlideAngle)
+                    {
+                        // Calculate the slide direction based on the slope
+                        Vector3 slideDirection = Vector3.Cross(Vector3.Cross(Vector3.up, hit.normal), hit.normal).normalized;
+
+                        // Apply force opposite to the slope direction
+                        r.AddForce(slideDirection * slideForce, ForceMode.Force);
+                    }
+                }
+            }
+            
+            
         }
 
         else
