@@ -14,6 +14,8 @@ public class PlayerSliding : MonoBehaviour
     public Transform camSlidingPosition;
     public Transform cam;
 
+    public Vector3 velocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,10 @@ public class PlayerSliding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+        //test
+        velocity = GetComponent<Rigidbody>().velocity;
+
+        if(Input.GetKey(KeyCode.LeftShift) && GetComponent<PlayerMovement>().isGrounded)
         {
             //sliding
             isSliding = true;

@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        //player can look around when jumping
         if(isGrounded)
         {
             // Calculate the new velocity based on input
@@ -80,6 +81,9 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded == false)
         {
             gravity += timeInAirGravity;
+
+            //als te lang in de lucht komt er meer gravity
+            gravity = gravity * 1.03f;
         }
 
         else
