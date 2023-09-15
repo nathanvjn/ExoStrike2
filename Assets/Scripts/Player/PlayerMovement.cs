@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+    private Vector3 movement;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -34,15 +35,21 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //movement
-        forwardSpeed = Input.GetAxis("Vertical");
-
-        if(GetComponent<PlayerSliding>().isSliding == false)
+        if(isGrounded)
         {
-            sideSpeed = Input.GetAxis("Horizontal");
+            forwardSpeed = Input.GetAxis("Vertical");
+
+            if (GetComponent<PlayerSliding>().isSliding == false)
+            {
+                sideSpeed = Input.GetAxis("Horizontal");
+            }
         }
 
-        // Calculate the new velocity based on input
-        Vector3 movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+        if(isGrounded)
+        {
+            // Calculate the new velocity based on input
+            movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+        }
 
         // Set the Rigidbody's velocity directly
         GetComponent<Rigidbody>().velocity = new Vector3(movement.x, GetComponent<Rigidbody>().velocity.y, movement.z);
