@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
+    [Header("jetpackMovement")]
+    public float jetpackSpeed;
+
     [Header("Jumping")]
     public float gravity;
     public RaycastHit groundHit;
@@ -61,6 +64,17 @@ public class PlayerMovement : MonoBehaviour
         {
             // Calculate the new velocity based on input
             movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+        }
+
+        //air movement speed
+
+        if(GetComponent<Jetpack>().usingJetpack)
+        {
+            forwardSpeed = Input.GetAxis("Vertical");
+            sideSpeed = Input.GetAxis("Horizontal");
+
+            // Calculate the new velocity based on input
+            movement = transform.forward * forwardSpeed * jetpackSpeed + transform.right * sideSpeed * jetpackSpeed;
         }
 
         // Set the Rigidbody's velocity directly

@@ -3968,9 +3968,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1905441073}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 6
+  m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 6
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6930,10 +6930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetpackSlider: {fileID: 658515211}
-  jetpackForce: 300
-  beginningJetpackForce: 0
+  jetpackForce: 700
   usingJetpack: 0
-  jetpackCooldown: 0
+  maxUpSpeed: 3000
 --- !u!1 &1184514025
 GameObject:
   m_ObjectHideFlags: 0
@@ -12450,7 +12449,12 @@ PrefabInstance:
     - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: airSpeed
-      value: 200
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: jetpackSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -12505,7 +12509,7 @@ PrefabInstance:
     - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: amountOfSlowingDown
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -12516,6 +12520,16 @@ PrefabInstance:
         type: 3}
       propertyPath: slidingDistanceFromGround
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681594724587123670, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.087305546
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681594724587123670, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1.0336506
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

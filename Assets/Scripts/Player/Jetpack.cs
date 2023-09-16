@@ -7,9 +7,15 @@ public class Jetpack : MonoBehaviour
 {
     public Slider jetpackSlider;
     public float jetpackForce;
-    public float beginningJetpackForce;
+    private float beginningJetpackForce;
     public bool usingJetpack;
-    public float jetpackCooldown;
+    private float jetpackCooldown;
+    private float jetpackDelay;
+    public float maxUpSpeed;
+ 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +25,38 @@ public class Jetpack : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        jetpackForce = Mathf.Clamp(jetpackForce, 0, 2000);
+        //limit jetpack up speed
+        jetpackForce = Mathf.Clamp(jetpackForce, 0, maxUpSpeed);
+
+        //jetpack
         if (Input.GetButton("Jump") && GetComponent<PlayerMovement>().isGrounded == false && jetpackSlider.value != 0)
         {
-            jetpackCooldown = 0;
-            usingJetpack = true;
-            jetpackSlider.value -= Time.deltaTime;
-            GetComponent<Rigidbody>().AddForce(transform.up * jetpackForce * Time.deltaTime);
-            jetpackForce = jetpackForce * 1.07f;
+            //wait 0.3 seconds before jetpack activates (issue with jumping & jetpack)
+            jetpackDelay += Time.deltaTime;
+            if(jetpackDelay > 0.3f)
+            {
+                jetpackCooldown = 0;
+                usingJetpack = true;
+
+                //jetpack energy loss
+                jetpackSlider.value -= Time.deltaTime;
+
+                //jetpack force
+                GetComponent<Rigidbody>().AddForce(transform.up * jetpackForce * Time.deltaTime);
+                jetpackForce = jetpackForce * 3f;
+            }
 
         }
 
         else
         {
             usingJetpack = false;
+            jetpackDelay = 0;
             jetpackForce = beginningJetpackForce;
+
+            //jetpack regenerates energy after 4 seconds
             jetpackCooldown += Time.deltaTime;
-            if(jetpackCooldown > 4)
+            if(jetpackCooldown > 3)
             {
                 jetpackSlider.value += Time.deltaTime;
             }

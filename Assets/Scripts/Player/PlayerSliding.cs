@@ -73,25 +73,27 @@ public class PlayerSliding : MonoBehaviour
                 slidingSpeed -= amountOfSlowingDown;
             }
 
-            //sliding off hills happens when no more force
-            if(slidingSpeed < 20)
+            RaycastHit hit;
+            Vector3 playerBottom = transform.position - new Vector3(0f, GetComponent<CapsuleCollider>().height / 2f - GetComponent<CapsuleCollider>().radius, 0f);
+
+            if (Physics.Raycast(playerBottom, Vector3.down, out hit))
             {
-                RaycastHit hit;
-                Vector3 playerBottom = transform.position - new Vector3(0f, GetComponent<CapsuleCollider>().height / 2f - GetComponent<CapsuleCollider>().radius, 0f);
+                float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
 
-                if (Physics.Raycast(playerBottom, Vector3.down, out hit))
+                if (slopeAngle > maxSlideAngle)
                 {
-                    float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+                    // Calculate the slide direction based on the slope
+                    Vector3 slideDirection = Vector3.Cross(Vector3.Cross(Vector3.up, hit.normal), hit.normal).normalized;
 
-                    if (slopeAngle > maxSlideAngle)
-                    {
-                        // Calculate the slide direction based on the slope
-                        Vector3 slideDirection = Vector3.Cross(Vector3.Cross(Vector3.up, hit.normal), hit.normal).normalized;
-
-                        // Apply force opposite to the slope direction
-                        r.AddForce(slideDirection * slideForce, ForceMode.Acceleration);
-                    }
+                    // Apply force opposite to the slope direction
+                    r.AddForce(slideDirection * slideForce, ForceMode.Acceleration);
                 }
+            }
+
+            //sliding off hills happens when no more force
+            if (slidingSpeed < 20)
+            {
+                
             }
             
             
