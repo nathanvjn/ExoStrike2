@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 1259426373381513581}
   - component: {fileID: 4160329359394471651}
   - component: {fileID: 8547241962640537875}
+  - component: {fileID: 1373808132824729409}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -439,6 +440,24 @@ MonoBehaviour:
   mouseX: 400
   mouseY: 400
   orientation: {fileID: 2606997351966407104}
+--- !u!114 &1373808132824729409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667657910190609597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a9dc5181b8d8e4cb0ffbb055e18cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  identity: {fileID: 1504639477209716072}
+  debugCube: {fileID: 1586059731446129000, guid: 1a8a71530208a7e42914bf653da77bc0,
+    type: 3}
 --- !u!1 &5403294977578048500
 GameObject:
   m_ObjectHideFlags: 0
