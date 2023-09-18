@@ -12,7 +12,11 @@ public class Jetpack : MonoBehaviour
     private float jetpackCooldown;
     private float jetpackDelay;
     public float maxUpSpeed;
- 
+
+    //gravity
+    public bool activateJetpackGravity;
+    public float jetpackGravity;
+
 
 
 
@@ -60,6 +64,25 @@ public class Jetpack : MonoBehaviour
             {
                 jetpackSlider.value += Time.deltaTime;
             }
+        }
+
+        //change gravity when using jetpack
+        if(usingJetpack)
+        {
+            if(GetComponent<PlayerMovement>().isGrounded == false)
+            {
+                activateJetpackGravity = true;
+            }
+        }
+
+        if(GetComponent<PlayerMovement>().isGrounded)
+        {
+            activateJetpackGravity = false;
+        }
+
+        if(activateJetpackGravity)
+        {
+            GetComponent<PlayerMovement>().gravity = jetpackGravity;
         }
     }
 }

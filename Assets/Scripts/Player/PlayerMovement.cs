@@ -105,18 +105,22 @@ public class PlayerMovement : MonoBehaviour
         if(GetComponent<Jetpack>().usingJetpack == false)
         {
             r.AddForce(-transform.up * gravity * Time.deltaTime);
-            if (isGrounded == false)
+            if(GetComponent<Jetpack>().activateJetpackGravity == false)
             {
-                gravity += timeInAirGravity;
+                if (isGrounded == false)
+                {
+                    gravity += timeInAirGravity;
 
-                //als te lang in de lucht komt er meer gravity
-                gravity = gravity * 1.03f;
-            }
+                    //als te lang in de lucht komt er meer gravity
+                    gravity = gravity * 1.03f;
+                }
 
-            else
-            {
-                gravity = normalGravity;
+                else
+                {
+                    gravity = normalGravity;
+                }
             }
+            
         }
         
 

@@ -6932,7 +6932,9 @@ MonoBehaviour:
   jetpackSlider: {fileID: 658515211}
   jetpackForce: 700
   usingJetpack: 0
-  maxUpSpeed: 3000
+  maxUpSpeed: 4000
+  activateJetpackGravity: 0
+  jetpackGravity: 4000
 --- !u!1 &1184514025
 GameObject:
   m_ObjectHideFlags: 0
