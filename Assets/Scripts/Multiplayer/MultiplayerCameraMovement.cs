@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(SendData))]
 public class MultiplayerCameraMovement : NetworkBehaviour
 {
     public float mouseX;
@@ -12,6 +13,8 @@ public class MultiplayerCameraMovement : NetworkBehaviour
 
     private float xRotation;
     private float yRotation;
+
+    RaycastHit hit;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +31,11 @@ public class MultiplayerCameraMovement : NetworkBehaviour
 
             transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+            if (Input.GetKeyDown(KeyCode.C) && Physics.Raycast(transform.position, transform.forward, out hit, 1000))
+            {
+                GetComponent<SendData>().PlaceDebugCube(hit.point);
+            }
         }
         else
         {
