@@ -6934,7 +6934,7 @@ MonoBehaviour:
   usingJetpack: 0
   maxUpSpeed: 4000
   activateJetpackGravity: 0
-  jetpackGravity: 4000
+  jetpackGravity: 11000
 --- !u!1 &1184514025
 GameObject:
   m_ObjectHideFlags: 0
@@ -12456,7 +12456,7 @@ PrefabInstance:
     - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: jetpackSpeed
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}

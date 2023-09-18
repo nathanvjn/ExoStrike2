@@ -66,7 +66,7 @@ public class Jetpack : MonoBehaviour
             }
         }
 
-        //change gravity when using jetpack
+        //reset gravity while using jetpack
         if(usingJetpack)
         {
             if(GetComponent<PlayerMovement>().isGrounded == false)
@@ -75,7 +75,7 @@ public class Jetpack : MonoBehaviour
             }
         }
 
-        if(GetComponent<PlayerMovement>().isGrounded)
+        if(usingJetpack == false && GetComponent<PlayerMovement>().isGrounded == false)
         {
             activateJetpackGravity = false;
         }
@@ -83,6 +83,7 @@ public class Jetpack : MonoBehaviour
         if(activateJetpackGravity)
         {
             GetComponent<PlayerMovement>().gravity = jetpackGravity;
+            GetComponent<PlayerMovement>().gravity = GetComponent<PlayerMovement>().gravity * 1.03f;
         }
     }
 }
