@@ -14,10 +14,6 @@ public class PlayerSliding : MonoBehaviour
     public float slidingSpeed;
     private float slidingBeginSpeed;
 
-    //check distance to ground
-    public RaycastHit hit;
-    public float hitDistance;
-
     //move cam position
     public Transform camPosition;
     public Transform camSlidingPosition;
@@ -55,8 +51,7 @@ public class PlayerSliding : MonoBehaviour
         }
 
         //sliding
-        Physics.Raycast(transform.position, -transform.up, out hit, 7);
-        if(Input.GetKey(KeyCode.LeftShift) && hit.distance < hitDistance)
+        if(Input.GetKey(KeyCode.LeftShift))
         {
             //sliding
             isSliding = true;
