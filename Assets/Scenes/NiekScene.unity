@@ -21665,6 +21665,11 @@ PrefabInstance:
       propertyPath: airSpeed
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 6365880738946023537, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: m_Drag
