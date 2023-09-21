@@ -107,32 +107,24 @@ public class MultiplayerMovement : NetworkBehaviour
             }
 
             //change gravity
-            if (GetComponent<Jetpack>().usingJetpack == false)
+
+            r.AddForce(-transform.up * gravity * Time.deltaTime);
+
+            if (isGrounded == false)
             {
-                r.AddForce(-transform.up * gravity * Time.deltaTime);
+                gravity += timeInAirGravity;
 
-
-                //de error zit hier, je kunt de "//" dingetjes weghalen
-
-                /*
-                if (GetComponent<Jetpack>().activateJetpackGravity == false)
-                {
-                    if (isGrounded == false)
-                    {
-                        gravity += timeInAirGravity;
-
-                        //als te lang in de lucht komt er meer gravity
-                        gravity = gravity * 1.03f;
-                    }
-
-                    else
-                    {
-                        gravity = normalGravity;
-                    }
-                }
-                */
-
+                //als te lang in de lucht komt er meer gravity
+                gravity = gravity * 1.05f;
             }
+
+            else
+            {
+                gravity = normalGravity;
+            }
+
+
+
 
 
             //jumping
