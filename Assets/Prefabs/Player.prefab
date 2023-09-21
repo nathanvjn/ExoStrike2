@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1100558159278005832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.22, y: 1.6253767, z: 0.23684841}
+  m_LocalPosition: {x: 302, y: 131, z: 98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 3196638592343036590}
   - component: {fileID: 7681594724587123670}
   - component: {fileID: 5281031890405562951}
+  - component: {fileID: 8479727350366778643}
   m_Layer: 2
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -448,17 +449,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc6a43ef0e111a4789779820afe7d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  r: {fileID: 6365880738946023537}
+  speed: 30
   forwardSpeed: 0
   sideSpeed: 0
   beginningSpeed: 0
   maxSpeed: 32
   dragWhenPlayerNotMoving: 10
+  jetpackSpeed: 40
   gravity: 1
-  bottomPlayer: {fileID: 2350773334899498798}
   isGrounded: 0
-  jumpSpeed: 60000
-  timeInAirGravity: 100
+  jumpSpeed: 50000
+  timeInAirGravity: 60
 --- !u!65 &7681594724587123670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -478,8 +480,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 0.05, z: 0.8}
-  m_Center: {x: 0, y: -1.0523033, z: 0}
+  m_Size: {x: 0.8, y: 0.087305546, z: 0.8}
+  m_Center: {x: 0, y: -1.0336506, z: 0}
 --- !u!114 &5281031890405562951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,12 +494,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9c4a5b3f669a8479366d8c2d67302e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  r: {fileID: 6365880738946023537}
   isSliding: 0
-  amountOfSlowingDown: 0.2
-  slidingSpeed: 40
+  amountOfSlowingDown: 0.35
+  slidingSpeed: 43
+  hitDistance: 7
   camPosition: {fileID: 3675757145959531299}
   camSlidingPosition: {fileID: 5205729039358999960}
   cam: {fileID: 5014936338101678177}
+  velocity: {x: 0, y: 0, z: 0}
+  magnitude: 0
+  slideForce: 240
+  maxSlideAngle: 15
+--- !u!114 &8479727350366778643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363238862699388759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5049f6278330d014293de53a8d97ed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jetpackSlider: {fileID: 0}
+  jetpackForce: 700
+  usingJetpack: 0
+  maxUpSpeed: 4000
+  activateJetpackGravity: 0
+  jetpackGravity: 11000
 --- !u!1 &7940039951451740140
 GameObject:
   m_ObjectHideFlags: 0

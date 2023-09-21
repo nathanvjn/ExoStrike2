@@ -12434,36 +12434,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e885f62f3cdc1b4dbdaefa156c877b0, type: 3}
---- !u!1 &1172128424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6363238862699388759, guid: 0a23734e7de415a4581053f2bb26d42f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8496602989893210690}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1172128430 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6365880738946023537, guid: 0a23734e7de415a4581053f2bb26d42f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8496602989893210690}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1172128433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172128424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5049f6278330d014293de53a8d97ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jetpackSlider: {fileID: 658515211}
-  jetpackForce: 700
-  usingJetpack: 0
-  maxUpSpeed: 4000
-  activateJetpackGravity: 0
-  jetpackGravity: 11000
 --- !u!1 &1174710752
 GameObject:
   m_ObjectHideFlags: 0
@@ -21690,104 +21660,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: r
-      value: 
-      objectReference: {fileID: 1172128430}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: airSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: jetpackSpeed
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: slideJumpUpSpeed
-      value: 40000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: timeInAirGravity
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196638592343036590, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: slideJumpForwardSpeed
-      value: 80000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915007730102537194, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: r
-      value: 
-      objectReference: {fileID: 1172128430}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: slideForce
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: hitDistance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
+    - target: {fileID: 8479727350366778643, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: jetpackSlider
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: maxSlideAngle
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: camTransitionSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: amountOfSlowingDown
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: slidingJetpackValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281031890405562951, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: slidingDistanceFromGround
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681594724587123670, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.087305546
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681594724587123670, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -1.0336506
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 658515211}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6363238862699388759, guid: 0a23734e7de415a4581053f2bb26d42f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1172128433}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a23734e7de415a4581053f2bb26d42f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

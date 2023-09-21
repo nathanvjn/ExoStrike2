@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //player can look around when jumping
+        //player can only move when on ground
         if(isGrounded)
         {
             // Calculate the new velocity based on input
