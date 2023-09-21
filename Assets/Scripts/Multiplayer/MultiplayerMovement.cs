@@ -110,6 +110,11 @@ public class MultiplayerMovement : NetworkBehaviour
             if (GetComponent<Jetpack>().usingJetpack == false)
             {
                 r.AddForce(-transform.up * gravity * Time.deltaTime);
+
+
+                //de error zit hier, je kunt de "//" dingetjes weghalen
+
+                /*
                 if (GetComponent<Jetpack>().activateJetpackGravity == false)
                 {
                     if (isGrounded == false)
@@ -125,6 +130,7 @@ public class MultiplayerMovement : NetworkBehaviour
                         gravity = normalGravity;
                     }
                 }
+                */
 
             }
 
