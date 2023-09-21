@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Rifle : MonoBehaviour
 {
-    public Transform raycastPosition;
     private RaycastHit hit;
+
+    public Transform cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +16,15 @@ public class Rifle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(raycastPosition.position, transform.forward, out hit, 100);
+        Physics.Raycast(cam.position, cam.forward, out hit, 100);
 
-        if (hit.transform.gameObject.tag == "Player" && Input.GetButtonDown("Fire1"))
+        if(hit.transform != null)
         {
-            print("hittingEnemy");
+            if (hit.transform.gameObject.tag == "Player" && Input.GetButtonDown("Fire1"))
+            {
+                print("hittingEnemy");
+            }
         }
+        
     }
 }
