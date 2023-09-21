@@ -5,8 +5,12 @@ using Mirror;
 
 public class MultiplayerMovement : NetworkBehaviour
 {
+    [Header("Player")]
+    public Rigidbody r;
+
     [Header("Movement")]
     public float speed;
+    private Vector3 movement;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -16,9 +20,11 @@ public class MultiplayerMovement : NetworkBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
+    [Header("jetpackMovement")]
+    public float jetpackSpeed;
+
     [Header("Jumping")]
     public float gravity;
-    public Transform bottomPlayer;
     public RaycastHit groundHit;
     public bool isGrounded;
     public float jumpSpeed;
@@ -37,28 +43,55 @@ public class MultiplayerMovement : NetworkBehaviour
         if (this.isLocalPlayer)
         {
             //movement
-            forwardSpeed = Input.GetAxis("Vertical");
-
-            if (GetComponent<PlayerSliding>().isSliding == false)
+            if (isGrounded)
             {
-                sideSpeed = Input.GetAxis("Horizontal");
+                if (GetComponent<PlayerSliding>().isSliding == false)
+                {
+                    forwardSpeed = Input.GetAxis("Vertical");
+                }
+
+                else
+                {
+                    forwardSpeed = 1;
+                }
+
+
+                if (GetComponent<PlayerSliding>().isSliding == false)
+                {
+                    sideSpeed = Input.GetAxis("Horizontal");
+                }
             }
 
-            // Calculate the new velocity based on input
-            Vector3 movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+            //player can look around when jumping
+            if (isGrounded)
+            {
+                // Calculate the new velocity based on input
+                movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+            }
+
+            //air movement speed
+
+            if (GetComponent<Jetpack>().usingJetpack)
+            {
+                forwardSpeed = Input.GetAxis("Vertical");
+                sideSpeed = Input.GetAxis("Horizontal");
+
+                // Calculate the new velocity based on input
+                movement = transform.forward * forwardSpeed * jetpackSpeed + transform.right * sideSpeed * jetpackSpeed;
+            }
 
             // Set the Rigidbody's velocity directly
-            GetComponent<Rigidbody>().velocity = new Vector3(movement.x, GetComponent<Rigidbody>().velocity.y, movement.z);
+            r.velocity = new Vector3(movement.x, r.velocity.y, movement.z);
 
             //add drag when player not moving
             if (sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
             {
-                GetComponent<Rigidbody>().drag = dragWhenPlayerNotMoving;
+                r.drag = dragWhenPlayerNotMoving;
             }
 
             else
             {
-                GetComponent<Rigidbody>().drag = normalDrag;
+                r.drag = normalDrag;
             }
         }
     }
@@ -68,27 +101,38 @@ public class MultiplayerMovement : NetworkBehaviour
         if (this.isLocalPlayer)
         {
             //limit speed
-            if (GetComponent<Rigidbody>().velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
+            if (r.velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
             {
-                GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(GetComponent<Rigidbody>().velocity, maxSpeed);
+                GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(r.velocity, maxSpeed);
             }
 
             //change gravity
-            GetComponent<Rigidbody>().AddForce(-transform.up * gravity * Time.deltaTime);
-            if (isGrounded == false)
+            if (GetComponent<Jetpack>().usingJetpack == false)
             {
-                gravity += timeInAirGravity;
+                r.AddForce(-transform.up * gravity * Time.deltaTime);
+                if (GetComponent<Jetpack>().activateJetpackGravity == false)
+                {
+                    if (isGrounded == false)
+                    {
+                        gravity += timeInAirGravity;
+
+                        //als te lang in de lucht komt er meer gravity
+                        gravity = gravity * 1.03f;
+                    }
+
+                    else
+                    {
+                        gravity = normalGravity;
+                    }
+                }
+
             }
 
-            else
-            {
-                gravity = normalGravity;
-            }
 
             //jumping
             if (Input.GetButton("Jump") && isGrounded)
             {
-                GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * Time.deltaTime);
+                r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
                 print("jumping");
             }
         }
