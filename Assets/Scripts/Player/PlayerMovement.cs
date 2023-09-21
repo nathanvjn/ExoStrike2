@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float speed;
     private Vector3 movement;
+    private Vector3 airMovement;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -19,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
-    [Header("jetpackMovement")]
-    public float jetpackSpeed;
+    [Header("AirMovement")]
+    public float airSpeed;
 
     [Header("Jumping")]
     public float gravity;
@@ -67,14 +68,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //air movement speed
-
-        if(GetComponent<Jetpack>().usingJetpack)
+        if(isGrounded == false)
         {
             forwardSpeed = Input.GetAxis("Vertical");
             sideSpeed = Input.GetAxis("Horizontal");
 
             // Calculate the new velocity based on input
-            movement = transform.forward * forwardSpeed * jetpackSpeed + transform.right * sideSpeed * jetpackSpeed;
+            airMovement = transform.forward * forwardSpeed * airSpeed + transform.right * sideSpeed * airSpeed;
+            r.AddForce(airMovement);
         }
 
         // Set the Rigidbody's velocity directly
@@ -102,26 +103,24 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //change gravity
-        if(GetComponent<Jetpack>().usingJetpack == false)
-        {
-            r.AddForce(-transform.up * gravity * Time.deltaTime);
-            if(GetComponent<Jetpack>().activateJetpackGravity == false)
-            {
-                if (isGrounded == false)
-                {
-                    gravity += timeInAirGravity;
-
-                    //als te lang in de lucht komt er meer gravity
-                    gravity = gravity * 1.03f;
-                }
-
-                else
-                {
-                    gravity = normalGravity;
-                }
-            }
+        
+        r.AddForce(-transform.up * gravity * Time.deltaTime);
             
+        if (isGrounded == false)
+        {
+            gravity += timeInAirGravity;
+
+            //als te lang in de lucht komt er meer gravity
+            gravity = gravity * 1.05f;
         }
+
+        else
+        {
+            gravity = normalGravity;
+        }
+            
+            
+        
         
 
         //jumping

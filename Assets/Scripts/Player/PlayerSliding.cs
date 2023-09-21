@@ -56,7 +56,7 @@ public class PlayerSliding : MonoBehaviour
 
         //sliding
         Physics.Raycast(transform.position, -transform.up, out hit, 7);
-        if(Input.GetKey(KeyCode.LeftShift) && hit.distance < hitDistance && GetComponent<Jetpack>().usingJetpack == false)
+        if(Input.GetKey(KeyCode.LeftShift) && hit.distance < hitDistance)
         {
             //sliding
             isSliding = true;
