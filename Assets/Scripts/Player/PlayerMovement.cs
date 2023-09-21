@@ -70,11 +70,10 @@ public class PlayerMovement : MonoBehaviour
         //air movement speed
         if(isGrounded == false)
         {
-            forwardSpeed = Input.GetAxis("Vertical");
             sideSpeed = Input.GetAxis("Horizontal");
 
             // Calculate the new velocity based on input
-            airMovement = transform.forward * forwardSpeed * airSpeed + transform.right * sideSpeed * airSpeed;
+            airMovement = transform.right * sideSpeed * airSpeed;
             r.AddForce(airMovement);
         }
 

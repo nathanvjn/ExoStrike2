@@ -21,7 +21,7 @@ public class Jetpack : MonoBehaviour
     {
 
         //jetpack
-        if (Input.GetButtonDown("Jump") && GetComponent<PlayerMovement>().isGrounded == false && jetpackSlider.value >= 4)
+        if (Input.GetButtonDown("Jump") && GetComponent<PlayerMovement>().isGrounded == false && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
         {
             usingJetpack = true;
             jetpackCooldown = 0;
@@ -29,6 +29,7 @@ public class Jetpack : MonoBehaviour
             //reset gravity
             GetComponent<PlayerMovement>().gravity = 0;
 
+            print("jetpack");
             //jetpack energy loss
             jetpackSlider.value -= 4;
 
