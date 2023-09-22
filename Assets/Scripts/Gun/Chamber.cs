@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Chamber : MonoBehaviour
 {
+    //different chambers
     public bool usingRevolver;
     public bool usingSingleShot;
     public bool usingAutoChamber;
+
+    [Header("autoChamber")]
+    public float gunCooldown;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,16 +42,19 @@ public class Chamber : MonoBehaviour
 
     void Revolver()
     {
-
+        //not autoChamber
+        GetComponent<Gun>().schootingCooldownMaxTime = 0;
     }
 
     void SingleShot()
     {
-
+        //not autoChamber
+        GetComponent<Gun>().schootingCooldownMaxTime = 0;
     }
 
     void AutoChamber()
     {
-
+        //autoChamber has a short cooldown
+        GetComponent<Gun>().schootingCooldownMaxTime = gunCooldown;
     }
 }
