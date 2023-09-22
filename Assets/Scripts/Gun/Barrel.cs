@@ -22,17 +22,20 @@ public class Barrel : MonoBehaviour
     {
         if(usingNormalBarrel)
         {
-            NormalBarrel(); 
+            NormalBarrel();
+            barrelText.text = ("normal");
         }
 
         else if(usingMultiBarrel)
         {
             MultiBarrel();
+            barrelText.text = ("multi");
         }
 
         else if(usingBigBarrel)
         {
             BigBarrel();
+            barrelText.text = ("big");
         }
     }
 
