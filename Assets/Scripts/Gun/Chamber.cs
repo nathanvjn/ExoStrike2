@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Chamber : MonoBehaviour
 {
@@ -9,8 +10,13 @@ public class Chamber : MonoBehaviour
     public bool usingSingleShot;
     public bool usingAutoChamber;
 
+    public TextMeshProUGUI chamberText;
+
     [Header("autoChamber")]
-    public float gunCooldown;
+    public float gunAutoCooldown;
+
+    [Header("singleChamber")]
+    public float gunSingleCooldown;
 
 
     // Start is called before the first frame update
@@ -25,16 +31,19 @@ public class Chamber : MonoBehaviour
         if(usingRevolver)
         {
             Revolver();
+            chamberText.text = ("Revolver");
         }
 
         else if(usingSingleShot)
         {
             SingleShot();
+            chamberText.text = ("single");
         }
 
         else if(usingAutoChamber)
         {
             AutoChamber();
+            chamberText.text = ("auto");
         }
 
 
@@ -42,19 +51,19 @@ public class Chamber : MonoBehaviour
 
     void Revolver()
     {
-        //not autoChamber
+        //no cooldown
         GetComponent<Gun>().schootingCooldownMaxTime = 0;
     }
 
     void SingleShot()
     {
-        //not autoChamber
-        GetComponent<Gun>().schootingCooldownMaxTime = 0;
+        //singleChamber has a long cooldown
+        GetComponent<Gun>().schootingCooldownMaxTime = gunSingleCooldown;
     }
 
     void AutoChamber()
     {
         //autoChamber has a short cooldown
-        GetComponent<Gun>().schootingCooldownMaxTime = gunCooldown;
+        GetComponent<Gun>().schootingCooldownMaxTime = gunAutoCooldown;
     }
 }

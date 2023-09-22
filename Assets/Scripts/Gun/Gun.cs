@@ -11,7 +11,6 @@ public class Gun : MonoBehaviour
     public Transform cam;
 
     [Header("Schooting")]
-    public string gunType;
     public float ammo;
 
     //schooting cooldown
@@ -30,16 +29,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //check gun type
-        if(gunType == "Rifle")
-        {
-            RifleGun();
-        }
-
-        if(gunType == "Pistol")
-        {
-            PistolGun();
-        }
+        RifleGun();
 
         //ammo UI
         ammoText.text = ammo.ToString();
@@ -51,26 +41,21 @@ public class Gun : MonoBehaviour
         Physics.Raycast(cam.position, cam.forward, out hit, 100);
         Debug.DrawLine(cam.position, hit.point, Color.red);
 
+
         if (ammo > 0 && schootingResetTime > schootingCooldownMaxTime)
         {
-            
-            if (Input.GetButton("Fire1"))
+            //AUTOMATIC BARREL AND SINGLE BARREL
+            if (Input.GetButton("Fire1") && GetComponent<Chamber>().usingSingleShot || Input.GetButton("Fire1") && GetComponent<Chamber>().usingAutoChamber)
             {
-                //player fires
-                ammo -= 1;
-
-                //time resets
-                schootingResetTime = 0;
-
-                if (hit.transform != null)
-                {
-                    //player gets damage
-                    if (hit.transform.gameObject.tag == "Player")
-                    {
-                        print("hittingEnemy");
-                    }
-                }
+                Fire();
             }
+
+            //TAB BARREL
+            else if (Input.GetButtonDown("Fire1") && GetComponent<Chamber>().usingRevolver)
+            {
+                Fire();
+            }
+
         }
 
         else
@@ -83,8 +68,21 @@ public class Gun : MonoBehaviour
         
     }
 
-    void PistolGun()
+    void Fire()
     {
+        //player fires
+        ammo -= 1;
 
+        //time resets
+        schootingResetTime = 0;
+
+        if (hit.transform != null)
+        {
+            //player gets damage
+            if (hit.transform.gameObject.tag == "Player")
+            {
+                print("hittingEnemy");
+            }
+        }
     }
 }
