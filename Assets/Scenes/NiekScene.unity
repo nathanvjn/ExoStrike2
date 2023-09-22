@@ -3557,7 +3557,7 @@ GameObject:
   - component: {fileID: 366340592}
   m_Layer: 0
   m_Name: prototype 3
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -21544,7 +21544,7 @@ GameObject:
   - component: {fileID: 2091677132}
   - component: {fileID: 2091677131}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: testEnemy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21822,6 +21822,26 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 43
       objectReference: {fileID: 0}
+    - target: {fileID: 5403294977578048500, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019841923002898795, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363238862699388759, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363238862699388759, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6365880738946023537, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: m_Drag
@@ -21831,6 +21851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940039951451740140, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479727350366778643, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -21842,6 +21867,11 @@ PrefabInstance:
       propertyPath: jetpackSlider
       value: 
       objectReference: {fileID: 658515211}
+    - target: {fileID: 9033940381720714338, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
