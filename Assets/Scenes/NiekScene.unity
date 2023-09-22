@@ -2576,6 +2576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 8496602989893210692}
+  gunType: Rifle
 --- !u!1 &273780096
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class Jetpack : MonoBehaviour
         jetpackCooldown += Time.deltaTime;
         if (jetpackCooldown > 1)
         {
-            jetpackSlider.value += Time.deltaTime * 2;
+            jetpackSlider.value += Time.deltaTime * 4;
         }
     }
 }

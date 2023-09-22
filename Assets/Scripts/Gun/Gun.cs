@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     private RaycastHit hit;
 
     public Transform cam;
 
     public string gunType;
+ 
     // Start is called before the first frame update
     void Start()
     {
