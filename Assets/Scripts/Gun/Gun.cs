@@ -5,10 +5,10 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     private RaycastHit hit;
-
     public Transform cam;
 
     public string gunType;
+    public float ammo;
  
     // Start is called before the first frame update
     void Start()
@@ -37,18 +37,30 @@ public class Gun : MonoBehaviour
         Physics.Raycast(cam.position, cam.forward, out hit, 100);
         Debug.DrawLine(cam.position, hit.point, Color.red);
 
-        //player fires
-        if(Input.GetButtonDown("Fire1"))
+        if(ammo > 0)
         {
-            if (hit.transform != null)
+            
+            if (Input.GetButtonDown("Fire1"))
             {
-                //player gets damage
-                if (hit.transform.gameObject.tag == "Player")
+                //player fires
+                ammo -= 1;
+
+                if (hit.transform != null)
                 {
-                    print("hittingEnemy");
+                    //player gets damage
+                    if (hit.transform.gameObject.tag == "Player")
+                    {
+                        print("hittingEnemy");
+                    }
                 }
             }
         }
+
+        else
+        {
+            //no amo
+        }
+        
     }
 
     void PistolGun()
