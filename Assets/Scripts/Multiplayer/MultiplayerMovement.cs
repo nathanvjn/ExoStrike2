@@ -11,6 +11,7 @@ public class MultiplayerMovement : NetworkBehaviour
     [Header("Movement")]
     public float speed;
     private Vector3 movement;
+    private Vector3 airMovement;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -20,8 +21,8 @@ public class MultiplayerMovement : NetworkBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
-    [Header("jetpackMovement")]
-    public float jetpackSpeed;
+    [Header("AirMovement")]
+    public float airSpeed;
 
     [Header("Jumping")]
     public float gravity;
@@ -31,11 +32,19 @@ public class MultiplayerMovement : NetworkBehaviour
     public float timeInAirGravity;
     private float normalGravity;
 
+    public string[] spawnLocations;
+
     private void Start()
     {
         beginningSpeed = speed;
         normalDrag = GetComponent<Rigidbody>().drag;
         normalGravity = gravity;
+        Debug.Log($"Player {GetComponentInParent<NetworkIdentity>().netId} connected to the server!");
+        if (this.isLocalPlayer)
+        {
+            if (GetComponentInParent<NetworkIdentity>().netId <= spawnLocations.Length)
+            transform.position = GameObject.FindGameObjectWithTag(spawnLocations[GetComponentInParent<NetworkIdentity>().netId - 1]).transform.position;
+        }
     }
 
     void Update()
@@ -62,7 +71,7 @@ public class MultiplayerMovement : NetworkBehaviour
                 }
             }
 
-            //player can look around when jumping
+            //player can only move when on ground
             if (isGrounded)
             {
                 // Calculate the new velocity based on input
@@ -70,14 +79,13 @@ public class MultiplayerMovement : NetworkBehaviour
             }
 
             //air movement speed
-
-            if (GetComponent<Jetpack>().usingJetpack)
+            if (isGrounded == false)
             {
-                forwardSpeed = Input.GetAxis("Vertical");
                 sideSpeed = Input.GetAxis("Horizontal");
 
                 // Calculate the new velocity based on input
-                movement = transform.forward * forwardSpeed * jetpackSpeed + transform.right * sideSpeed * jetpackSpeed;
+                airMovement = transform.right * sideSpeed * airSpeed;
+                r.AddForce(airMovement);
             }
 
             // Set the Rigidbody's velocity directly
@@ -142,7 +150,7 @@ public class MultiplayerMovement : NetworkBehaviour
         if (this.isLocalPlayer)
         {
             //player does not get forced into ground
-            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0f, GetComponent<Rigidbody>().velocity.z);
+            r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
         }
     }
 

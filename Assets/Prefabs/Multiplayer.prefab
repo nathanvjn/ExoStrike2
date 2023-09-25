@@ -97,6 +97,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6100217180648863461}
+  - component: {fileID: 6959489064097914510}
   m_Layer: 2
   m_Name: camPosition
   m_TagString: Untagged
@@ -119,6 +120,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2606997351966407104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6959489064097914510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113035103017760154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 5690549838830850069}
+  clientAuthority: 1
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  sendIntervalMultiplier: 1
+  timelineOffset: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &1940778147917333049
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3477540733987331537}
+  - component: {fileID: 3889414045238340665}
   m_Layer: 2
   m_Name: camSlidingPosition
   m_TagString: Untagged
@@ -150,6 +187,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2606997351966407104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3889414045238340665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940778147917333049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 5690549838830850069}
+  clientAuthority: 1
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  sendIntervalMultiplier: 1
+  timelineOffset: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &2031609485248239560
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,8 +621,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  mouseX: 400
-  mouseY: 400
+  mouseX: 350
+  mouseY: 350
   orientation: {fileID: 2606997351966407104}
 --- !u!114 &1373808132824729409
 MonoBehaviour:
@@ -681,11 +753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   target: {fileID: 2350773334899498798}
-  clientAuthority: 0
+  clientAuthority: 1
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
@@ -862,18 +934,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc6a43ef0e111a4789779820afe7d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r: {fileID: 0}
-  speed: 25
+  r: {fileID: 6365880738946023537}
+  speed: 30
   forwardSpeed: 0
   sideSpeed: 0
   beginningSpeed: 0
   maxSpeed: 32
   dragWhenPlayerNotMoving: 10
-  jetpackSpeed: 0
+  airSpeed: 0
   gravity: 1
   isGrounded: 0
-  jumpSpeed: 60000
-  timeInAirGravity: 100
+  jumpSpeed: 50000
+  timeInAirGravity: 60
 --- !u!65 &7681594724587123670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -917,11 +989,13 @@ MonoBehaviour:
   beginningSpeed: 0
   maxSpeed: 32
   dragWhenPlayerNotMoving: 10
-  jetpackSpeed: 40
+  airSpeed: 0
   gravity: 1
   isGrounded: 0
   jumpSpeed: 50000
   timeInAirGravity: 60
+  spawnLocations:
+  - SpawnLoca1
 --- !u!114 &1127300794969644885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,13 +1012,12 @@ MonoBehaviour:
   isSliding: 0
   amountOfSlowingDown: 0.35
   slidingSpeed: 43
-  hitDistance: 7
   camPosition: {fileID: 6100217180648863461}
   camSlidingPosition: {fileID: 3477540733987331537}
   cam: {fileID: 5690549838830850069}
   velocity: {x: 0, y: 0, z: 0}
   magnitude: 0
-  slideForce: 2400
+  slideForce: 240
   maxSlideAngle: 15
 --- !u!114 &4177470252060653857
 MonoBehaviour:
@@ -1031,9 +1104,6 @@ MonoBehaviour:
   jetpackSlider: {fileID: 1698393677608747191}
   jetpackForce: 700
   usingJetpack: 0
-  maxUpSpeed: 4000
-  activateJetpackGravity: 0
-  jetpackGravity: 11000
 --- !u!1 &7742425447022489822
 GameObject:
   m_ObjectHideFlags: 0
