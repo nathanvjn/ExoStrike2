@@ -32,7 +32,7 @@ public class MultiplayerMovement : NetworkBehaviour
     public float timeInAirGravity;
     private float normalGravity;
 
-    public string[] spawnLocations;
+    public string spawnLocationsTag;
 
     private void Start()
     {
@@ -42,8 +42,43 @@ public class MultiplayerMovement : NetworkBehaviour
         Debug.Log($"Player {GetComponentInParent<NetworkIdentity>().netId} connected to the server!");
         if (this.isLocalPlayer)
         {
-            if (GetComponentInParent<NetworkIdentity>().netId <= spawnLocations.Length)
-            transform.position = GameObject.FindGameObjectWithTag(spawnLocations[GetComponentInParent<NetworkIdentity>().netId - 1]).transform.position;
+            GameObject[] _players = GameObject.FindGameObjectsWithTag("Player");
+            GameObject[] _spawnLocations = GameObject.FindGameObjectsWithTag(spawnLocationsTag);
+            float _locationScore = -1;
+            GameObject _choosenSpawnLocation = new GameObject();
+            for (int i = 0; i < _spawnLocations.Length; i++)
+            {
+                float _score = 9999;
+                if (GetComponentInParent<NetworkIdentity>().netId > 1)
+                {
+                    foreach (GameObject _player in _players)
+                    {
+                        if(Vector3.Distance(_player.transform.position, _spawnLocations[i].transform.position) < _score)
+                        {
+                            _score = Vector3.Distance(_player.transform.position, _spawnLocations[i].transform.position);
+                        }
+                    }
+                }
+                else
+                {
+                    _score = 9999;
+                }
+
+                if (_score > _locationScore)
+                {
+                    _locationScore = _score;
+                    _choosenSpawnLocation = _spawnLocations[i];
+                }
+                else if (_score == _locationScore)
+                {
+                    if (Mathf.RoundToInt(Random.value) == 0)
+                    {
+                        _locationScore = _score;
+                        _choosenSpawnLocation = _spawnLocations[i];
+                    }
+                }
+            }
+            transform.position = _choosenSpawnLocation.transform.position;
         }
     }
 
