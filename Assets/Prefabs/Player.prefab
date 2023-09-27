@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2606997351966407104}
   - {fileID: 7162021556774118277}
+  - {fileID: 3675375130383739841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2565043880724026376
@@ -232,6 +233,108 @@ MonoBehaviour:
   mouseX: 400
   mouseY: 400
   orientation: {fileID: 2606997351966407104}
+--- !u!1 &4752971573976406487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3675375130383739841}
+  - component: {fileID: 2908136990585346514}
+  - component: {fileID: 7299214051313739274}
+  - component: {fileID: 5335828884225110339}
+  - component: {fileID: 1147508191995349855}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3675375130383739841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752971573976406487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: -1.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2361179943256545213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2908136990585346514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752971573976406487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815c177296ddbfb4b977e948d56229bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 5690549838830850069}
+  ammo: 50
+  schootingCooldownMaxTime: 0.1
+  ammoText: {fileID: 0}
+--- !u!114 &7299214051313739274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752971573976406487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcdd73db700fb641b15239fc5dd098c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingRevolver: 0
+  usingSingleShot: 0
+  usingAutoChamber: 1
+  chamberText: {fileID: 0}
+  gunAutoCooldown: 0.1
+  gunSingleCooldown: 1
+--- !u!114 &5335828884225110339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752971573976406487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7601f6a673990946a89cf58ee6f2a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingNormalBarrel: 0
+  usingMultiBarrel: 0
+  usingBigBarrel: 0
+  barrelText: {fileID: 0}
+  bigBarrelHit: 0
+--- !u!114 &1147508191995349855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752971573976406487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eae35145cb1894478c03f29fdd7a15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingNormalMag: 0
+  usingShrapnelMag: 0
+  usingGrenadeMag: 0
+  magText: {fileID: 0}
 --- !u!1 &5403294977578048500
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5014936338101678177}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2350773334899498798}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: bottomPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,9 +414,9 @@ GameObject:
   - component: {fileID: 7681594724587123670}
   - component: {fileID: 5281031890405562951}
   - component: {fileID: 8479727350366778643}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: PlayerBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +498,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6363238862699388759}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.7
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -454,9 +557,9 @@ MonoBehaviour:
   forwardSpeed: 0
   sideSpeed: 0
   beginningSpeed: 0
-  maxSpeed: 32
+  maxSpeed: 43
   dragWhenPlayerNotMoving: 10
-  jetpackSpeed: 40
+  airSpeed: 400
   gravity: 1
   isGrounded: 0
   jumpSpeed: 50000
@@ -498,7 +601,6 @@ MonoBehaviour:
   isSliding: 0
   amountOfSlowingDown: 0.35
   slidingSpeed: 43
-  hitDistance: 7
   camPosition: {fileID: 3675757145959531299}
   camSlidingPosition: {fileID: 5205729039358999960}
   cam: {fileID: 5014936338101678177}
@@ -519,11 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetpackSlider: {fileID: 0}
-  jetpackForce: 700
+  jetpackForce: 70000
   usingJetpack: 0
-  maxUpSpeed: 4000
-  activateJetpackGravity: 0
-  jetpackGravity: 11000
 --- !u!1 &7940039951451740140
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3675757145959531299}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: camPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5205729039358999960}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: camSlidingPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

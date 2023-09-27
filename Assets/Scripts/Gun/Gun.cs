@@ -37,20 +37,28 @@ public class Gun : MonoBehaviour
 
     void RifleGun()
     {
-        //raycast
-        Physics.Raycast(cam.position, cam.forward, out hit, 100);
-        Debug.DrawLine(cam.position, hit.point, Color.red);
+        //raycast normal barrel
+        if(GetComponent<Barrel>().usingNormalBarrel)
+        {
+            Physics.Raycast(cam.position, cam.forward, out hit, 100);
+            Debug.DrawLine(cam.position, hit.point, Color.red);
+        }
+
+        else if(GetComponent<Barrel>().usingBigBarrel)
+        {
+
+        }
 
 
         if (ammo > 0 && schootingResetTime > schootingCooldownMaxTime)
         {
-            //AUTOMATIC BARREL AND SINGLE BARREL
+            //AUTOMATIC CHAMBER AND SINGLE CHAMBER
             if (Input.GetButton("Fire1") && GetComponent<Chamber>().usingSingleShot || Input.GetButton("Fire1") && GetComponent<Chamber>().usingAutoChamber)
             {
                 Fire();
             }
 
-            //TAB BARREL
+            //TAB CHAMBER
             else if (Input.GetButtonDown("Fire1") && GetComponent<Chamber>().usingRevolver)
             {
                 Fire();
@@ -83,6 +91,11 @@ public class Gun : MonoBehaviour
             {
                 print("hittingEnemy");
             }
+        }
+
+        else if(GetComponent<Barrel>().usingBigBarrel && GetComponent<Barrel>().bigBarrelHit)
+        {
+            print("hittingEnemy");
         }
     }
 }

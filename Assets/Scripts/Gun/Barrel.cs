@@ -11,6 +11,9 @@ public class Barrel : MonoBehaviour
 
     public TextMeshProUGUI barrelText;
 
+    [Header("bigBarrel")]
+    public bool bigBarrelHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,11 @@ public class Barrel : MonoBehaviour
             BigBarrel();
             barrelText.text = ("big");
         }
+
+        else
+        {
+            bigBarrelHit = false;
+        }
     }
 
     void NormalBarrel()
@@ -51,6 +59,19 @@ public class Barrel : MonoBehaviour
 
     void BigBarrel()
     {
+        //look under this void (on trigger stay)
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            bigBarrelHit = true;
+        }
+
+        else
+        {
+            bigBarrelHit = false;
+        }
     }
 }
