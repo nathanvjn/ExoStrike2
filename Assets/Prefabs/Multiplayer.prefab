@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 7116880408246495834}
   m_Layer: 2
   m_Name: PlayerBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,8 +994,7 @@ MonoBehaviour:
   isGrounded: 0
   jumpSpeed: 50000
   timeInAirGravity: 60
-  spawnLocations:
-  - SpawnLoca1
+  spawnLocationsTag: SpawnLocation
 --- !u!114 &1127300794969644885
 MonoBehaviour:
   m_ObjectHideFlags: 0
