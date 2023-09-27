@@ -33,6 +33,10 @@ public class Gun : MonoBehaviour
 
         //ammo UI
         ammoText.text = ammo.ToString();
+
+        //shotgun cone will rotate with camera
+        transform.position = cam.position;
+        transform.rotation = cam.rotation;
     }
 
     void RifleGun()
@@ -90,12 +94,21 @@ public class Gun : MonoBehaviour
             if (hit.transform.gameObject.tag == "Player")
             {
                 print("hittingEnemy");
+
+                //damage if normal barrel
+                if(GetComponent<Barrel>().usingNormalBarrel)
+                {
+                    hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
+                }
             }
         }
 
+        //damage if big barrel
         else if(GetComponent<Barrel>().usingBigBarrel && GetComponent<Barrel>().bigBarrelHit)
         {
             print("hittingEnemy");
+
+            GetComponent<Barrel>().playerThatGotHit.GetComponent<Health>().playerHealth -= (GetComponent<Barrel>().bigBarrelDamage - (Vector3.Distance(transform.position, GetComponent<Barrel>().playerThatGotHit.position) * GetComponent<Barrel>().damageDistanceReducer));
         }
     }
 }

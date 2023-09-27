@@ -11,8 +11,19 @@ public class Barrel : MonoBehaviour
 
     public TextMeshProUGUI barrelText;
 
+    [Header("normalBarrel")]
+    public int normalBarrelDamage;
+
     [Header("bigBarrel")]
     public bool bigBarrelHit;
+
+    //amount of damage bigBarrel does
+    public int bigBarrelDamage;
+
+    //the negative multiplier deciding amount of decrease in damage over distance
+    public float damageDistanceReducer;
+
+    public Transform playerThatGotHit;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +78,8 @@ public class Barrel : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             bigBarrelHit = true;
+
+            playerThatGotHit = other.transform;
         }
 
         else
