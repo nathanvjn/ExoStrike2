@@ -22,6 +22,7 @@ public class Barrel : MonoBehaviour
 
     [Header("multiBarrel")]
     private bool randomize;
+    public int amountOfBarrels;
 
 
 
@@ -34,27 +35,36 @@ public class Barrel : MonoBehaviour
             barrelText.text = ("normal");
         }
 
-        else if(usingMultiBarrel)
-        {
-            MultiBarrel();
-            barrelText.text = ("multi");
-        }
-
         else if(usingBigBarrel)
         {
             BigBarrel();
             barrelText.text = ("big");
         }
+
+        else if (usingMultiBarrel)
+        {
+            MultiBarrel();
+            barrelText.text = ("multi");
+        }
+
+        if(usingMultiBarrel == false)
+        {
+            randomize = true;
+        }
     }
 
     void NormalBarrel()
     {
-
+    
     }
 
     void MultiBarrel()
     {
-
+        if (randomize)
+        {
+            amountOfBarrels = Random.Range(2, 6);
+            randomize = false;
+        }
     }
 
     void BigBarrel()

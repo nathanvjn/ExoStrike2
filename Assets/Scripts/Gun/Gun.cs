@@ -141,7 +141,8 @@ public class Gun : MonoBehaviour
                 //damage if double barrel
                 else if(GetComponent<Barrel>().usingMultiBarrel)
                 {
-
+                    //damage multiplies by barrels
+                    hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage * GetComponent<Barrel>().amountOfBarrels;
                 }
             }
         }
