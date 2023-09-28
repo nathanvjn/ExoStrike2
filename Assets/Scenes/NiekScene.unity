@@ -22861,6 +22861,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1254759733}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 2006312334}
@@ -22912,7 +22917,7 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: usingBigBarrel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -22922,7 +22927,7 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: usingNormalBarrel
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}

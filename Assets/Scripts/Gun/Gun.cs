@@ -24,6 +24,9 @@ public class Gun : MonoBehaviour
     //ui
     public TextMeshProUGUI ammoText;
 
+    //player
+    public GameObject player;
+
     
 
     // Start is called before the first frame update
@@ -135,13 +138,14 @@ public class Gun : MonoBehaviour
                 {
                     GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
                     prefabBullet.GetComponent<Rigidbody>().AddForce(rayDirection * bulletSpeed * Time.deltaTime);
+                    prefabBullet.GetComponent<Bullet>().player = player;
                 }
 
             }
         }
 
         //normal and double barrel
-        else if (hit.transform != null)
+        else if (hit.transform != null && GetComponent<Mag>().usingGrenadeMag == false)
         {
             //player gets damage
             if (hit.transform.gameObject.tag == "Player")
@@ -154,12 +158,6 @@ public class Gun : MonoBehaviour
                     if(GetComponent<Mag>().usingNormalMag)
                     {
                         hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
-                    }
-
-                    else if(GetComponent<Mag>().usingGrenadeMag)
-                    {
-                        GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
-                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
                     }
                 }
 
@@ -181,7 +179,17 @@ public class Gun : MonoBehaviour
             }
         }
 
-        
-        
+
+        //grenade mag
+        else if (GetComponent<Mag>().usingGrenadeMag)
+        {
+            GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
+            prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+            prefabBullet.GetComponent<Bullet>().player = player;
+            prefabBullet.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        }
+
+
+
     }
 }
