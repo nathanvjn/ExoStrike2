@@ -12,10 +12,10 @@ public class Chamber : MonoBehaviour
 
     public TextMeshProUGUI chamberText;
 
-    [Header("autoChamber")]
+    [Header("auto chamber")]
     public float gunAutoCooldown;
 
-    [Header("singleChamber")]
+    [Header("single chamber")]
     public float gunSingleCooldown;
 
 

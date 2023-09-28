@@ -109,31 +109,34 @@ public class Gun : MonoBehaviour
 
                 // Perform the raycast
                 RaycastHit bigBarrelHit;
-
-                if (Physics.Raycast(cam.position, rayDirection, out bigBarrelHit, GetComponent<Barrel>().maxRange))
+                if(GetComponent<Mag>().usingNormalMag)
                 {
-          
-                    Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
-
-                    //raycast bullet
-                    if(bigBarrelHit.transform.gameObject.tag == "Player" && GetComponent<Mag>().usingNormalMag)
+                    if (Physics.Raycast(cam.position, rayDirection, out bigBarrelHit, GetComponent<Barrel>().maxRange))
                     {
-                        bigBarrelHit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().bigBarrelDamage;
+
+                        Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
+
+                        //raycast bullet
+                        if (bigBarrelHit.transform.gameObject.tag == "Player")
+                        {
+                            bigBarrelHit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().bigBarrelDamage;
+                        }
                     }
 
-                    //explosive bullet
-                    else if (bigBarrelHit.transform.gameObject.tag == "Player" && GetComponent<Mag>().usingGrenadeMag)
+                    else
                     {
-                        GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
-                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                        // Handle a miss
+                        Debug.DrawRay(cam.position, rayDirection * GetComponent<Barrel>().maxRange, Color.green, 0.1f);
                     }
                 }
 
-                else
+                //explosive bullet
+                else if (GetComponent<Mag>().usingGrenadeMag)
                 {
-                    // Handle a miss
-                    Debug.DrawRay(cam.position, rayDirection * GetComponent<Barrel>().maxRange, Color.green, 0.1f);
+                    GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
+                    prefabBullet.GetComponent<Rigidbody>().AddForce(rayDirection * bulletSpeed * Time.deltaTime);
                 }
+
             }
         }
 
@@ -148,14 +151,32 @@ public class Gun : MonoBehaviour
                 //damage if normal barrel
                 if (GetComponent<Barrel>().usingNormalBarrel)
                 {
-                    hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
+                    if(GetComponent<Mag>().usingNormalMag)
+                    {
+                        hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
+                    }
+
+                    else if(GetComponent<Mag>().usingGrenadeMag)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                    }
                 }
 
                 //damage if double barrel
                 else if(GetComponent<Barrel>().usingMultiBarrel)
                 {
-                    //damage multiplies by barrels
-                    hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage * GetComponent<Barrel>().amountOfBarrels;
+                    if(GetComponent<Mag>().usingNormalMag)
+                    {
+                        //damage multiplies by barrels
+                        hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage * GetComponent<Barrel>().amountOfBarrels;
+                    }
+
+                    else if(GetComponent<Mag>().usingGrenadeMag)
+                    {
+                        //more chambers, more bullets (still need to program)
+                    }
+                    
                 }
             }
         }

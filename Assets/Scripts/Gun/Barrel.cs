@@ -11,18 +11,18 @@ public class Barrel : MonoBehaviour
 
     public TextMeshProUGUI barrelText;
 
-    [Header("normalBarrel")]
+    [Header("normal barrel")]
     public int normalBarrelDamage;
 
-    [Header("bigBarrel")]
+    [Header("big barrel")]
     public int numBullets;
     public float spreadAngle;
     public float maxRange;
     public float bigBarrelDamage;
 
-    [Header("multiBarrel")]
-    private bool randomize;
+    [Header("multi barrel")]
     public int amountOfBarrels;
+    private bool randomize;
 
 
 

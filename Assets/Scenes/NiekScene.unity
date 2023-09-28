@@ -22796,6 +22796,11 @@ PrefabInstance:
     - target: {fileID: 1147508191995349855, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: usingNormalMag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147508191995349855, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: usingGrenadeMag
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2361179943256545213, guid: 0a23734e7de415a4581053f2bb26d42f,
@@ -22850,9 +22855,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 216792612909382574, guid: e60cd60f1eb61d0409059a2b49a086e9,
+        type: 3}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 2006312334}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 12000
+      objectReference: {fileID: 0}
     - target: {fileID: 3675375130383739841, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -22891,7 +22907,7 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: spreadAngle
-      value: 27
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
