@@ -18,6 +18,10 @@ public class Barrel : MonoBehaviour
     public int numBullets;
     public float spreadAngle;
     public float maxRange;
+    public float bigBarrelDamage;
+
+    [Header("multiBarrel")]
+    private bool randomize;
 
 
 

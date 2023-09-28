@@ -22876,7 +22876,7 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: maxRange
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -22886,12 +22886,12 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: numBullets
-      value: 15
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: spreadAngle
-      value: 18
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -22901,7 +22901,7 @@ PrefabInstance:
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: bigBarrelDamage
-      value: 30
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5335828884225110339, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
@@ -22923,6 +22923,16 @@ PrefabInstance:
       propertyPath: chamberText
       value: 
       objectReference: {fileID: 2067738512}
+    - target: {fileID: 7299214051313739274, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: usingSingleShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299214051313739274, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: usingAutoChamber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8479727350366778643, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: jetpackForce

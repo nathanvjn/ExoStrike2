@@ -110,6 +110,10 @@ public class Gun : MonoBehaviour
                 {
                     // Handle the hit (e.g., apply damage, spawn effects, etc.)
                     Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
+                    if(bigBarrelHit.transform.gameObject.tag == "Player")
+                    {
+                        bigBarrelHit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().bigBarrelDamage;
+                    }
                 }
 
                 else
@@ -132,6 +136,12 @@ public class Gun : MonoBehaviour
                 if (GetComponent<Barrel>().usingNormalBarrel)
                 {
                     hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
+                }
+
+                //damage if double barrel
+                else if(GetComponent<Barrel>().usingMultiBarrel)
+                {
+
                 }
             }
         }
