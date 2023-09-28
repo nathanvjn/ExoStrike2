@@ -20,6 +20,8 @@ public class Gun : MonoBehaviour
     //ui
     public TextMeshProUGUI ammoText;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +51,6 @@ public class Gun : MonoBehaviour
         {
             Physics.Raycast(cam.position, cam.forward, out hit, 100);
             Debug.DrawLine(cam.position, hit.point, Color.red);
-        }
-
-        else if(GetComponent<Barrel>().usingBigBarrel)
-        {
-            //check Fire();
         }
 
 
@@ -91,7 +88,40 @@ public class Gun : MonoBehaviour
         //time resets
         schootingResetTime = 0;
 
-        if (hit.transform != null)
+
+
+
+        //big barrel
+        if (GetComponent<Barrel>().usingBigBarrel)
+        {
+            for (int i = 0; i < GetComponent<Barrel>().numBullets; i++)
+            {
+                // Calculate a random rotation within the specified spread angle
+                float spreadAngle = GetComponent<Barrel>().spreadAngle;
+                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0f);
+
+                // Create a raycast direction from the spread rotation
+                Vector3 rayDirection = spreadRotation * cam.forward;
+
+                // Perform the raycast
+                RaycastHit bigBarrelHit;
+
+                if (Physics.Raycast(cam.position, rayDirection, out bigBarrelHit, GetComponent<Barrel>().maxRange))
+                {
+                    // Handle the hit (e.g., apply damage, spawn effects, etc.)
+                    Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
+                }
+
+                else
+                {
+                    // Handle a miss (e.g., spawn impact effects, etc.)
+                    Debug.DrawRay(cam.position, rayDirection * GetComponent<Barrel>().maxRange, Color.green, 0.1f);
+                }
+            }
+        }
+
+        //normal and double barrel
+        else if (hit.transform != null)
         {
             //player gets damage
             if (hit.transform.gameObject.tag == "Player")
@@ -99,19 +129,14 @@ public class Gun : MonoBehaviour
                 print("hittingEnemy");
 
                 //damage if normal barrel
-                if(GetComponent<Barrel>().usingNormalBarrel)
+                if (GetComponent<Barrel>().usingNormalBarrel)
                 {
                     hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage;
                 }
             }
         }
 
-        //damage if big barrel
-        else if(GetComponent<Barrel>().usingBigBarrel && GetComponent<Barrel>().bigBarrelHit)
-        {
-            print("hittingEnemy");
-
-            GetComponent<Barrel>().playerThatGotHit.GetComponent<Health>().playerHealth -= (GetComponent<Barrel>().bigBarrelDamage - (Vector3.Distance(transform.position, GetComponent<Barrel>().playerThatGotHit.position) * GetComponent<Barrel>().damageDistanceReducer));
-        }
+        
+        
     }
 }

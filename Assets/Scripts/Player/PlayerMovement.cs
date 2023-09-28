@@ -68,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //air movement speed
-        
         if(isGrounded == false)
         {
             sideSpeed = Input.GetAxis("Horizontal");
@@ -134,27 +133,17 @@ public class PlayerMovement : MonoBehaviour
     //isGrounded
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Gun")
-        {
-            //player does not get forced into ground
-            r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
-        }
-   
+        //player does not get forced into ground
+        r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "Gun")
-        {
-            isGrounded = true;
-        }
+        isGrounded = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag != "Gun")
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 }

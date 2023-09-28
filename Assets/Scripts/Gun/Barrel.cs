@@ -15,21 +15,13 @@ public class Barrel : MonoBehaviour
     public int normalBarrelDamage;
 
     [Header("bigBarrel")]
-    public bool bigBarrelHit;
+    public int numBullets;
+    public float spreadAngle;
+    public float maxRange;
 
-    //amount of damage bigBarrel does
-    public int bigBarrelDamage;
 
-    //the negative multiplier deciding amount of decrease in damage over distance
-    public float damageDistanceReducer;
 
-    //store data
-    public Transform playerThatGotHit;
 
-    //player
-    public GameObject player;
-
-    
     void Update()
     {
         if(usingNormalBarrel)
@@ -49,11 +41,6 @@ public class Barrel : MonoBehaviour
             BigBarrel();
             barrelText.text = ("big");
         }
-
-        else
-        {
-            bigBarrelHit = false;
-        }
     }
 
     void NormalBarrel()
@@ -68,21 +55,6 @@ public class Barrel : MonoBehaviour
 
     void BigBarrel()
     {
-        //look under this void (on trigger stay)
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Player" && other.gameObject != player)
-        {
-            bigBarrelHit = true;
-
-            playerThatGotHit = other.transform;
-        }
-
-        else
-        {
-            bigBarrelHit = false;
-        }
+        
     }
 }
