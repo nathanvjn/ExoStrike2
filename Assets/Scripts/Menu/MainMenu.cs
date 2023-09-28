@@ -33,13 +33,13 @@ public class MainMenu : MonoBehaviour
 
     public void OnJoinHover()
     {
-        input.gameObject.SetActive(true);
-        joinButton.SetActive(true);
+        input.gameObject.GetComponent<Animator>().SetBool("Open", true);
+        joinButton.GetComponent<Animator>().SetBool("Open", true);
     }
 
     public void OnJoinUnhover()
     {
-        input.gameObject.SetActive(false);
-        joinButton.SetActive(false);
+        input.gameObject.GetComponent<Animator>().SetBool("Open", false);
+        joinButton.GetComponent<Animator>().SetBool("Open", false);
     }
 }
