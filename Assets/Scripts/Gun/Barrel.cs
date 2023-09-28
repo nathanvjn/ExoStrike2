@@ -23,15 +23,13 @@ public class Barrel : MonoBehaviour
     //the negative multiplier deciding amount of decrease in damage over distance
     public float damageDistanceReducer;
 
+    //store data
     public Transform playerThatGotHit;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //player
+    public GameObject player;
 
-    // Update is called once per frame
+    
     void Update()
     {
         if(usingNormalBarrel)
@@ -75,7 +73,7 @@ public class Barrel : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && other.gameObject != player)
         {
             bigBarrelHit = true;
 

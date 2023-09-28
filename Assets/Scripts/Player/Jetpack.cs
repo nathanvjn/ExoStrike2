@@ -10,6 +10,9 @@ public class Jetpack : MonoBehaviour
     private float jetpackCooldown;
     public bool usingJetpack;
 
+    private float timeInAir;
+    private bool enoughTimeinAir;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,7 @@ public class Jetpack : MonoBehaviour
     {
 
         //jetpack
-        if (Input.GetButtonDown("Jump") && GetComponent<PlayerMovement>().isGrounded == false && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
+        if (Input.GetButtonDown("Jump") && enoughTimeinAir && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
         {
             usingJetpack = true;
             jetpackCooldown = 0;
@@ -42,10 +45,27 @@ public class Jetpack : MonoBehaviour
             usingJetpack = false;
         }
 
+        //cooldown jetpack
         jetpackCooldown += Time.deltaTime;
         if (jetpackCooldown > 1)
         {
             jetpackSlider.value += Time.deltaTime * 4;
+        }
+
+        //jetpack only when long time in air
+        if(GetComponent<PlayerMovement>().isGrounded == false)
+        {
+            timeInAir += Time.deltaTime;
+            if(timeInAir > 0.2f)
+            {
+                enoughTimeinAir = true;
+            }
+        }
+
+        else
+        {
+            timeInAir = 0;
+            enoughTimeinAir = false;
         }
     }
 }
