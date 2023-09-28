@@ -17,6 +17,10 @@ public class Gun : MonoBehaviour
     public float schootingCooldownMaxTime;
     private float schootingResetTime;
 
+    //bullet
+    public GameObject bullet;
+    public float bulletSpeed;
+
     //ui
     public TextMeshProUGUI ammoText;
 
@@ -108,17 +112,26 @@ public class Gun : MonoBehaviour
 
                 if (Physics.Raycast(cam.position, rayDirection, out bigBarrelHit, GetComponent<Barrel>().maxRange))
                 {
-                    // Handle the hit (e.g., apply damage, spawn effects, etc.)
+          
                     Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
-                    if(bigBarrelHit.transform.gameObject.tag == "Player")
+
+                    //raycast bullet
+                    if(bigBarrelHit.transform.gameObject.tag == "Player" && GetComponent<Mag>().usingNormalMag)
                     {
                         bigBarrelHit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().bigBarrelDamage;
+                    }
+
+                    //explosive bullet
+                    else if (bigBarrelHit.transform.gameObject.tag == "Player" && GetComponent<Mag>().usingGrenadeMag)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
                     }
                 }
 
                 else
                 {
-                    // Handle a miss (e.g., spawn impact effects, etc.)
+                    // Handle a miss
                     Debug.DrawRay(cam.position, rayDirection * GetComponent<Barrel>().maxRange, Color.green, 0.1f);
                 }
             }

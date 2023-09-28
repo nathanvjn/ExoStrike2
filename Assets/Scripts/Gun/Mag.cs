@@ -35,7 +35,7 @@ public class Mag : MonoBehaviour
         else if (usingGrenadeMag)
         {
             GrenadeMag();
-            magText.text = ("big");
+            magText.text = ("grenade");
         }
     }
 
