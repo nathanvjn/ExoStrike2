@@ -36,7 +36,10 @@ public class Gun : MonoBehaviour
 
         //shotgun cone will rotate with camera
         transform.position = cam.position;
-        transform.rotation = cam.rotation;
+
+        Quaternion cameraRotation = cam.rotation;
+        cameraRotation = Quaternion.Euler(-cameraRotation.eulerAngles.x, cameraRotation.eulerAngles.y, cameraRotation.eulerAngles.z);
+        transform.rotation = cameraRotation;
     }
 
     void RifleGun()
@@ -50,7 +53,7 @@ public class Gun : MonoBehaviour
 
         else if(GetComponent<Barrel>().usingBigBarrel)
         {
-
+            //check Fire();
         }
 
 

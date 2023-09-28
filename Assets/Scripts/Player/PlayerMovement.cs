@@ -139,11 +139,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        isGrounded = true;
+        if (other.gameObject.tag != "Gun")
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isGrounded = false;
+        if(other.gameObject.tag != "Gun")
+        {
+            isGrounded = false;
+        }
     }
 }
