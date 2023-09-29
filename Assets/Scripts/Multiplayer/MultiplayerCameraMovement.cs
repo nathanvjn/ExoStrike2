@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(SendData))]
+[RequireComponent(typeof(ServerCommands))]
 public class MultiplayerCameraMovement : NetworkBehaviour
 {
     public float mouseX;
@@ -34,7 +34,7 @@ public class MultiplayerCameraMovement : NetworkBehaviour
 
             if (Input.GetKeyDown(KeyCode.C) && Physics.Raycast(transform.position, transform.forward, out hit, 1000))
             {
-                GetComponent<SendData>().PlaceDebugCube(hit.point);
+                GetComponent<ServerCommands>().PlaceDebugCube(hit.point);
             }
         }
         else

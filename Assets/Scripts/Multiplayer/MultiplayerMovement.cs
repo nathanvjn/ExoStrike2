@@ -166,10 +166,6 @@ public class MultiplayerMovement : NetworkBehaviour
                 gravity = normalGravity;
             }
 
-
-
-
-
             //jumping
             if (Input.GetButton("Jump") && isGrounded)
             {

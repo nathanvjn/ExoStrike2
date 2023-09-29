@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class SendData : NetworkBehaviour
+public class ServerCommands : NetworkBehaviour
 {
     public NetworkIdentity identity;
     [Space(20)]
