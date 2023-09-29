@@ -23,6 +23,8 @@ public class Gun : MonoBehaviour
 
     //ui
     public TextMeshProUGUI ammoText;
+    public GameObject particle;
+    public Transform particlePosition;
 
     //player
     public GameObject player;
@@ -94,6 +96,10 @@ public class Gun : MonoBehaviour
 
         //time resets
         schootingResetTime = 0;
+
+        GameObject prefab = Instantiate(particle, particlePosition.position, Quaternion.identity);
+        prefab.transform.parent = particlePosition;
+        Destroy(prefab, 1);
 
 
 
