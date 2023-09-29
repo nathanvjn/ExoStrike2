@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10cf8443ed697f49818da860ee77a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeTime: 1
+  explodeTime: 3
   bulletParticle: {fileID: 1232549637138079577, guid: 372e67946e999474b9f68e1f811647f0,
     type: 3}
   player: {fileID: 0}

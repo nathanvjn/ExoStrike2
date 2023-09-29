@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnLocation
   - Gun
+  - Bullet
   layers:
   - Default
   - TransparentFX
