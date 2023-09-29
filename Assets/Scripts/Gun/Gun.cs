@@ -137,8 +137,8 @@ public class Gun : MonoBehaviour
                 else if (GetComponent<Mag>().usingGrenadeMag)
                 {
                     GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
-                    prefabBullet.GetComponent<Rigidbody>().AddForce(rayDirection * bulletSpeed * Time.deltaTime);
                     prefabBullet.GetComponent<Bullet>().player = player;
+                    prefabBullet.GetComponent<Rigidbody>().AddForce(rayDirection * bulletSpeed * Time.deltaTime);
                 }
 
             }
@@ -184,8 +184,8 @@ public class Gun : MonoBehaviour
         else if (GetComponent<Mag>().usingGrenadeMag)
         {
             GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
-            prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
             prefabBullet.GetComponent<Bullet>().player = player;
+            prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
             prefabBullet.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         }
 

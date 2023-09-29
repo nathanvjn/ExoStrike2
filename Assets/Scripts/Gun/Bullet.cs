@@ -18,14 +18,26 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-
+        
         counter += Time.deltaTime;
         if(counter > explodeTime)
         {
             GameObject particlePrefab = Instantiate(bulletParticle, transform.position, Quaternion.identity);
             Destroy(particlePrefab, 1);
             Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
     }
 }
