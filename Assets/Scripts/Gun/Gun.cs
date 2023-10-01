@@ -95,11 +95,11 @@ public class Gun : MonoBehaviour
         IEnumerator ScaleParticlesOverTime()
         {
             float elapsedTime = 0f;
-            float scalingDuration = 1f; // Adjust the duration as needed.
+            float scalingDuration = 0.1f; // Adjust the duration as needed.
 
             while (elapsedTime < scalingDuration)
             {
-                float scale = Mathf.Lerp(0f, 1f, elapsedTime / scalingDuration);
+                float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
                 prefab.transform.localScale = new Vector3(scale, scale, scale); // Set the particle size.
 
                 elapsedTime += Time.deltaTime;
@@ -109,7 +109,7 @@ public class Gun : MonoBehaviour
             
         }
 
-        Destroy(prefab, 0.1f);
+        Destroy(prefab, 0.11f);
 
 
 
