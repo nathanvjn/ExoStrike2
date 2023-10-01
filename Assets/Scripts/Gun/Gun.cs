@@ -89,7 +89,27 @@ public class Gun : MonoBehaviour
 
         GameObject prefab = Instantiate(particle, particlePosition.position, Quaternion.identity);
         prefab.transform.parent = particlePosition;
-        Destroy(prefab, 1);
+        prefab.transform.rotation = particlePosition.rotation;
+        StartCoroutine(ScaleParticlesOverTime());
+
+        IEnumerator ScaleParticlesOverTime()
+        {
+            float elapsedTime = 0f;
+            float scalingDuration = 1f; // Adjust the duration as needed.
+
+            while (elapsedTime < scalingDuration)
+            {
+                float scale = Mathf.Lerp(0f, 1f, elapsedTime / scalingDuration);
+                prefab.transform.localScale = new Vector3(scale, scale, scale); // Set the particle size.
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            
+        }
+
+        Destroy(prefab, 0.1f);
 
 
 
