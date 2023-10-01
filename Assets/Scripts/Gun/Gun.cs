@@ -22,13 +22,18 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public float bulletSpeed;
 
-    //ui
-    public TextMeshProUGUI ammoText;
-    public GameObject particle;
-    public Transform particlePosition;
-
     //player
     public GameObject player;
+
+    [Header("UI")]
+    
+    public TextMeshProUGUI ammoText;
+    public GameObject particleMuzzle;
+    public GameObject particleGrenade;
+    public Transform particlePosition;
+    public Transform particleGrenadePosition;
+
+    
 
     
     void Update()
@@ -87,46 +92,64 @@ public class Gun : MonoBehaviour
         //time resets
         schootingResetTime = 0;
 
-        GameObject prefab = Instantiate(particle, particlePosition.position, Quaternion.identity);
-        prefab.transform.parent = particlePosition;
-        prefab.transform.rotation = particlePosition.rotation;
-        StartCoroutine(ScaleParticlesOverTime());
 
-        IEnumerator ScaleParticlesOverTime()
+        //SCHOOTING PARTICLES
+        if(GetComponent<Mag>().usingGrenadeMag == false)
         {
-            float elapsedTime = 0f;
-            float scalingDuration = 0.1f; // Adjust the duration as needed.
+            //particle for schooting bullet
+            GameObject prefab = Instantiate(particleMuzzle, particlePosition.position, Quaternion.identity);
+            prefab.transform.parent = particlePosition;
+            prefab.transform.rotation = particlePosition.rotation;
+            StartCoroutine(ScaleParticlesOverTime());
 
-            while (elapsedTime < scalingDuration)
+            IEnumerator ScaleParticlesOverTime()
             {
-                float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
-                prefab.transform.localScale = new Vector3(scale, scale, scale); // Set the particle size.
+                float elapsedTime = 0f;
+                float scalingDuration = 0.1f; //adjust the duration as needed
 
-                elapsedTime += Time.deltaTime;
-                yield return null;
+                while (elapsedTime < scalingDuration)
+                {
+                    float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
+                    prefab.transform.localScale = new Vector3(scale, scale, scale); //set the particle size
+
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+
+
             }
 
-            
+            Destroy(prefab, 0.11f);
         }
 
-        Destroy(prefab, 0.11f);
+        else
+        {
+            //particle for schooting grenade
+            GameObject grenadePrefab = Instantiate(particleGrenade, particlePosition.position, Quaternion.identity);
+            grenadePrefab.transform.parent = particlePosition;
+            grenadePrefab.transform.rotation = particleGrenadePosition.rotation;
+            Destroy(grenadePrefab, 1);
+        }
+        
+
+        
 
 
 
 
-        //big barrel
+        //if big barrel
         if (GetComponent<Barrel>().usingBigBarrel)
         {
             for (int i = 0; i < GetComponent<Barrel>().numBullets; i++)
             {
-                // Calculate a random rotation within the specified spread angle
+                //calculate a random rotation within the specified spread angle
                 float spreadAngle = GetComponent<Barrel>().spreadAngle;
                 Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0f);
 
-                // Create a raycast direction from the spread rotation
+                //create a raycast direction from the spread rotation
                 Vector3 rayDirection = spreadRotation * cam.forward;
 
-                // Perform the raycast
+                //perform the raycast
                 RaycastHit bigBarrelHit;
                 if(GetComponent<Mag>().usingNormalMag)
                 {
@@ -161,7 +184,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-        //normal and double barrel
+        //if normal and double barrel
         else if (hit.transform != null && GetComponent<Mag>().usingGrenadeMag == false)
         {
             //player gets damage
@@ -194,7 +217,7 @@ public class Gun : MonoBehaviour
         }
 
 
-        //grenade mag
+        //if grenade mag with normal and double
         else if (GetComponent<Mag>().usingGrenadeMag)
         {
             if(GetComponent<Barrel>().usingNormalBarrel)

@@ -1377,6 +1377,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18dd36015d1eb6a46a72bf3ad3c9a162,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1096311079}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18dd36015d1eb6a46a72bf3ad3c9a162,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 416003832}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18dd36015d1eb6a46a72bf3ad3c9a162, type: 3}
@@ -12347,6 +12351,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 302455102}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1096311078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096311079}
+  m_Layer: 0
+  m_Name: particleGrenadePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096311079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096311078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2375, z: 1.105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 103215664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100467727
 GameObject:
   m_ObjectHideFlags: 0
@@ -24125,9 +24160,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
+      propertyPath: particleMuzzle
+      value: 
+      objectReference: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
+        type: 3}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: particleGrenade
+      value: 
+      objectReference: {fileID: 6680982824165444025, guid: bb32a3df788599c4bb81c1337556c64d,
+        type: 3}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
       propertyPath: particlePosition
       value: 
       objectReference: {fileID: 1473902409}
+    - target: {fileID: 2908136990585346514, guid: 0a23734e7de415a4581053f2bb26d42f,
+        type: 3}
+      propertyPath: particleGrenadePosition
+      value: 
+      objectReference: {fileID: 1096311079}
     - target: {fileID: 3675375130383739841, guid: 0a23734e7de415a4581053f2bb26d42f,
         type: 3}
       propertyPath: m_LocalPosition.y
