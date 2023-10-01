@@ -26,12 +26,6 @@ public class Mag : MonoBehaviour
             magText.text = ("normal");
         }
 
-        else if (usingShrapnelMag)
-        {
-            ShrapnelMag();
-            magText.text = ("multi");
-        }
-
         else if (usingGrenadeMag)
         {
             GrenadeMag();
@@ -40,11 +34,6 @@ public class Mag : MonoBehaviour
     }
 
     void NormalMag()
-    {
-
-    }
-
-    void ShrapnelMag()
     {
 
     }

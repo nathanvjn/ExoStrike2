@@ -55,12 +55,9 @@ public class Gun : MonoBehaviour
 
     void RifleGun()
     {
-        //raycast normal barrel
-        if(GetComponent<Barrel>().usingNormalBarrel)
-        {
-            Physics.Raycast(cam.position, cam.forward, out hit, 100);
-            Debug.DrawLine(cam.position, hit.point, Color.red);
-        }
+        //raycast
+        Physics.Raycast(cam.position, cam.forward, out hit, 100);
+        Debug.DrawLine(cam.position, hit.point, Color.red);
 
 
         if (ammo > 0 && schootingResetTime > schootingCooldownMaxTime)
@@ -174,12 +171,58 @@ public class Gun : MonoBehaviour
                     if(GetComponent<Mag>().usingNormalMag)
                     {
                         //damage multiplies by barrels
+                        print("work");
                         hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage * GetComponent<Barrel>().amountOfBarrels;
                     }
 
                     else if(GetComponent<Mag>().usingGrenadeMag)
                     {
-                        //more chambers, more bullets (still need to program)
+                        //more chambers, more bullets
+
+                        float amountOfBarrels = GetComponent<Barrel>().amountOfBarrels;
+                        if(amountOfBarrels == 2)
+                        {
+                            for (int i = 0; i < GetComponent<Barrel>().twoBarrels.Length; i++)
+                            {
+                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().twoBarrels[i].position, Quaternion.identity);
+                                prefabBullet.GetComponent<Bullet>().player = player;
+                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                            }
+                        }
+
+                        else if(amountOfBarrels == 3)
+                        {
+                            for (int i = 0; i < GetComponent<Barrel>().tripleBarrels.Length; i++)
+                            {
+                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().tripleBarrels[i].position, Quaternion.identity);
+                                prefabBullet.GetComponent<Bullet>().player = player;
+                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                            }
+                        }
+
+                        else if(amountOfBarrels == 4)
+                        {
+                            for (int i = 0; i < GetComponent<Barrel>().fourBarrels.Length; i++)
+                            {
+                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fourBarrels[i].position, Quaternion.identity);
+                                prefabBullet.GetComponent<Bullet>().player = player;
+                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                            }
+                        }
+
+                        else if(amountOfBarrels == 5)
+                        {
+                            for (int i = 0; i < GetComponent<Barrel>().fiveBarrels.Length; i++)
+                            {
+                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fiveBarrels[i].position, Quaternion.identity);
+                                prefabBullet.GetComponent<Bullet>().player = player;
+                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                            }
+                        }
                     }
                     
                 }

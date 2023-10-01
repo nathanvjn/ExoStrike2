@@ -24,6 +24,11 @@ public class Barrel : MonoBehaviour
     public int amountOfBarrels;
     private bool randomize;
 
+    public Transform[] twoBarrels;
+    public Transform[] tripleBarrels;
+    public Transform[] fourBarrels;
+    public Transform[] fiveBarrels;
+
 
 
 
