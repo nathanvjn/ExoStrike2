@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     [Header("Aiming")]
     private RaycastHit hit;
     public Transform cam;
+    public Transform chamberOfGun;
 
     [Header("Schooting")]
     public float ammo;
@@ -30,14 +31,6 @@ public class Gun : MonoBehaviour
     public GameObject player;
 
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         RifleGun();
@@ -139,7 +132,7 @@ public class Gun : MonoBehaviour
                 //explosive bullet
                 else if (GetComponent<Mag>().usingGrenadeMag)
                 {
-                    GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
+                    GameObject prefabBullet = Instantiate(bullet, chamberOfGun.position, Quaternion.identity);
                     prefabBullet.GetComponent<Bullet>().player = player;
                     prefabBullet.transform.LookAt(prefabBullet.transform.position + rayDirection);
                     prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletSpeed * Time.deltaTime);
@@ -168,6 +161,7 @@ public class Gun : MonoBehaviour
                 //damage if double barrel
                 else if(GetComponent<Barrel>().usingMultiBarrel)
                 {
+                    print("multibarrel");
                     if(GetComponent<Mag>().usingNormalMag)
                     {
                         //damage multiplies by barrels
@@ -175,56 +169,6 @@ public class Gun : MonoBehaviour
                         hit.transform.gameObject.GetComponent<Health>().playerHealth -= GetComponent<Barrel>().normalBarrelDamage * GetComponent<Barrel>().amountOfBarrels;
                     }
 
-                    else if(GetComponent<Mag>().usingGrenadeMag)
-                    {
-                        //more chambers, more bullets
-
-                        float amountOfBarrels = GetComponent<Barrel>().amountOfBarrels;
-                        if(amountOfBarrels == 2)
-                        {
-                            for (int i = 0; i < GetComponent<Barrel>().twoBarrels.Length; i++)
-                            {
-                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().twoBarrels[i].position, Quaternion.identity);
-                                prefabBullet.GetComponent<Bullet>().player = player;
-                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
-                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                            }
-                        }
-
-                        else if(amountOfBarrels == 3)
-                        {
-                            for (int i = 0; i < GetComponent<Barrel>().tripleBarrels.Length; i++)
-                            {
-                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().tripleBarrels[i].position, Quaternion.identity);
-                                prefabBullet.GetComponent<Bullet>().player = player;
-                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
-                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                            }
-                        }
-
-                        else if(amountOfBarrels == 4)
-                        {
-                            for (int i = 0; i < GetComponent<Barrel>().fourBarrels.Length; i++)
-                            {
-                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fourBarrels[i].position, Quaternion.identity);
-                                prefabBullet.GetComponent<Bullet>().player = player;
-                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
-                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                            }
-                        }
-
-                        else if(amountOfBarrels == 5)
-                        {
-                            for (int i = 0; i < GetComponent<Barrel>().fiveBarrels.Length; i++)
-                            {
-                                GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fiveBarrels[i].position, Quaternion.identity);
-                                prefabBullet.GetComponent<Bullet>().player = player;
-                                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
-                                prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                            }
-                        }
-                    }
-                    
                 }
             }
         }
@@ -233,11 +177,71 @@ public class Gun : MonoBehaviour
         //grenade mag
         else if (GetComponent<Mag>().usingGrenadeMag)
         {
-            GameObject prefabBullet = Instantiate(bullet, cam.position, Quaternion.identity);
-            prefabBullet.GetComponent<Bullet>().player = player;
-            prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
-            prefabBullet.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            if(GetComponent<Barrel>().usingNormalBarrel)
+            {
+                GameObject prefabBullet = Instantiate(bullet, chamberOfGun.position, Quaternion.identity);
+                prefabBullet.GetComponent<Bullet>().player = player;
+                prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                prefabBullet.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            }
+
+            else if(GetComponent<Barrel>().usingMultiBarrel)
+            {
+                //more chambers, more bullets
+
+                float amountOfBarrels = GetComponent<Barrel>().amountOfBarrels;
+                if (amountOfBarrels == 2)
+                {
+                    for (int i = 0; i < GetComponent<Barrel>().twoBarrels.Length; i++)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().twoBarrels[i].position, Quaternion.identity);
+                        prefabBullet.GetComponent<Bullet>().player = player;
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                        prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        print("2");
+                    }
+                }
+
+                else if (amountOfBarrels == 3)
+                {
+                    for (int i = 0; i < GetComponent<Barrel>().tripleBarrels.Length; i++)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().tripleBarrels[i].position, Quaternion.identity);
+                        prefabBullet.GetComponent<Bullet>().player = player;
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                        prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        print("3");
+                    }
+                }
+
+                else if (amountOfBarrels == 4)
+                {
+                    for (int i = 0; i < GetComponent<Barrel>().fourBarrels.Length; i++)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fourBarrels[i].position, Quaternion.identity);
+                        prefabBullet.GetComponent<Bullet>().player = player;
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                        prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        print("4");
+                    }
+                }
+
+                else if (amountOfBarrels == 5)
+                {
+                    for (int i = 0; i < GetComponent<Barrel>().fiveBarrels.Length; i++)
+                    {
+                        GameObject prefabBullet = Instantiate(bullet, GetComponent<Barrel>().fiveBarrels[i].position, Quaternion.identity);
+                        prefabBullet.GetComponent<Bullet>().player = player;
+                        prefabBullet.GetComponent<Rigidbody>().AddForce(cam.forward * bulletSpeed * Time.deltaTime);
+                        prefabBullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        print("5");
+                    }
+                }
+            }
+            
         }
+
+        
 
 
 

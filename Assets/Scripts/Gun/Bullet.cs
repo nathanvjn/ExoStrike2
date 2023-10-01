@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    //time when explode
     private float counter;
     public float explodeTime;
+
+    //explosion particle
     public GameObject bulletParticle;
+
+    //visible range sphere explosion
+    public GameObject explosionRangeObject;
+
     public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
         counter += Time.deltaTime;
         if(counter > explodeTime)
         {
+            //spawn
             GameObject particlePrefab = Instantiate(bulletParticle, transform.position, Quaternion.identity);
+            GameObject explosionRangePrefab = Instantiate(explosionRangeObject, transform.position, Quaternion.identity);
+
+            //despawn
+            Destroy(explosionRangePrefab, 1);
             Destroy(particlePrefab, 1);
             Destroy(gameObject);
         }
@@ -30,6 +36,7 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //ignore collision with player shooting bullet
         Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
@@ -37,6 +44,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet")
         {
+            //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
     }

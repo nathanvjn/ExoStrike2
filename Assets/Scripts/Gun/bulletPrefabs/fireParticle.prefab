@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5292913173788905353}
   - component: {fileID: 5903047185492609961}
   m_Layer: 0
-  m_Name: vuur
+  m_Name: fireParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
