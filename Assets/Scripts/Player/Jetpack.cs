@@ -13,10 +13,8 @@ public class Jetpack : MonoBehaviour
     private float timeInAir;
     private bool enoughTimeinAir;
 
-    
-    void FixedUpdate()
+    private void Update()
     {
-
         //jetpack
         if (Input.GetButtonDown("Jump") && enoughTimeinAir && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
         {
@@ -30,8 +28,7 @@ public class Jetpack : MonoBehaviour
             //jetpack energy loss
             jetpackSlider.value -= 4;
 
-            //jetpack force
-            GetComponent<Rigidbody>().AddForce(transform.up * jetpackForce * Time.deltaTime);
+            
         }
 
         else
@@ -47,10 +44,10 @@ public class Jetpack : MonoBehaviour
         }
 
         //jetpack only when long time in air
-        if(GetComponent<PlayerMovement>().isGrounded == false)
+        if (GetComponent<PlayerMovement>().isGrounded == false)
         {
             timeInAir += Time.deltaTime;
-            if(timeInAir > 0.2f)
+            if (timeInAir > 0.2f)
             {
                 enoughTimeinAir = true;
             }
@@ -60,6 +57,16 @@ public class Jetpack : MonoBehaviour
         {
             timeInAir = 0;
             enoughTimeinAir = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+
+        if(usingJetpack)
+        {
+            //jetpack force
+            GetComponent<Rigidbody>().AddForce(transform.up * jetpackForce * Time.deltaTime);
         }
     }
 }
