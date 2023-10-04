@@ -6,11 +6,11 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewLayer 2
-  m_DiffuseTexture: {fileID: 2800000, guid: d0c178673ba009f45ae2415047fd1bef, type: 3}
+  m_Name: pathy terrain
+  m_DiffuseTexture: {fileID: 2800000, guid: 7dd53fcb7ecd5724e87e8d451e0055d8, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 15, y: 15}
+  m_TileSize: {x: 16.67, y: 14.8}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
