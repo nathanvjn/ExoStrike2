@@ -13,10 +13,18 @@ public class MainMenu : MonoBehaviour
     [Header("Joining:")]
     [SerializeField] TMP_InputField input;
     [SerializeField] GameObject joinButton;
+    [Space(20)]
+    [Header("Settings:")]
+    [SerializeField] GameObject generalTab;
+    [SerializeField] GameObject videoTab;
+    [SerializeField] GameObject audioTab;
 
     private void Update()
     {
-        networkManager.networkAddress = input.text;
+        if (networkManager != null)
+        {
+            networkManager.networkAddress = input.text;
+        }
     }
 
     public void Host()
@@ -41,5 +49,35 @@ public class MainMenu : MonoBehaviour
     {
         input.gameObject.GetComponent<Animator>().SetBool("Open", false);
         joinButton.GetComponent<Animator>().SetBool("Open", false);
+    }
+
+    public void SwitchSettingsTab(string type)
+    {
+        if (type == "general")
+        {
+            mainMenuCanvas.SetActive(false);
+            generalTab.SetActive(true);
+            videoTab.SetActive(false);
+            audioTab.SetActive(false);
+        }
+        else if (type == "video")
+        {
+            generalTab.SetActive(false);
+            videoTab.SetActive(true);
+            audioTab.SetActive(false);
+        }
+        else if (type == "audio")
+        {
+            generalTab.SetActive(false);
+            videoTab.SetActive(false);
+            audioTab.SetActive(true);
+        }
+        else if (type == "exit")
+        {
+            mainMenuCanvas.SetActive(true);
+            generalTab.SetActive(false);
+            videoTab.SetActive(false);
+            audioTab.SetActive(false);
+        }
     }
 }
