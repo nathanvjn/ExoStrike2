@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Mirror;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject generalTab;
     [SerializeField] GameObject videoTab;
     [SerializeField] GameObject audioTab;
+    [SerializeField] Image goBackButton;
+    [SerializeField] Color backButtonNormalColor;
+    [SerializeField] Color backButtonSelectedColor;
+    [SerializeField] Color backButtonClickColor;
 
     private void Update()
     {
@@ -74,10 +79,26 @@ public class MainMenu : MonoBehaviour
         }
         else if (type == "exit")
         {
+            goBackButton.color = backButtonNormalColor;
             mainMenuCanvas.SetActive(true);
             generalTab.SetActive(false);
             videoTab.SetActive(false);
             audioTab.SetActive(false);
         }
+    }
+
+    public void OnBackButtonSelect()
+    {
+        goBackButton.color = backButtonSelectedColor;
+    }
+
+    public void OnBackButtonClick()
+    {
+        goBackButton.color = backButtonClickColor;
+    }
+
+    public void OnBackButtonReset()
+    {
+        goBackButton.color = backButtonNormalColor;
     }
 }
