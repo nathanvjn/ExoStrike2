@@ -26,8 +26,8 @@ public class PlayerSliding : MonoBehaviour
 
 
     //sliding physics code
-    public float slideForce = 10f;
-    public float maxSlideAngle = 45f;
+    public float slideForce;
+    public float maxSlideAngle;
 
     // Start is called before the first frame update
     void Start()

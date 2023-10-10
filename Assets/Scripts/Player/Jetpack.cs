@@ -15,26 +15,6 @@ public class Jetpack : MonoBehaviour
 
     private void Update()
     {
-        //jetpack
-        if (Input.GetButtonDown("Jump") && enoughTimeinAir && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
-        {
-            usingJetpack = true;
-            jetpackCooldown = 0;
-
-            //reset gravity
-            GetComponent<PlayerMovement>().gravity = 0;
-
-            print("jetpack");
-            //jetpack energy loss
-            jetpackSlider.value -= 4;
-
-            
-        }
-
-        else
-        {
-            usingJetpack = false;
-        }
 
         //cooldown jetpack
         jetpackCooldown += Time.deltaTime;
@@ -63,10 +43,26 @@ public class Jetpack : MonoBehaviour
     void FixedUpdate()
     {
 
-        if(usingJetpack)
+        //jetpack
+        if (Input.GetButton("Jump") && enoughTimeinAir && jetpackSlider.value >= 4 && jetpackCooldown > 0.2f)
         {
-            //jetpack force
+            jetpackCooldown = 0;
+            usingJetpack = true;
+
+            //reset gravity
+            GetComponent<PlayerMovement>().gravity = 0;
             GetComponent<Rigidbody>().AddForce(transform.up * jetpackForce * Time.deltaTime);
+
+            print("jetpack");
+            //jetpack energy loss
+            jetpackSlider.value -= 4;
+
+
+        }
+
+        else
+        {
+            usingJetpack = false;
         }
     }
 }
