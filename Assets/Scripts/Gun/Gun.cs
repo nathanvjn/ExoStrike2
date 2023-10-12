@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
 
     public TextMeshProUGUI magText;
     public TextMeshProUGUI chamberText;
+    public TextMeshProUGUI barrelText;
 
     //reset
     public float resetTimer;

@@ -14,29 +14,28 @@ public class Mag : Effects
     public BulletType bulletMagType;
 
     //text for max ammo
-    public TextMeshProUGUI maxMag;
-
-    //check number
+    public TextMeshProUGUI maxMagText;
     public float currentBulletTypeNumber;
 
+    //get bullet count
     public Gun gun;
 
-    //bullet types
+    [Header("Bullet Prefabs")]
     public GameObject shrapnelBullet;
     public GameObject grenadeBullet;
 
-    //mag models
+    [Header("Mag Models")]
     public GameObject[] magModels;
 
-    [Header("BulletMagSize")]
+    [Header("Bullet MagSize")]
     public int minBulletSize;
     public int maxBulletSize;
 
-    [Header("ShrapnelMagSize")]
+    [Header("Shrapnel MagSize")]
     public int minShrapnelSize; 
     public int maxShrapnelSize; 
 
-    [Header("GrenadeMagSize")]
+    [Header("Grenade MagSize")]
     public int minGrenadeSize; 
     public int maxGrenadeSize; 
 
@@ -79,7 +78,7 @@ public class Mag : Effects
 
         //edit gun bullet count
         gun.currentBulletCount = magSize;
-        maxMag.text = magSize.ToString();
+        maxMagText.text = magSize.ToString();
     }
 
 }

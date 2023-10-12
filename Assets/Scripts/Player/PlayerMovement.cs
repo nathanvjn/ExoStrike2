@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
-    [Header("AirMovement")]
+    [Header("Air Movement")]
     public float airSpeed;
 
     [Header("Jumping")]

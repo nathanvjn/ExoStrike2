@@ -7,16 +7,42 @@ public class MultiBarrel : Barrel
     public Transform[] barrelPositions;
     private RaycastHit hit;
 
+    [Header("Rotation")]
+    public float rotationSpeed;  // Base rotation speed.
+    public float maxRotationSpeed;  // Maximum rotation speed.
+    private float currentRotationSpeed = 0f;  // Current rotation speed that changes based on the number of shots.
+
+    private Quaternion startRotation;
+    private Quaternion targetRotation;
+    private bool isRotating;
+
     private void Start()
     {
-        
+        startRotation = transform.rotation;
     }
 
     private void OnEnable()
     {
-        // Generate a random number when the GameObject becomes active
-        int randomNumber = Random.Range(1, 15); // Generate a random number between 1 and 100 (inclusive)
+        //generate a random number when the GameObject becomes active
+        int randomNumber = Random.Range(1, 15); //generate a random number between 1 and 100 (inclusive)
 
+    }
+
+    private void Update()
+    {
+        //rotate gatling gun
+        if (isRotating)
+        {
+            // Interpolate between the current rotation and the target rotation using Lerp.
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            // Check if we've reached the target rotation.
+            if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
+            {
+                isRotating = false;
+                currentRotationSpeed = Mathf.Clamp(currentRotationSpeed, 0f, maxRotationSpeed);
+            }
+        }
     }
 
     public override void ShootBullet()
@@ -52,7 +78,14 @@ public class MultiBarrel : Barrel
                 bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
             }
         }
-        
+
+        //rotate gatling gun
+        currentRotationSpeed += 0.1f;
+
+        //set the new target rotation based on the current rotation speed.
+        targetRotation = startRotation * Quaternion.Euler(0f, currentRotationSpeed * Time.deltaTime, 0f);
+
+        isRotating = true;
     }
 
     public override void Shoot()
@@ -61,7 +94,6 @@ public class MultiBarrel : Barrel
         base.Shoot();
 
         //raycast version
-
         Physics.Raycast(cam.position, cam.forward, out hit, 100);
         Debug.DrawLine(cam.position, hit.point, Color.red);
         if(usingShrapnel == false)
@@ -115,6 +147,14 @@ public class MultiBarrel : Barrel
 
             }
         }
-        
+
+        //rotate gatling gun
+        currentRotationSpeed += 0.1f;
+
+        //set the new target rotation based on the current rotation speed.
+        targetRotation = startRotation * Quaternion.Euler(0f, currentRotationSpeed * Time.deltaTime, 0f);
+
+        isRotating = true;
+
     }
 }
