@@ -5,14 +5,14 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
-    public float playerHealth;
+    public float healthCounter;
     public TextMeshProUGUI hpText;
 
     private void Update()
     {
         if(hpText != null)
         {
-            hpText.text = playerHealth.ToString();
+            hpText.text = healthCounter.ToString();
         }
       
     }

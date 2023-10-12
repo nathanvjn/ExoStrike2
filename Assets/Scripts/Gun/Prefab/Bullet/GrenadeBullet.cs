@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class GrenadeBullet : MonoBehaviour
 {
     //time when explode
     private float counter;
@@ -14,14 +14,12 @@ public class Bullet : MonoBehaviour
     //visible range sphere explosion
     public GameObject explosionRangeObject;
 
-    public GameObject player;
 
-    
     void Update()
     {
-        
+
         counter += Time.deltaTime;
-        if(counter > explodeTime)
+        if (counter > explodeTime)
         {
             //spawn
             GameObject particlePrefab = Instantiate(bulletParticle, transform.position, Quaternion.identity);
@@ -34,15 +32,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //ignore collision with player shooting bullet
-        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet")
         {
             //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());

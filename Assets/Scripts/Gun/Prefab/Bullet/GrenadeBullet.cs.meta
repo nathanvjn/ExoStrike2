@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9a5b4a7e9ca95c2408fee731f9f76367
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bulletParticle: {instanceID: 0}
+  - explosionRangeObject: {fileID: 2115502670504657024, guid: 02c14b706c1aee84a8b431f7f505bbc0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

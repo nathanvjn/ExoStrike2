@@ -21190,7 +21190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9079f483214af8c488a0f88dedd1e758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  healthCounter: 0
   hpText: {fileID: 0}
 --- !u!54 &2091677136
 Rigidbody:
@@ -21627,7 +21627,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1880551728}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8211261337882296351, guid: c50c3748d28111e408750d7636135eb2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50c3748d28111e408750d7636135eb2, type: 3}
