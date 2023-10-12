@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum BulletType
 {
@@ -11,6 +12,9 @@ public class Mag : Effects
 {
     public int magSize;
     public BulletType bulletMagType;
+
+    //text for max ammo
+    public TextMeshProUGUI maxMag;
 
     //check number
     public float currentBulletTypeNumber;
@@ -75,10 +79,7 @@ public class Mag : Effects
 
         //edit gun bullet count
         gun.currentBulletCount = magSize;
+        maxMag.text = magSize.ToString();
     }
 
-    private void Update()
-    {
-        
-    }
 }

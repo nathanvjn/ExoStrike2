@@ -36,7 +36,10 @@ public class Gun : MonoBehaviour
         chamberText.text = chamber.chamberType.ToString();
         timerText.text = resetTimer.ToString();
 
-        if(Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1)
+        //limit ammo size
+        currentBulletCount = Mathf.Clamp(currentBulletCount, 0, mag.magSize);
+
+        if (Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1)
         {
             print("sort of working");
             currentBulletCount -= 1;
