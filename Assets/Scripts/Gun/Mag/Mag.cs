@@ -24,6 +24,18 @@ public class Mag : Effects
     //mag models
     public GameObject[] magModels;
 
+    [Header("BulletMagSize")]
+    public int minBulletSize;
+    public int maxBulletSize;
+
+    [Header("ShrapnelMagSize")]
+    public int minShrapnelSize; 
+    public int maxShrapnelSize; 
+
+    [Header("GrenadeMagSize")]
+    public int minGrenadeSize; 
+    public int maxGrenadeSize; 
+
     public void Start()
     {
         //edit gun bullet count
@@ -39,20 +51,20 @@ public class Mag : Effects
         switch (bulletMagType)
         {
             case BulletType.BULLET:
-                magSize = Random.Range(12, 120);
+                magSize = Random.Range(minBulletSize, maxBulletSize);
                 currentBulletTypeNumber = 0;
                 magModels[0].SetActive(true); magModels[1].SetActive(false); magModels[2].SetActive(false);
                 gun.barrel.usingShrapnel = false;
                 break; //raycast
             case BulletType.SHRAPNEL:
-                magSize = Random.Range(6, 24); gun.barrel.bulletType = shrapnelBullet;
+                magSize = Random.Range(minShrapnelSize, maxShrapnelSize); gun.barrel.bulletType = shrapnelBullet;
                 gun.barrel.usingShrapnel = true;
                 currentBulletTypeNumber = 1;
                 magModels[1].SetActive(true); magModels[2].SetActive(false); magModels[0].SetActive(false);
                 print("schrapnel");
                 break;
             case BulletType.GRENADE:
-                magSize = Random.Range(3, 8); gun.barrel.bulletType = grenadeBullet;
+                magSize = Random.Range(minGrenadeSize, maxGrenadeSize); gun.barrel.bulletType = grenadeBullet;
                 currentBulletTypeNumber = 2;
                 magModels[2].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false);
                 gun.barrel.usingShrapnel = false;

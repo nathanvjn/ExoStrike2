@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     public float timeInAirGravity;
     private float normalGravity;
 
+    [Header("Gun")]
+    public GameObject gun; //access player gun with onTrigger/onCollision
+
     private void Start()
     {
         beginningSpeed = speed;

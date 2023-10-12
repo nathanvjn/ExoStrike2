@@ -82,11 +82,5 @@ public class Gun : MonoBehaviour
 
         //reset timer
         resetTimer = 0;
-
-
-
-        //free bullets for test, mag handles bullets, remove this code
-        currentBulletCount = 50;
-        //test
     }
 }
