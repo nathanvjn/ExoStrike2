@@ -9993,7 +9993,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 2090086559}
+      objectReference: {fileID: 1864026212}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: speed
@@ -23120,12 +23120,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775775224589282453, guid: 5e885f62f3cdc1b4dbdaefa156c877b0,
     type: 3}
   m_PrefabInstance: {fileID: 1171510110}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2090086559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 929080105807514903, guid: f665bc4f7d3cd7b4d9f58a4450bba395,
-    type: 3}
-  m_PrefabInstance: {fileID: 511808208}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091677130
 GameObject:

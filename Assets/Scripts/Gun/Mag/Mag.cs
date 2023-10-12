@@ -15,7 +15,7 @@ public class Mag : Effects
 
     //text for max ammo
     public TextMeshProUGUI maxMagText;
-    public float currentBulletTypeNumber;
+    public int currentBulletTypeNumber;
 
     //get bullet count
     public Gun gun;

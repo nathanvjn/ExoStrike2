@@ -9,7 +9,7 @@ public class Gun : MonoBehaviour
     public Chamber chamber;
     public Mag mag;
 
-    public int currentBulletCount;
+    public float currentBulletCount;
     public TextMeshProUGUI ammoText;
 
     public TextMeshProUGUI magText;
