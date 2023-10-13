@@ -21,7 +21,7 @@ public class MultiBarrel : Barrel
     {
         if(rotateGatlingGun)
         {
-            Quaternion targetRotation = Quaternion.Euler(gatlingGun.rotation.x, gatlingGun.rotation.y + 10, gatlingGun.rotation.z);
+            Quaternion targetRotation = Quaternion.Euler(gatlingGun.rotation.x, gatlingGun.rotation.y, gatlingGun.rotation.z + 10);
             gatlingGun.rotation = Quaternion.Slerp(gatlingGun.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             if (Quaternion.Angle(gatlingGun.rotation, targetRotation) <= 1)
             {

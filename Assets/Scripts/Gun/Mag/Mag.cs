@@ -5,7 +5,7 @@ using TMPro;
 
 public enum BulletType
 {
-    BULLET = 0, SHRAPNEL = 1, GRENADE = 2
+    BULLET = 0, SHRAPNEL = 1, GRENADE = 2, BOUNCY = 3
 }
 
 public class Mag : Effects
@@ -24,6 +24,7 @@ public class Mag : Effects
     [Header("Bullet Prefabs")]
     public GameObject shrapnelBullet;
     public GameObject grenadeBullet;
+    public GameObject bounceBullet;
 
     [Header("Mag Models")]
     public GameObject[] magModels;
@@ -38,7 +39,11 @@ public class Mag : Effects
 
     [Header("Grenade MagSize")]
     public int minGrenadeSize; 
-    public int maxGrenadeSize; 
+    public int maxGrenadeSize;
+
+    [Header("Bounce MagSize")]
+    public int minBounceSize;
+    public int maxBounceSize;
 
     public void Start()
     {
@@ -53,7 +58,7 @@ public class Mag : Effects
 
         do
         {
-            magType = Random.Range(0, 3);
+            magType = Random.Range(0, 4);
         } while (magType == currentBulletTypeNumber);
 
         bulletMagType = (BulletType)magType;
@@ -63,23 +68,31 @@ public class Mag : Effects
             case BulletType.BULLET:
                 magSize = Random.Range(minBulletSize, maxBulletSize);
                 currentBulletTypeNumber = 0;
-                magModels[0].SetActive(true); magModels[1].SetActive(false); magModels[2].SetActive(false);
+                magModels[0].SetActive(true); magModels[1].SetActive(false); magModels[2].SetActive(false); magModels[3].SetActive(false);
                 gun.barrel.usingShrapnel = false;
                 break; //raycast
             case BulletType.SHRAPNEL:
                 magSize = Random.Range(minShrapnelSize, maxShrapnelSize); gun.barrel.bulletType = shrapnelBullet;
                 gun.barrel.usingShrapnel = true;
                 currentBulletTypeNumber = 1;
-                magModels[1].SetActive(true); magModels[2].SetActive(false); magModels[0].SetActive(false);
+                magModels[1].SetActive(true); magModels[2].SetActive(false); magModels[0].SetActive(false); magModels[3].SetActive(false);
                 print("schrapnel");
                 break;
             case BulletType.GRENADE:
                 magSize = Random.Range(minGrenadeSize, maxGrenadeSize); gun.barrel.bulletType = grenadeBullet;
                 currentBulletTypeNumber = 2;
-                magModels[2].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false);
+                magModels[2].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[3].SetActive(false);
                 gun.barrel.usingShrapnel = false;
                 print("grenade");
                 break;
+            case BulletType.BOUNCY:
+                magSize = Random.Range(minBounceSize, maxBounceSize); gun.barrel.bulletType = bounceBullet;
+                currentBulletTypeNumber = 3;
+                magModels[3].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[2].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                print("bounce");
+                break;
+
         }
 
 
