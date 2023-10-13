@@ -9,6 +9,10 @@ public class BigBarrel : Barrel
     public float bigBarrelDamage;
     public float bigBarrelBulletScale;
 
+    //particle
+    public GameObject particle;
+
+
 
     private void Start()
     {
@@ -54,8 +58,11 @@ public class BigBarrel : Barrel
             // Apply force to the bullet
             prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
         }
-        
 
+        //particle
+        GameObject particlePrefab = Instantiate(particle, barrelPosition.position, Quaternion.identity);
+        particlePrefab.transform.rotation = barrelPosition.rotation;
+        Destroy(particlePrefab, 1);
     }
 
     public override void Shoot()
@@ -127,6 +134,30 @@ public class BigBarrel : Barrel
                 // Handle a miss
             }
         }
-        
+
+        //particle raycast
+        GameObject prefab = Instantiate(particleMuzzle, particlePosition.position, Quaternion.identity);
+        prefab.transform.parent = particlePosition;
+        prefab.transform.rotation = particlePosition.rotation;
+        StartCoroutine(ScaleParticlesOverTime());
+
+        IEnumerator ScaleParticlesOverTime()
+        {
+            float elapsedTime = 0f;
+            float scalingDuration = 0.1f; //adjust the duration as needed
+
+            while (elapsedTime < scalingDuration)
+            {
+                float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
+                prefab.transform.localScale = new Vector3(scale, scale, scale); //set the particle size
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+
+        }
+
+        Destroy(prefab, 0.13f);
     }
 }

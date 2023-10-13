@@ -16,6 +16,7 @@ public class Barrel : MonoBehaviour
     [Header("Particles")]
     public GameObject particleRaycast;
     public GameObject particleMuzzle;
+    public Transform particlePosition;
 
     //overloading (give bool when raycasting)
     //als er geen andere barrel scripts zijn die overriden is het de default barrel
@@ -73,9 +74,9 @@ public class Barrel : MonoBehaviour
         }
 
         //particle
-        GameObject prefab = Instantiate(particleMuzzle, barrelPosition.position, Quaternion.identity);
-        prefab.transform.parent = barrelPosition;
-        prefab.transform.rotation = barrelPosition.rotation;
+        GameObject prefab = Instantiate(particleMuzzle, particlePosition.position, Quaternion.identity);
+        prefab.transform.parent = particlePosition;
+        prefab.transform.rotation = particlePosition.rotation;
         StartCoroutine(ScaleParticlesOverTime());
 
         IEnumerator ScaleParticlesOverTime()
@@ -95,7 +96,7 @@ public class Barrel : MonoBehaviour
 
         }
 
-        Destroy(prefab, 0.11f);
+        Destroy(prefab, 0.13f);
 
 
     }
@@ -128,6 +129,29 @@ public class Barrel : MonoBehaviour
             }
         }
 
-        
+        //particle
+        GameObject prefab = Instantiate(particleMuzzle, particlePosition.position, Quaternion.identity);
+        prefab.transform.parent = particlePosition;
+        prefab.transform.rotation = particlePosition.rotation;
+        StartCoroutine(ScaleParticlesOverTime());
+
+        IEnumerator ScaleParticlesOverTime()
+        {
+            float elapsedTime = 0f;
+            float scalingDuration = 0.1f; //adjust the duration as needed
+
+            while (elapsedTime < scalingDuration)
+            {
+                float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
+                prefab.transform.localScale = new Vector3(scale, scale, scale); //set the particle size
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+
+        }
+
+        Destroy(prefab, 0.13f);
     }
 }

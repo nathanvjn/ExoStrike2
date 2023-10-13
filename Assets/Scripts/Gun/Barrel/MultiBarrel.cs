@@ -25,25 +25,25 @@ public class MultiBarrel : Barrel
     {
         if (rotateGatlingGun)
         {
-            // Update targetRotation only when rotation is needed
-            targetRotation = Quaternion.Euler(gatlingGun.localRotation.x, gatlingGun.localRotation.y, gatlingGun.localRotation.z + 10);
+            // Define the angle by which you want to rotate the gatlingGun barrel.
+            float rotationAmount = 30f; // You can adjust this value to control the rotation angle.
 
+            // Calculate the new target rotation based on the current rotation.
+            Quaternion targetRotation = gatlingGun.localRotation * Quaternion.Euler(0, 0, rotationAmount);
+
+            // Interpolate between the current rotation and the target rotation.
             gatlingGun.localRotation = Quaternion.Slerp(gatlingGun.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Update the rotationTimeCount.
             rotationTimeCount += Time.deltaTime;
 
+            // Check if the rotation time has exceeded the maximum allowed rotation time.
             if (rotationTimeCount > maxRotationTime)
             {
                 rotateGatlingGun = false;
                 rotationTimeCount = 0;
             }
         }
-
-    }
-
-    private void OnEnable()
-    {
-        //generate a random number when the GameObject becomes active
-        int randomNumber = Random.Range(1, 15); //generate a random number between 1 and 100 (inclusive)
 
     }
 
