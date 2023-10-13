@@ -20,11 +20,16 @@ public class Gun : MonoBehaviour
     public float resetTimer;
     public TextMeshProUGUI timerText;
 
-    //barelTypes
+    [Header("BarrelType")]
     public GameObject bigBarrel;
     public GameObject doubleBarrel;
     public GameObject normalBarrel;
     public GameObject gatlingBarrel;
+
+    public float barrelType;
+    private int i;
+    private int randomIndex;
+
 
     private void Start()
     {
@@ -43,9 +48,8 @@ public class Gun : MonoBehaviour
 
         if (Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1)
         {
-            print("sort of working");
+  
             currentBulletCount -= 1;
-
 
             //schoot prefab
             if (mag.currentBulletTypeNumber != 0)
@@ -77,7 +81,19 @@ public class Gun : MonoBehaviour
 
         //randomize barrel
         GameObject[] barrels = { bigBarrel, doubleBarrel, normalBarrel, gatlingBarrel };
-        int randomIndex = Random.Range(0, barrels.Length);
+        for (i = 0; i < barrels.Length; i++)
+        {
+            if(barrels[i].activeInHierarchy == true)
+            {
+                barrelType = i;
+            }
+        }
+
+        do
+        {
+            randomIndex = Random.Range(0, barrels.Length);
+        } while (barrelType == i);
+        
 
         barrel = barrels[randomIndex].GetComponent<Barrel>();
         mag.ResetMag();
