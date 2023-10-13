@@ -3312,7 +3312,7 @@ MonoBehaviour:
   - {fileID: 37287686}
   - {fileID: 165296405}
   - {fileID: 1049821673}
-  gatlingGun: {fileID: 0}
+  gatlingGun: {fileID: 254207553}
   rotationSpeed: 100
   rotateGatlingGun: 0
 --- !u!1 &314116207
@@ -13475,6 +13475,7 @@ GameObject:
   - component: {fileID: 1157703128}
   - component: {fileID: 1157703127}
   - component: {fileID: 1157703126}
+  - component: {fileID: 1157703130}
   m_Layer: 0
   m_Name: componentPlatform
   m_TagString: Untagged
@@ -13569,6 +13570,21 @@ Transform:
   - {fileID: 1543418733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157703130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157703125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1374e57b464b2074e980068c096b953a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBeforeRespawn: 5
+  respawnTime: 0
+  componentPrefab: {fileID: 1543418732}
 --- !u!1 &1158094913
 GameObject:
   m_ObjectHideFlags: 0
@@ -18126,8 +18142,9 @@ GameObject:
   - component: {fileID: 1543418736}
   - component: {fileID: 1543418735}
   - component: {fileID: 1543418734}
+  - component: {fileID: 1543418737}
   m_Layer: 0
-  m_Name: ammo
+  m_Name: component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18219,6 +18236,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543418732}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1543418737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543418732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c200ce394cf914099d4e5ffec60fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 1864026214}
+  barrels:
+  - {fileID: 142783184}
+  - {fileID: 718351452}
+  - {fileID: 310234293}
 --- !u!1001 &1552221922
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class Mag : Effects
     //text for max ammo
     public TextMeshProUGUI maxMagText;
     public int currentBulletTypeNumber;
+    private int magType;
 
     //get bullet count
     public Gun gun;
@@ -49,7 +50,13 @@ public class Mag : Effects
     public void ResetMag()
     {
         //randomize bullet type
-        bulletMagType = (BulletType)Random.Range(0, 3);
+
+        do
+        {
+            magType = Random.Range(0, 3);
+        } while (magType == currentBulletTypeNumber);
+
+        bulletMagType = (BulletType)magType;
 
         switch (bulletMagType)
         {
