@@ -38,6 +38,7 @@ public class DoubleBarrel : Barrel
             for (int i = 0; i < barrelPositions.Length; i++)
             {
                 GameObject bulletPrefab = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
+                bulletPrefab.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
                 bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
             }
         }

@@ -12,6 +12,7 @@ public class Barrel : MonoBehaviour
     public GameObject bulletType;
     public bool usingShrapnel;
     private RaycastHit rayMagHit;
+    public float bulletSize;
 
     [Header("Particles")]
     public GameObject particleRaycast;
@@ -107,6 +108,7 @@ public class Barrel : MonoBehaviour
         {
             print("schootingBullet");
             GameObject bulletPrefab = Instantiate(bulletType, barrelPosition.position, Quaternion.identity);
+            bulletPrefab.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
             bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
         }
 

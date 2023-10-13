@@ -10,11 +10,8 @@ public class MultiBarrel : Barrel
     [Header("Rotation")]
     public Transform gatlingGun;
     public float rotationSpeed;
-    public bool rotateGatlingGun;
-    private Quaternion targetRotation;
 
-    private float rotationTimeCount;
-    public float maxRotationTime;
+    private float rotationAmount;
 
     private void Start()
     {
@@ -23,34 +20,25 @@ public class MultiBarrel : Barrel
 
     private void Update()
     {
-        if (rotateGatlingGun)
+
+        // Calculate the new target rotation based on the current rotation.
+        Quaternion targetRotation = gatlingGun.localRotation * Quaternion.Euler(0, 0, rotationAmount);
+
+        // Interpolate between the current rotation and the target rotation.
+        gatlingGun.localRotation = Quaternion.Slerp(gatlingGun.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if(rotationAmount > 0)
         {
-            // Define the angle by which you want to rotate the gatlingGun barrel.
-            float rotationAmount = 30f; // You can adjust this value to control the rotation angle.
-
-            // Calculate the new target rotation based on the current rotation.
-            Quaternion targetRotation = gatlingGun.localRotation * Quaternion.Euler(0, 0, rotationAmount);
-
-            // Interpolate between the current rotation and the target rotation.
-            gatlingGun.localRotation = Quaternion.Slerp(gatlingGun.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            // Update the rotationTimeCount.
-            rotationTimeCount += Time.deltaTime;
-
-            // Check if the rotation time has exceeded the maximum allowed rotation time.
-            if (rotationTimeCount > maxRotationTime)
-            {
-                rotateGatlingGun = false;
-                rotationTimeCount = 0;
-            }
+            rotationAmount -= 0.4f;
         }
+        
 
     }
 
     public override void ShootBullet()
     {
         print("multiBarrel");
-        rotateGatlingGun = true;
+        rotationAmount += 20;
 
         if (usingShrapnel)
         {
@@ -61,6 +49,7 @@ public class MultiBarrel : Barrel
                 {
                     // Instantiate the bullet with the correct initial rotation
                     GameObject prefabBullet = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
+                    prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
 
                     Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
 
@@ -79,6 +68,7 @@ public class MultiBarrel : Barrel
             for (int i = 0; i < barrelPositions.Length; i++)
             {
                 GameObject bulletPrefab = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
+                bulletPrefab.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
                 bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
             }
         }
@@ -89,7 +79,7 @@ public class MultiBarrel : Barrel
     {
         print("multiBarrel");
         base.Shoot();
-        rotateGatlingGun = true;
+        rotationAmount += 20;
 
         //raycast version
         Physics.Raycast(cam.position, cam.forward, out hit, 100);

@@ -1427,6 +1427,7 @@ MonoBehaviour:
   barrelPosition: {fileID: 1213489168}
   bulletType: {fileID: 0}
   usingShrapnel: 0
+  bulletSize: 0.3
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -3206,6 +3207,7 @@ MonoBehaviour:
   barrelPosition: {fileID: 0}
   bulletType: {fileID: 0}
   usingShrapnel: 0
+  bulletSize: 0.1
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -3227,8 +3229,6 @@ MonoBehaviour:
   - {fileID: 1517237907}
   gatlingGun: {fileID: 5238209393685184600}
   rotationSpeed: 4
-  rotateGatlingGun: 0
-  maxRotationTime: 0.7
 --- !u!1 &314116207
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,6 +7948,7 @@ MonoBehaviour:
   barrelPosition: {fileID: 531122379}
   bulletType: {fileID: 0}
   usingShrapnel: 0
+  bulletSize: 0.5
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -7956,7 +7957,6 @@ MonoBehaviour:
   spreadShrapnelAngle: 40
   maxRaycastRange: 30
   bigBarrelDamage: 10
-  bigBarrelBulletScale: 0.7
   particle: {fileID: 6680982824165444025, guid: bb32a3df788599c4bb81c1337556c64d,
     type: 3}
 --- !u!1 &720915035
@@ -16365,6 +16365,7 @@ MonoBehaviour:
   barrelPosition: {fileID: 0}
   bulletType: {fileID: 0}
   usingShrapnel: 0
+  bulletSize: 0.3
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -21767,6 +21768,7 @@ MonoBehaviour:
   doubleBarrel: {fileID: 1414097481}
   normalBarrel: {fileID: 7842674409563955843}
   gatlingBarrel: {fileID: 9030211053722614082}
+  barrelType: 0
 --- !u!1 &1864658698
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,7 +69,7 @@ public class Gun : MonoBehaviour
         }
 
         resetTimer += Time.deltaTime;
-        if(resetTimer > 20)
+        if(resetTimer > 10)
         {
             ResetComponents();
         }

@@ -7,7 +7,6 @@ public class BigBarrel : Barrel
     public float spreadShrapnelAngle; //maximum spread rotation
     public float maxRaycastRange;
     public float bigBarrelDamage;
-    public float bigBarrelBulletScale;
 
     //particle
     public GameObject particle;
@@ -53,7 +52,7 @@ public class BigBarrel : Barrel
 
             // Instantiate the bullet with the correct initial rotation
             GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, combinedRotation);
-            prefabBullet.transform.localScale = new Vector3(bigBarrelBulletScale, bigBarrelBulletScale, bigBarrelBulletScale);
+            prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
 
             // Apply force to the bullet
             prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
