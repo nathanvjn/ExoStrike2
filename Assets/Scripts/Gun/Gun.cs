@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour
     public GameObject bigBarrel;
     public GameObject doubleBarrel;
     public GameObject normalBarrel;
+    public GameObject gatlingBarrel;
 
     private void Start()
     {
@@ -75,7 +76,7 @@ public class Gun : MonoBehaviour
         chamber.ResetChamber();
 
         //randomize barrel
-        GameObject[] barrels = { bigBarrel, doubleBarrel, normalBarrel };
+        GameObject[] barrels = { bigBarrel, doubleBarrel, normalBarrel, gatlingBarrel };
         int randomIndex = Random.Range(0, barrels.Length);
 
         barrel = barrels[randomIndex].GetComponent<Barrel>();
