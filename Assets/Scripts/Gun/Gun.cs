@@ -45,13 +45,16 @@ public class Gun : MonoBehaviour
             print("sort of working");
             currentBulletCount -= 1;
 
-            if(mag.currentBulletTypeNumber != 0)
+
+            //schoot prefab
+            if (mag.currentBulletTypeNumber != 0)
             {
                 barrel.ShootBullet();
                 chamber.chamberTimer = 0;
                 print("workingNotRay");
             }
 
+            //schoot raycast
             else
             {
                 barrel.Shoot();

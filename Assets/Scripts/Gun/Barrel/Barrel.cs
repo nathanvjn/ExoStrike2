@@ -13,7 +13,9 @@ public class Barrel : MonoBehaviour
     public bool usingShrapnel;
     private RaycastHit rayMagHit;
 
+    [Header("Particles")]
     public GameObject particleRaycast;
+    public GameObject particleMuzzle;
 
     //overloading (give bool when raycasting)
     //als er geen andere barrel scripts zijn die overriden is het de default barrel
@@ -69,8 +71,33 @@ public class Barrel : MonoBehaviour
 
             }
         }
-        
-        
+
+        //particle
+        GameObject prefab = Instantiate(particleMuzzle, barrelPosition.position, Quaternion.identity);
+        prefab.transform.parent = barrelPosition;
+        prefab.transform.rotation = barrelPosition.rotation;
+        StartCoroutine(ScaleParticlesOverTime());
+
+        IEnumerator ScaleParticlesOverTime()
+        {
+            float elapsedTime = 0f;
+            float scalingDuration = 0.1f; //adjust the duration as needed
+
+            while (elapsedTime < scalingDuration)
+            {
+                float scale = Mathf.Lerp(0f, 0.1f, elapsedTime / scalingDuration);
+                prefab.transform.localScale = new Vector3(scale, scale, scale); //set the particle size
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+
+        }
+
+        Destroy(prefab, 0.11f);
+
+
     }
 
     public virtual void ShootBullet()
