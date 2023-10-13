@@ -2765,6 +2765,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5673168021407078127, guid: c200373e22d2219458cee13d5440e728,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6632842895289508145, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       propertyPath: m_IsActive
@@ -8378,9 +8383,9 @@ MonoBehaviour:
   minBulletSize: 12
   maxBulletSize: 120
   minShrapnelSize: 6
-  maxShrapnelSize: 24
+  maxShrapnelSize: 60
   minGrenadeSize: 3
-  maxGrenadeSize: 8
+  maxGrenadeSize: 30
 --- !u!4 &749343865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8775775224589282453, guid: 5e885f62f3cdc1b4dbdaefa156c877b0,
