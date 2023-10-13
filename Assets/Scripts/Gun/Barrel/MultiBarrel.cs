@@ -11,6 +11,10 @@ public class MultiBarrel : Barrel
     public Transform gatlingGun;
     public float rotationSpeed;
     public bool rotateGatlingGun;
+    private Quaternion targetRotation;
+
+    private float rotationTimeCount;
+    public float maxRotationTime;
 
     private void Start()
     {
@@ -19,15 +23,21 @@ public class MultiBarrel : Barrel
 
     private void Update()
     {
-        if(rotateGatlingGun)
+        if (rotateGatlingGun)
         {
-            Quaternion targetRotation = Quaternion.Euler(gatlingGun.rotation.x, gatlingGun.rotation.y, gatlingGun.rotation.z + 10);
-            gatlingGun.rotation = Quaternion.Slerp(gatlingGun.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            if (Quaternion.Angle(gatlingGun.rotation, targetRotation) <= 1)
+            // Update targetRotation only when rotation is needed
+            targetRotation = Quaternion.Euler(gatlingGun.localRotation.x, gatlingGun.localRotation.y, gatlingGun.localRotation.z + 10);
+
+            gatlingGun.localRotation = Quaternion.Slerp(gatlingGun.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+            rotationTimeCount += Time.deltaTime;
+
+            if (rotationTimeCount > maxRotationTime)
             {
                 rotateGatlingGun = false;
+                rotationTimeCount = 0;
             }
         }
+
     }
 
     private void OnEnable()
