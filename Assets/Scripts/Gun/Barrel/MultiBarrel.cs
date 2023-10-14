@@ -35,56 +35,16 @@ public class MultiBarrel : Barrel
 
     }
 
-    public override void ShootBullet()
-    {
-        print("multiBarrel");
-        rotationAmount += 20;
-
-        if (usingShrapnel)
-        {
-            for (int i = 0; i < barrelPositions.Length; i++)
-            {
-                float numBullets = Random.Range(7, 15);
-                for (int i2 = 0; i2 < numBullets; i2++)
-                {
-                    // Instantiate the bullet with the correct initial rotation
-                    GameObject prefabBullet = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
-                    prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
-
-                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
-
-                    //create a raycast direction from the spread rotation
-                    Vector3 rayDirection = spreadRotation * cam.forward;
-
-                    prefabBullet.transform.LookAt(prefabBullet.transform.position + rayDirection);
-                    prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
-                }
-            }
-
-        }
-
-        else
-        {
-            for (int i = 0; i < barrelPositions.Length; i++)
-            {
-                GameObject bulletPrefab = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
-                bulletPrefab.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
-                bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
-            }
-        }
-
-    }
-
     public override void Shoot()
     {
         print("multiBarrel");
-        base.Shoot();
+        
         rotationAmount += 20;
 
         //raycast version
         Physics.Raycast(cam.position, cam.forward, out hit, 100);
         Debug.DrawLine(cam.position, hit.point, Color.red);
-        if(usingShrapnel == false)
+        if (usingShrapnel == false)
         {
             if (hit.transform != null)
             {
@@ -135,6 +95,48 @@ public class MultiBarrel : Barrel
 
             }
         }
-        
+
     }
+
+    public override void ShootBullet()
+    {
+        print("multiBarrel");
+        rotationAmount += 20;
+
+        if (usingShrapnel)
+        {
+            for (int i = 0; i < barrelPositions.Length; i++)
+            {
+                float numBullets = Random.Range(7, 15);
+                for (int i2 = 0; i2 < numBullets; i2++)
+                {
+                    // Instantiate the bullet with the correct initial rotation
+                    GameObject prefabBullet = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
+                    prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
+
+                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
+
+                    //create a raycast direction from the spread rotation
+                    Vector3 rayDirection = spreadRotation * cam.forward;
+
+                    prefabBullet.transform.LookAt(prefabBullet.transform.position + rayDirection);
+                    prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
+                }
+            }
+
+        }
+
+        else
+        {
+            for (int i = 0; i < barrelPositions.Length; i++)
+            {
+                GameObject bulletPrefab = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
+                bulletPrefab.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
+                bulletPrefab.GetComponent<Rigidbody>().AddForce(cam.forward * bulletForce * Time.deltaTime);
+            }
+        }
+
+    }
+
+  
 }

@@ -11,31 +11,39 @@ public class Barrel : MonoBehaviour
     public Transform barrelPosition;
     public GameObject bulletType;
     public bool usingShrapnel;
-    private RaycastHit rayMagHit;
+    private RaycastHit rayHit;
     public float bulletSize;
 
     [Header("Particles")]
     public GameObject particleRaycast;
     public GameObject particleMuzzle;
     public Transform particlePosition;
+    public LineRenderer lineRenderer;
 
     //overloading (give bool when raycasting)
     //als er geen andere barrel scripts zijn die overriden is het de default barrel
     public virtual void Shoot()
     {
         print("schootingRay");
-        Physics.Raycast(cam.position, cam.forward, out rayMagHit, 100);
-        Debug.DrawLine(cam.position, rayMagHit.point, Color.red);
+        Physics.Raycast(barrelPosition.position, cam.forward, out rayHit, 100);
+        Debug.DrawLine(barrelPosition.position, rayHit.point, Color.red);
         if(usingShrapnel == false)
         {
-            if (rayMagHit.transform != null)
+
+            //check if bullet hit
+            if (rayHit.transform != null)
             {
-                GameObject prefabRaycast = Instantiate(particleRaycast, rayMagHit.point, Quaternion.identity);
+                //particle line raycast
+                lineRenderer.positionCount = 2;
+                lineRenderer.SetPosition(0, barrelPosition.position);
+                lineRenderer.SetPosition(1, rayHit.point);
+
+                GameObject prefabRaycast = Instantiate(particleRaycast, rayHit.point, Quaternion.identity);
                 Destroy(prefabRaycast, 1);
 
-                if (rayMagHit.transform.gameObject.tag == "Player")
+                if (rayHit.transform.gameObject.tag == "Player")
                 {
-                    rayMagHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
+                    rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
                 }
             }
         }
@@ -52,17 +60,22 @@ public class Barrel : MonoBehaviour
                 Vector3 rayDirection = spreadRotation * cam.forward;
 
                 //perform the raycast
-                RaycastHit bigBarrelHit;
-                if (Physics.Raycast(barrelPosition.position, rayDirection, out bigBarrelHit, 100))
+                RaycastHit spreadHit;
+                if (Physics.Raycast(barrelPosition.position, rayDirection, out spreadHit, 100))
                 {
-                    GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
+                    //particle line raycast
+                    lineRenderer.positionCount = 2;
+                    lineRenderer.SetPosition(0, barrelPosition.position);
+                    lineRenderer.SetPosition(1, spreadHit.point);
+
+                    GameObject prefabRaycast = Instantiate(particleRaycast, spreadHit.point, Quaternion.identity);
                     Destroy(prefabRaycast, 1);
-                    Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
+                    Debug.DrawLine(barrelPosition.position, spreadHit.point, Color.red, 0.1f);
 
                     //raycast bullet
-                    if (bigBarrelHit.transform.gameObject.tag == "Player")
+                    if (spreadHit.transform.gameObject.tag == "Player")
                     {
-                        bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
+                        spreadHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
                     }
                 }
 

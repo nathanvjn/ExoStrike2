@@ -1433,6 +1433,8 @@ MonoBehaviour:
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
     type: 3}
   particlePosition: {fileID: 1043531634}
+  lineRenderer: {fileID: 2846576787352862489, guid: 5d95867f32edde948a7c529ec2eddc8e,
+    type: 3}
 --- !u!1001 &155021710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3213,6 +3215,7 @@ MonoBehaviour:
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
     type: 3}
   particlePosition: {fileID: 0}
+  lineRenderer: {fileID: 0}
   barrelPositions:
   - {fileID: 12494829}
   - {fileID: 1716972978}
@@ -7954,6 +7957,8 @@ MonoBehaviour:
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
     type: 3}
   particlePosition: {fileID: 175439401}
+  lineRenderer: {fileID: 2846576787352862489, guid: 5d95867f32edde948a7c529ec2eddc8e,
+    type: 3}
   spreadShrapnelAngle: 40
   maxRaycastRange: 30
   bigBarrelDamage: 10
@@ -16370,7 +16375,9 @@ MonoBehaviour:
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
     type: 3}
-  particlePosition: {fileID: 0}
+  particlePosition: {fileID: 1513053101}
+  lineRenderer: {fileID: 2846576787352862489, guid: 5d95867f32edde948a7c529ec2eddc8e,
+    type: 3}
   barrelPositions:
   - {fileID: 1991459110}
   - {fileID: 1029043161}

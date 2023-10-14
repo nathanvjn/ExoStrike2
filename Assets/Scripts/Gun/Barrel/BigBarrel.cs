@@ -18,60 +18,13 @@ public class BigBarrel : Barrel
         //elke barrel type wordt automatisch bij spawning in de gun script gegooit, het gun script kan door inheritance van de barrel types bij het barrel script om bullets te spawnen
     }
 
-    public override void ShootBullet()
-    {
-        //bullet bigBarrel
-
-
-        print("bigBarrel");
-        if(usingShrapnel)
-        {
-            float numBullets = Random.Range(7, 15);
-            for (int i = 0; i < numBullets; i++)
-            {
-                // Instantiate the bullet with the correct initial rotation
-                GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, Quaternion.identity);
-
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
-
-                //create a raycast direction from the spread rotation
-                Vector3 rayDirection = spreadRotation * cam.forward;
-
-                prefabBullet.transform.LookAt(prefabBullet.transform.position + rayDirection);
-                prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
-            }
-        }
-
-        else
-        {
-            // Calculate a random rotation within the specified spread angle
-            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
-
-            // Combine the spreadRotation with the barrelPosition.forward
-            Quaternion combinedRotation = Quaternion.LookRotation(spreadRotation * cam.forward);
-
-            // Instantiate the bullet with the correct initial rotation
-            GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, combinedRotation);
-            prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
-
-            // Apply force to the bullet
-            prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
-        }
-
-        //particle
-        GameObject particlePrefab = Instantiate(particle, barrelPosition.position, Quaternion.identity);
-        particlePrefab.transform.rotation = barrelPosition.rotation;
-        Destroy(particlePrefab, 1);
-    }
-
     public override void Shoot()
     {
-        base.Shoot();
 
         //raycast bigBarrel
 
         print("bigBarrel");
-        if(usingShrapnel)
+        if (usingShrapnel)
         {
             float numBullets = Random.Range(7, 15);
             for (int i = 0; i < numBullets; i++)
@@ -104,7 +57,7 @@ public class BigBarrel : Barrel
 
             }
         }
-        
+
         else
         {
             //calculate a random rotation within the specified spread angle
@@ -159,4 +112,52 @@ public class BigBarrel : Barrel
 
         Destroy(prefab, 0.13f);
     }
+
+    public override void ShootBullet()
+    {
+        //bullet bigBarrel
+
+
+        print("bigBarrel");
+        if(usingShrapnel)
+        {
+            float numBullets = Random.Range(7, 15);
+            for (int i = 0; i < numBullets; i++)
+            {
+                // Instantiate the bullet with the correct initial rotation
+                GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, Quaternion.identity);
+
+                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
+
+                //create a raycast direction from the spread rotation
+                Vector3 rayDirection = spreadRotation * cam.forward;
+
+                prefabBullet.transform.LookAt(prefabBullet.transform.position + rayDirection);
+                prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
+            }
+        }
+
+        else
+        {
+            // Calculate a random rotation within the specified spread angle
+            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
+
+            // Combine the spreadRotation with the barrelPosition.forward
+            Quaternion combinedRotation = Quaternion.LookRotation(spreadRotation * cam.forward);
+
+            // Instantiate the bullet with the correct initial rotation
+            GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, combinedRotation);
+            prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
+
+            // Apply force to the bullet
+            prefabBullet.GetComponent<Rigidbody>().AddForce(prefabBullet.transform.forward * bulletForce * Time.deltaTime);
+        }
+
+        //particle
+        GameObject particlePrefab = Instantiate(particle, barrelPosition.position, Quaternion.identity);
+        particlePrefab.transform.rotation = barrelPosition.rotation;
+        Destroy(particlePrefab, 1);
+    }
+
+    
 }
