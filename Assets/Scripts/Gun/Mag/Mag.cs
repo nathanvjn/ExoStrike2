@@ -5,7 +5,7 @@ using TMPro;
 
 public enum BulletType
 {
-    BULLET = 0, SHRAPNEL = 1, GRENADE = 2, BOUNCY = 3
+    BULLET = 0, SHRAPNEL = 1, GRENADE = 2, BOUNCY = 3, EMP = 4
 }
 
 public class Mag : Effects
@@ -25,6 +25,7 @@ public class Mag : Effects
     public GameObject shrapnelBullet;
     public GameObject grenadeBullet;
     public GameObject bounceBullet;
+    public GameObject EMPBullet;
 
     [Header("Mag Models")]
     public GameObject[] magModels;
@@ -41,9 +42,9 @@ public class Mag : Effects
     public int minGrenadeSize; 
     public int maxGrenadeSize;
 
-    [Header("Bounce MagSize")]
-    public int minBounceSize;
-    public int maxBounceSize;
+    [Header("Bounce/EMP MagSize")]
+    public int minBounceAndEMPSize;
+    public int maxBounceAndEMPSize;
 
     public void Start()
     {
@@ -58,7 +59,7 @@ public class Mag : Effects
 
         do
         {
-            magType = Random.Range(0, 4);
+            magType = Random.Range(0, 5);
         } while (magType == currentBulletTypeNumber);
 
         bulletMagType = (BulletType)magType;
@@ -86,12 +87,20 @@ public class Mag : Effects
                 print("grenade");
                 break;
             case BulletType.BOUNCY:
-                magSize = Random.Range(minBounceSize, maxBounceSize); gun.barrel.bulletType = bounceBullet;
+                magSize = Random.Range(minBounceAndEMPSize, maxBounceAndEMPSize); gun.barrel.bulletType = bounceBullet;
                 currentBulletTypeNumber = 3;
                 magModels[3].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[2].SetActive(false);
                 gun.barrel.usingShrapnel = false;
                 print("bounce");
                 break;
+            case BulletType.EMP:
+                magSize = Random.Range(minBounceAndEMPSize, maxBounceAndEMPSize); gun.barrel.bulletType = EMPBullet;
+                currentBulletTypeNumber = 4;
+                magModels[3].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[2].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                print("emp");
+                break;
+
 
         }
 

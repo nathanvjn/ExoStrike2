@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gun")]
     public GameObject gun; //access player gun with onTrigger/onCollision
+    public bool EMPhit; //player gets hit by EMP bullet
 
     private void Start()
     {
@@ -94,6 +95,12 @@ public class PlayerMovement : MonoBehaviour
             r.drag = normalDrag;
         }
 
+        //emp bullet hit
+        if(EMPhit)
+        {
+            StartCoroutine(reduceMovement());
+        }
+
     }
 
     private void FixedUpdate()
@@ -148,5 +155,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isGrounded = false;
+    }
+
+    //emp hit
+    IEnumerator reduceMovement()
+    {
+        speed = speed / 2;
+        yield return new WaitForSeconds(1);
+        speed = beginningSpeed;
+        EMPhit = false;
     }
 }
