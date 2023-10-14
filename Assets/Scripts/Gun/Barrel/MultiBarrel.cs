@@ -41,61 +41,36 @@ public class MultiBarrel : Barrel
         
         rotationAmount += 20;
 
-        //raycast version
-        Physics.Raycast(cam.position, cam.forward, out hit, 100);
-        Debug.DrawLine(cam.position, hit.point, Color.red);
-        if (usingShrapnel == false)
+        for (int i = 0; i < barrelPositions.Length; i++)
         {
+            //raycast version
+            Physics.Raycast(barrelPositions[i].position, cam.forward, out hit, 100);
+            Debug.DrawLine(barrelPositions[i].position, hit.point, Color.red);
             if (hit.transform != null)
             {
+                //particle line raycast
+                lineRenderer.positionCount = 2;
+                lineRenderer.SetPosition(0, barrelPosition.position);
+                lineRenderer.SetPosition(1, hit.point);
+                StartCoroutine(ShootRaycast());
+
                 GameObject prefabRaycast = Instantiate(particleRaycast, hit.point, Quaternion.identity);
                 Destroy(prefabRaycast, 1);
                 if (hit.transform.gameObject.tag == "Player")
                 {
-                    for (int i = 0; i < barrelPositions.Length; i++)
-                    {
-                        //damage multiplies with each chamber
-                        hit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                    }
+                    //damage multiplies with each chamber
+                    hit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
 
                 }
             }
         }
 
-        else
+        IEnumerator ShootRaycast()
         {
-            float numBullets = Random.Range(7, 15);
-            for (int i = 0; i < numBullets; i++)
-            {
-                //calculate a random rotation within the specified spread angle
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-10, 10), Random.Range(-10, 10), 0f);
-
-                //create a raycast direction from the spread rotation
-                Vector3 rayDirection = spreadRotation * cam.forward;
-
-                //perform the raycast
-                RaycastHit multiBarrelHit;
-                if (Physics.Raycast(barrelPosition.position, rayDirection, out multiBarrelHit, 100))
-                {
-                    GameObject prefabRaycast = Instantiate(particleRaycast, multiBarrelHit.point, Quaternion.identity);
-                    Destroy(prefabRaycast, 1);
-                    Debug.DrawLine(cam.position, multiBarrelHit.point, Color.red, 0.1f);
-
-                    //raycast bullet
-                    if (multiBarrelHit.transform.gameObject.tag == "Player")
-                    {
-                        multiBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                    }
-                }
-
-                else
-                {
-                    // Handle a miss
-                }
-
-            }
+            lineRenderer.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            lineRenderer.enabled = false;
         }
-
     }
 
     public override void ShootBullet()

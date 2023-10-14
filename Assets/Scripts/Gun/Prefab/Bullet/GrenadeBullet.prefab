@@ -133,7 +133,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &-8012204314314904815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5b4a7e9ca95c2408fee731f9f76367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeTime: 3
+  explodeTime: 2
   bulletParticle: {fileID: 1232549637138079577, guid: 372e67946e999474b9f68e1f811647f0,
     type: 3}
   explosionRangeObject: {fileID: 2115502670504657024, guid: 02c14b706c1aee84a8b431f7f505bbc0,

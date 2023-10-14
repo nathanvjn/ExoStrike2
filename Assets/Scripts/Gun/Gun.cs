@@ -102,6 +102,10 @@ public class Gun : MonoBehaviour
         for (int i = 0; i < barrels.Length; i++)
         {
             barrels[i].SetActive(i == randomIndex);
+            if(i == randomIndex)
+            {
+                barrelText.text = barrels[i].name.ToString();
+            }
         }
 
         //reset timer

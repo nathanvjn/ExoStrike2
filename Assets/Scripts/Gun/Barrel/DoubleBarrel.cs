@@ -10,80 +10,36 @@ public class DoubleBarrel : Barrel
 
     public override void Shoot()
     {
-
-        //raycast version
-        Physics.Raycast(cam.position, cam.forward, out hit, 100);
-        Debug.DrawLine(cam.position, hit.point, Color.red);
-        if (usingShrapnel == false)
+        for (int i = 0; i < barrelPositions.Length; i++)
         {
+            //raycast version
+            Physics.Raycast(barrelPositions[i].position, cam.forward, out hit, 100);
+            Debug.DrawLine(barrelPositions[i].position, hit.point, Color.red);
             if (hit.transform != null)
             {
-                for (int i = 0; i < barrelPositions.Length; i++)
-                {
-                    //particle line raycast
-                    lineRenderer.positionCount = 2;
-                    lineRenderer.SetPosition(0, barrelPositions[i].position);
-                    lineRenderer.SetPosition(1, hit.point);
-                }
+                //particle line raycast
+                lineRenderer.positionCount = 2;
+                lineRenderer.SetPosition(0, barrelPositions[i].position);
+                lineRenderer.SetPosition(1, hit.point);
+                StartCoroutine(ShootRaycast());
 
                 GameObject prefabRaycast = Instantiate(particleRaycast, hit.point, Quaternion.identity);
                 Destroy(prefabRaycast, 1);
                 if (hit.transform.gameObject.tag == "Player")
                 {
-                    for (int i = 0; i < barrelPositions.Length; i++)
-                    {
-                        //damage multiplies with each chamber
-                        hit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                    }
+                    //damage multiplies with each chamber
+                    hit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
 
                 }
             }
-        }
 
-        else
-        {
-            for (int i = 0; i < barrelPositions.Length; i++)
+            IEnumerator ShootRaycast()
             {
-                float numBullets = Random.Range(7, 15);
-                for (int i2 = 0; i2 < numBullets; i2++)
-                {
-                    //calculate a random rotation within the specified spread angle
-                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-10, 10), Random.Range(-10, 10), 0f);
-
-                    //create a raycast direction from the spread rotation
-                    Vector3 rayDirection = spreadRotation * cam.forward;
-
-                    //perform the raycast
-                    RaycastHit doubleBarrelHit;
-                    if (Physics.Raycast(barrelPositions[i].position, rayDirection, out doubleBarrelHit, 100))
-                    {
-                        //particle line raycast
-                        lineRenderer.positionCount = 2;
-                        lineRenderer.SetPosition(0, barrelPositions[i].position);
-                        lineRenderer.SetPosition(1, doubleBarrelHit.point);
-
-                        GameObject prefabRaycast = Instantiate(particleRaycast, doubleBarrelHit.point, Quaternion.identity);
-                        Destroy(prefabRaycast, 1);
-                        Debug.DrawLine(cam.position, doubleBarrelHit.point, Color.red, 0.1f);
-
-                        //raycast bullet
-                        if (doubleBarrelHit.transform.gameObject.tag == "Player")
-                        {
-                            doubleBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                        }
-                    }
-
-                    else
-                    {
-                        // Handle a miss
-                    }
-
-                }
+                lineRenderer.enabled = true;
+                yield return new WaitForSeconds(0.2f);
+                lineRenderer.enabled = false;
             }
 
-        }
-        for (int i = 0; i < barrelPositions.Length; i++)
-        {
             //particle
             GameObject prefab = Instantiate(particleMuzzle, particlePositions[i].position, Quaternion.identity);
             prefab.transform.parent = particlePositions[i];
@@ -109,6 +65,8 @@ public class DoubleBarrel : Barrel
 
             Destroy(prefab, 0.13f);
         }
+        
+        
     }
 
     public override void ShootBullet()

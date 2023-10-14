@@ -27,63 +27,22 @@ public class Barrel : MonoBehaviour
         print("schootingRay");
         Physics.Raycast(barrelPosition.position, cam.forward, out rayHit, 100);
         Debug.DrawLine(barrelPosition.position, rayHit.point, Color.red);
-        if(usingShrapnel == false)
+        //check if bullet hit
+        if (rayHit.transform != null)
         {
+            //particle line raycast
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, barrelPosition.position);
+            lineRenderer.SetPosition(1, rayHit.point);
 
-            //check if bullet hit
-            if (rayHit.transform != null)
+            StartCoroutine(ShootRaycast());
+
+            GameObject prefabRaycast = Instantiate(particleRaycast, rayHit.point, Quaternion.identity);
+            Destroy(prefabRaycast, 1);
+
+            if (rayHit.transform.gameObject.tag == "Player")
             {
-                //particle line raycast
-                lineRenderer.positionCount = 2;
-                lineRenderer.SetPosition(0, barrelPosition.position);
-                lineRenderer.SetPosition(1, rayHit.point);
-
-                GameObject prefabRaycast = Instantiate(particleRaycast, rayHit.point, Quaternion.identity);
-                Destroy(prefabRaycast, 1);
-
-                if (rayHit.transform.gameObject.tag == "Player")
-                {
-                    rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                }
-            }
-        }
-        
-        else
-        {
-            float numBullets = Random.Range(7, 15);
-            for (int i = 0; i < numBullets; i++)
-            {
-                //calculate a random rotation within the specified spread angle
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-4, 4), Random.Range(-4, 4), 0f);
-
-                //create a raycast direction from the spread rotation
-                Vector3 rayDirection = spreadRotation * cam.forward;
-
-                //perform the raycast
-                RaycastHit spreadHit;
-                if (Physics.Raycast(barrelPosition.position, rayDirection, out spreadHit, 100))
-                {
-                    //particle line raycast
-                    lineRenderer.positionCount = 2;
-                    lineRenderer.SetPosition(0, barrelPosition.position);
-                    lineRenderer.SetPosition(1, spreadHit.point);
-
-                    GameObject prefabRaycast = Instantiate(particleRaycast, spreadHit.point, Quaternion.identity);
-                    Destroy(prefabRaycast, 1);
-                    Debug.DrawLine(barrelPosition.position, spreadHit.point, Color.red, 0.1f);
-
-                    //raycast bullet
-                    if (spreadHit.transform.gameObject.tag == "Player")
-                    {
-                        spreadHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
-                    }
-                }
-
-                else
-                {
-                    // Handle a miss
-                }
-
+                rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
             }
         }
 
@@ -112,7 +71,12 @@ public class Barrel : MonoBehaviour
 
         Destroy(prefab, 0.13f);
 
-
+        IEnumerator ShootRaycast()
+        {
+            lineRenderer.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            lineRenderer.enabled = false;
+        }
     }
 
     public virtual void ShootBullet()

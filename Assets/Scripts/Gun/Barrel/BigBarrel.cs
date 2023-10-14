@@ -24,67 +24,43 @@ public class BigBarrel : Barrel
         //raycast bigBarrel
 
         print("bigBarrel");
-        if (usingShrapnel)
+        //calculate a random rotation within the specified spread angle
+        Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
+
+        //create a raycast direction from the spread rotation
+        Vector3 rayDirection = spreadRotation * cam.forward;
+
+        //perform the raycast
+        RaycastHit bigBarrelHit;
+        if (Physics.Raycast(barrelPosition.position, rayDirection, out bigBarrelHit, maxRaycastRange))
         {
-            float numBullets = Random.Range(7, 15);
-            for (int i = 0; i < numBullets; i++)
+            //particle line raycast
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, barrelPosition.position);
+            lineRenderer.SetPosition(1, bigBarrelHit.point);
+            StartCoroutine(ShootRaycast());
+
+            GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
+            Destroy(prefabRaycast, 1);
+            Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
+
+            //raycast bullet
+            if (bigBarrelHit.transform.gameObject.tag == "Player")
             {
-                //calculate a random rotation within the specified spread angle
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
-
-                //create a raycast direction from the spread rotation
-                Vector3 rayDirection = spreadRotation * cam.forward;
-
-                //perform the raycast
-                RaycastHit bigBarrelHit;
-                if (Physics.Raycast(barrelPosition.position, rayDirection, out bigBarrelHit, maxRaycastRange))
-                {
-                    GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
-                    Destroy(prefabRaycast, 1);
-                    Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
-
-                    //raycast bullet
-                    if (bigBarrelHit.transform.gameObject.tag == "Player")
-                    {
-                        bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= bigBarrelDamage;
-                    }
-                }
-
-                else
-                {
-                    // Handle a miss
-                }
-
+                bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= bigBarrelDamage;
             }
         }
 
         else
         {
-            //calculate a random rotation within the specified spread angle
-            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
+            // Handle a miss
+        }
 
-            //create a raycast direction from the spread rotation
-            Vector3 rayDirection = spreadRotation * cam.forward;
-
-            //perform the raycast
-            RaycastHit bigBarrelHit;
-            if (Physics.Raycast(barrelPosition.position, rayDirection, out bigBarrelHit, maxRaycastRange))
-            {
-                GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
-                Destroy(prefabRaycast, 1);
-                Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
-
-                //raycast bullet
-                if (bigBarrelHit.transform.gameObject.tag == "Player")
-                {
-                    bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= bigBarrelDamage;
-                }
-            }
-
-            else
-            {
-                // Handle a miss
-            }
+        IEnumerator ShootRaycast()
+        {
+            lineRenderer.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            lineRenderer.enabled = false;
         }
 
         //particle raycast
