@@ -10154,6 +10154,11 @@ PrefabInstance:
       propertyPath: chamberText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3793339732782459754, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: slideForce
