@@ -57,10 +57,7 @@ public class Mag : Effects
     {
         //randomize bullet type
 
-        do
-        {
-            magType = Random.Range(0, 5);
-        } while (magType == currentBulletTypeNumber);
+        magType = Random.Range(0, 5);
 
         bulletMagType = (BulletType)magType;
 

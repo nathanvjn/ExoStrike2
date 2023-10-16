@@ -33,7 +33,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        ResetComponents();
+        
     }
 
     void Update()
@@ -81,19 +81,8 @@ public class Gun : MonoBehaviour
 
         //randomize barrel
         GameObject[] barrels = { bigBarrel, doubleBarrel, normalBarrel, gatlingBarrel };
-        for (i = 0; i < barrels.Length; i++)
-        {
-            if(barrels[i].activeInHierarchy == true)
-            {
-                barrelType = i;
-            }
-        }
+        randomIndex = Random.Range(0, barrels.Length);
 
-        do
-        {
-            randomIndex = Random.Range(0, barrels.Length);
-        } while (barrelType == i);
-        
 
         barrel = barrels[randomIndex].GetComponent<Barrel>();
         mag.ResetMag();

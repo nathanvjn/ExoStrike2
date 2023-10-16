@@ -2655,7 +2655,7 @@ PrefabInstance:
     - target: {fileID: 4035719960994879833, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4198800074535900649, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
@@ -2710,7 +2710,7 @@ PrefabInstance:
     - target: {fileID: 5642958933378198187, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5673168021407078127, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
@@ -2730,7 +2730,7 @@ PrefabInstance:
     - target: {fileID: 7842674409314567363, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8105798563186756148, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
@@ -4854,7 +4854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120
+  m_text: 70
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8346,7 +8346,7 @@ MonoBehaviour:
   rubberMaterial: {fileID: 0}
   shrapnelMaterial: {fileID: 0}
   grenadeMaterial: {fileID: 0}
-  magSize: 0
+  magSize: 70
   bulletMagType: 0
   maxMagText: {fileID: 467359282}
   currentBulletTypeNumber: 0
@@ -15575,8 +15575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chamberTimer: 0
-  chamberResetTime: 0
-  chamberType: 0
+  chamberResetTime: 0.1
+  chamberType: 1
   chamberModels:
   - {fileID: 4918625747325741546}
   - {fileID: 5642958933564394731}
@@ -21975,7 +21975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075ae10efccca72458a3f854a7028fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 0}
+  barrel: {fileID: 142783188}
   chamber: {fileID: 1286896887}
   mag: {fileID: 745419063}
   currentBulletCount: 0

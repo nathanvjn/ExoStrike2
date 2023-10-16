@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2154777199516019604}
   - component: {fileID: 4587447926901013913}
   - component: {fileID: -3090809417625986066}
+  - component: {fileID: -3228760416271947392}
   m_Layer: 0
   m_Name: EMP
   m_TagString: Untagged
@@ -133,3 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &-3228760416271947392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908157617336883488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2792e10a4fe44b541a40cba7d1f68d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 10
+  lifetime: 3
