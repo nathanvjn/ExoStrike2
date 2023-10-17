@@ -14,6 +14,10 @@ public class SoundManager : MonoBehaviour
     //player
     public PlayerSliding playerSliding;
     public AudioSource sliding;
+    public AudioSource jumping;
+    public AudioSource landing;
+    public bool isGrounded;
+    private float inAirTime;
 
     public void GatlingShotSound()
     {
@@ -35,6 +39,20 @@ public class SoundManager : MonoBehaviour
         pickupSound.Play();
     }
 
+    public void JumpingSound()
+    {
+        jumping.Play();
+    }
+
+    public void LandingSound()
+    {
+        if(inAirTime > 0.5)
+        {
+            landing.Play();
+            inAirTime = 0;
+        }
+    }
+
     private void Update()
     {
         if(playerSliding.isSliding && !sliding.isPlaying)
@@ -45,6 +63,12 @@ public class SoundManager : MonoBehaviour
         else if(playerSliding.isSliding == false && sliding.isPlaying)
         {
             sliding.Stop();
+        }
+
+        //in air time
+        if(isGrounded == false)
+        {
+            inAirTime += Time.deltaTime;
         }
     }
 }

@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gun; //access player gun with onTrigger/onCollision
     public bool EMPhit; //player gets hit by EMP bullet
 
+    [Header("Sound Manager")]
+    public SoundManager soundManager;
+
     private void Start()
     {
         beginningSpeed = speed;
@@ -63,6 +66,9 @@ public class PlayerMovement : MonoBehaviour
                 sideSpeed = Input.GetAxis("Horizontal");
             }
         }
+
+        //sound
+        soundManager.isGrounded = isGrounded;
 
         //player can only move when on ground
         if(isGrounded)
@@ -137,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
         {
             r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
             print("jumping");
+
+            //sound
+            soundManager.JumpingSound();
         }
     }
 
@@ -145,6 +154,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //player does not get forced into ground
         r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
+
+        //sound
+        soundManager.LandingSound();
     }
 
     private void OnTriggerStay(Collider other)
