@@ -27,7 +27,6 @@ public class Gun : MonoBehaviour
     public GameObject gatlingBarrel;
 
     public float barrelType;
-    private int i;
     private int randomIndex;
 
 
@@ -46,7 +45,7 @@ public class Gun : MonoBehaviour
         //limit ammo size
         currentBulletCount = Mathf.Clamp(currentBulletCount, 0, mag.magSize);
 
-        if (Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1)
+        if (Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1 && chamber.usingCharge == false)
         {
   
             currentBulletCount -= 1;

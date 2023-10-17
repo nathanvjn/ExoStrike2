@@ -41,7 +41,7 @@ public class BigBarrel : Barrel
             StartCoroutine(ShootRaycast());
 
             GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
-            Destroy(prefabRaycast, 1);
+            Destroy(prefabRaycast, 0.5f);
             Debug.DrawLine(cam.position, bigBarrelHit.point, Color.red, 0.1f);
 
             //raycast bullet

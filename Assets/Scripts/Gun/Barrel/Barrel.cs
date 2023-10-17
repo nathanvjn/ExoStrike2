@@ -38,7 +38,7 @@ public class Barrel : MonoBehaviour
             StartCoroutine(ShootRaycast());
 
             GameObject prefabRaycast = Instantiate(particleRaycast, rayHit.point, Quaternion.identity);
-            Destroy(prefabRaycast, 1);
+            Destroy(prefabRaycast, 0.5f);
 
             if (rayHit.transform.gameObject.tag == "Player")
             {

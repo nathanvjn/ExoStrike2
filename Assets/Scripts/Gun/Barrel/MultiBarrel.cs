@@ -55,7 +55,7 @@ public class MultiBarrel : Barrel
                 StartCoroutine(ShootRaycast());
 
                 GameObject prefabRaycast = Instantiate(particleRaycast, hit.point, Quaternion.identity);
-                Destroy(prefabRaycast, 1);
+                Destroy(prefabRaycast, 0.5f);
                 if (hit.transform.gameObject.tag == "Player")
                 {
                     //damage multiplies with each chamber
