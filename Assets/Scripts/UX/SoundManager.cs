@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource gatling;
     public AudioSource bigBarrel;
 
+    //player
+    public PlayerSliding playerSliding;
+    public AudioSource sliding;
+
     public void GatlingShotSound()
     {
         gatling.Play();
@@ -31,5 +35,16 @@ public class SoundManager : MonoBehaviour
         pickupSound.Play();
     }
 
-    
+    private void Update()
+    {
+        if(playerSliding.isSliding && !sliding.isPlaying)
+        {
+            sliding.Play();
+        }
+
+        else if(playerSliding.isSliding == false && sliding.isPlaying)
+        {
+            sliding.Stop();
+        }
+    }
 }
