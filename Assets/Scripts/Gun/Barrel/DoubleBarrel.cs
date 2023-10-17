@@ -64,6 +64,9 @@ public class DoubleBarrel : Barrel
             }
 
             Destroy(prefab, 0.13f);
+
+            //sound
+            soundManager.NormalShotSound();
         }
         
         
@@ -131,6 +134,9 @@ public class DoubleBarrel : Barrel
 
             Destroy(prefab, 0.13f);
         }
+
+        //sound
+        soundManager.NormalShotSound();
     }
 
     

@@ -71,6 +71,9 @@ public class MultiBarrel : Barrel
             yield return new WaitForSeconds(0.2f);
             lineRenderer.enabled = false;
         }
+
+        //sound
+        soundManager.GatlingShotSound();
     }
 
     public override void ShootBullet()
@@ -111,6 +114,8 @@ public class MultiBarrel : Barrel
             }
         }
 
+        //sound
+        soundManager.GatlingShotSound();
     }
 
   

@@ -20,6 +20,8 @@ public class Barrel : MonoBehaviour
     public Transform particlePosition;
     public LineRenderer lineRenderer;
 
+    public SoundManager soundManager;
+
     //overloading (give bool when raycasting)
     //als er geen andere barrel scripts zijn die overriden is het de default barrel
     public virtual void Shoot()
@@ -77,6 +79,9 @@ public class Barrel : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             lineRenderer.enabled = false;
         }
+
+        //sound
+        soundManager.NormalShotSound();
     }
 
     public virtual void ShootBullet()
@@ -132,5 +137,8 @@ public class Barrel : MonoBehaviour
         }
 
         Destroy(prefab, 0.13f);
+
+        //sound
+        soundManager.NormalShotSound();
     }
 }

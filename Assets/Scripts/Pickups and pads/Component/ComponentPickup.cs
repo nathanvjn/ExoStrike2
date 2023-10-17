@@ -6,7 +6,7 @@ public class ComponentPickup : MonoBehaviour
 {
     public Gun gun;
     public GameObject[] barrels;
-
+    public SoundManager soundManager;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +36,9 @@ public class ComponentPickup : MonoBehaviour
                     barrels[i].SetActive(i == randomIndex);
                 }
             }
+
+            //sound
+            soundManager.PickupSound();
 
             transform.parent.gameObject.GetComponent<ComponentPlate>().respawnTime = 0;
             gameObject.SetActive(false);

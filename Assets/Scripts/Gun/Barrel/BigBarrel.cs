@@ -87,6 +87,9 @@ public class BigBarrel : Barrel
         }
 
         Destroy(prefab, 0.13f);
+
+        //sound
+        soundManager.BigBarrelShotSound();
     }
 
     public override void ShootBullet()
@@ -133,6 +136,9 @@ public class BigBarrel : Barrel
         GameObject particlePrefab = Instantiate(particle, barrelPosition.position, Quaternion.identity);
         particlePrefab.transform.rotation = barrelPosition.rotation;
         Destroy(particlePrefab, 1);
+
+        //sound
+        soundManager.BigBarrelShotSound();
     }
 
     

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-   
+    public SoundManager soundManager;
     private void OnTriggerEnter(Collider other)
     {
 
@@ -17,6 +17,9 @@ public class AmmoPickup : MonoBehaviour
 
             //reset ammo spawn time
             transform.parent.gameObject.GetComponent<AmmoPlate>().respawnTime = 0;
+
+            //sound
+            soundManager.PickupSound();
         }
     }
 }
