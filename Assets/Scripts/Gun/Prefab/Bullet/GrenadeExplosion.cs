@@ -6,6 +6,7 @@ public class GrenadeExplosion : MonoBehaviour
 {
     public float explosionDamage;
     public float lifetime;
+    public AudioSource explosionSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,11 @@ public class GrenadeExplosion : MonoBehaviour
         {
             other.gameObject.GetComponent<Health>().healthCounter -= explosionDamage;
         }
+    }
+
+    private void Start()
+    {
+        explosionSound.Play();
     }
 
     private void Update()

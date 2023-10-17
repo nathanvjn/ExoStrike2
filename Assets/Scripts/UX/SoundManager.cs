@@ -5,6 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource pickupSound;
+
+    //gun
     public AudioSource shot;
     public AudioSource gatling;
     public AudioSource bigBarrel;
@@ -28,4 +30,6 @@ public class SoundManager : MonoBehaviour
     {
         pickupSound.Play();
     }
+
+    
 }
