@@ -8,6 +8,14 @@ public class ComponentPickup : MonoBehaviour
     public GameObject[] barrels;
     public SoundManager soundManager;
 
+    //rotation
+    public float rotationSpeed;
+
+    private void Update()
+    {
+        transform.Rotate(transform.up * rotationSpeed * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 

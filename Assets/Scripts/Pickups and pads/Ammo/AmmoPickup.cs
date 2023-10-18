@@ -5,6 +5,15 @@ using UnityEngine;
 public class AmmoPickup : MonoBehaviour
 {
     public SoundManager soundManager;
+
+    //rotation
+    public float rotationSpeed;
+
+    private void Update()
+    {
+        transform.Rotate(transform.up * rotationSpeed * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
