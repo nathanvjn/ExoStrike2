@@ -7,6 +7,7 @@ public class Chamber : MonoBehaviour
     public float chamberTimer;
     public float chamberResetTime;
     private int chamberNumber;
+    public int chamberPickupNumber;
     public ChamberType chamberType;
 
     public GameObject[] chamberModels;
@@ -91,6 +92,18 @@ public class Chamber : MonoBehaviour
 
         chamberType = (ChamberType)chamberNumber;
 
+        switch (chamberType)
+        {
+            case ChamberType.REVOLVER: chamberResetTime = 2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.AUTO: chamberResetTime = 0.1f; chamberModels[1].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.SINGLE: chamberResetTime = 1f; chamberModels[2].SetActive(true); chamberModels[0].SetActive(false); chamberModels[1].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.CHARGE: usingCharge = true; chamberModels[3].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[1].SetActive(false); break;
+        }
+    }
+
+    public void UpdateChamber()
+    {
+        chamberType = (ChamberType)chamberPickupNumber;
         switch (chamberType)
         {
             case ChamberType.REVOLVER: chamberResetTime = 2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;

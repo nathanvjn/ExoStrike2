@@ -17,6 +17,7 @@ public class Mag : Effects
     public TextMeshProUGUI maxMagText;
     public int currentBulletTypeNumber;
     private int magType;
+    public int magPickupType;
 
     //get bullet count
     public Gun gun;
@@ -26,6 +27,8 @@ public class Mag : Effects
     public GameObject grenadeBullet;
     public GameObject bounceBullet;
     public GameObject EMPBullet;
+
+    public GameObject currentBullet;
 
     [Header("Mag Models")]
     public GameObject[] magModels;
@@ -71,6 +74,60 @@ public class Mag : Effects
                 break; //raycast
             case BulletType.SHRAPNEL:
                 magSize = Random.Range(minShrapnelSize, maxShrapnelSize); gun.barrel.bulletType = shrapnelBullet;
+                currentBullet = shrapnelBullet;
+                gun.barrel.usingShrapnel = true;
+                currentBulletTypeNumber = 1;
+                magModels[1].SetActive(true); magModels[2].SetActive(false); magModels[0].SetActive(false); magModels[3].SetActive(false);
+                print("schrapnel");
+                break;
+            case BulletType.GRENADE:
+                magSize = Random.Range(minGrenadeSize, maxGrenadeSize); gun.barrel.bulletType = grenadeBullet;
+                currentBullet = grenadeBullet;
+                currentBulletTypeNumber = 2;
+                magModels[2].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[3].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                print("grenade");
+                break;
+            case BulletType.BOUNCY:
+                magSize = Random.Range(minBounceAndEMPSize, maxBounceAndEMPSize); gun.barrel.bulletType = bounceBullet;
+                currentBullet = bounceBullet;
+                currentBulletTypeNumber = 3;
+                magModels[3].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[2].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                print("bounce");
+                break;
+            case BulletType.EMP:
+                magSize = Random.Range(minBounceAndEMPSize, maxBounceAndEMPSize); gun.barrel.bulletType = EMPBullet;
+                currentBullet = EMPBullet;
+                currentBulletTypeNumber = 4;
+                magModels[3].SetActive(true); magModels[1].SetActive(false); magModels[0].SetActive(false); magModels[2].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                print("emp");
+                break;
+
+
+        }
+
+
+        //edit gun bullet count
+        gun.currentBulletCount = magSize;
+        maxMagText.text = magSize.ToString();
+    }
+
+    public void UpdateMag()
+    {
+        bulletMagType = (BulletType)magPickupType;
+
+        switch (bulletMagType)
+        {
+            case BulletType.BULLET:
+                magSize = Random.Range(minBulletSize, maxBulletSize);
+                currentBulletTypeNumber = 0;
+                magModels[0].SetActive(true); magModels[1].SetActive(false); magModels[2].SetActive(false); magModels[3].SetActive(false);
+                gun.barrel.usingShrapnel = false;
+                break; //raycast
+            case BulletType.SHRAPNEL:
+                magSize = Random.Range(minShrapnelSize, maxShrapnelSize); gun.barrel.bulletType = shrapnelBullet;
                 gun.barrel.usingShrapnel = true;
                 currentBulletTypeNumber = 1;
                 magModels[1].SetActive(true); magModels[2].SetActive(false); magModels[0].SetActive(false); magModels[3].SetActive(false);
@@ -97,14 +154,7 @@ public class Mag : Effects
                 gun.barrel.usingShrapnel = false;
                 print("emp");
                 break;
-
-
         }
-
-
-        //edit gun bullet count
-        gun.currentBulletCount = magSize;
-        maxMagText.text = magSize.ToString();
     }
 
 }
