@@ -5,7 +5,7 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
     public float bulletForce;
-    public float normalBarrelDamage;
+    public float barrelDamage;
 
     public Transform cam;
     public Transform barrelPosition;
@@ -44,7 +44,7 @@ public class Barrel : MonoBehaviour
 
             if (rayHit.transform.gameObject.tag == "Player")
             {
-                rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
+                rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= barrelDamage;
             }
         }
 

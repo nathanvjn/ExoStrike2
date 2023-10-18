@@ -6,7 +6,6 @@ public class BigBarrel : Barrel
 {
     public float spreadShrapnelAngle; //maximum spread rotation
     public float maxRaycastRange;
-    public float bigBarrelDamage;
 
     //particle
     public GameObject particle;
@@ -47,7 +46,7 @@ public class BigBarrel : Barrel
             //raycast bullet
             if (bigBarrelHit.transform.gameObject.tag == "Player")
             {
-                bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= bigBarrelDamage;
+                bigBarrelHit.transform.gameObject.GetComponent<Health>().healthCounter -= barrelDamage;
             }
         }
 

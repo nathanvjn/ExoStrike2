@@ -49,29 +49,6 @@ public class Chamber : MonoBehaviour
 
                     chargeParticle.SetPosition(0, startPoint);
                     chargeParticle.SetPosition(1, endPoint);
-
-                    if (Input.GetButtonUp("Fire1") || chargeTime > maxChargeTime)
-                    {
-                        gun.currentBulletCount -= 1;
-                        chargeTime = 0;
-                        chargeParticle.enabled = false;
-
-                        //schoot prefab
-                        if (gun.mag.currentBulletTypeNumber != 0)
-                        {
-                            gun.barrel.ShootBullet();
-                            chamberTimer = 0;
-                            print("workingNotRay");
-                        }
-
-                        //schoot raycast
-                        else
-                        {
-                            gun.barrel.Shoot();
-                            chamberTimer = 0;
-                            print("workingRay");
-                        }
-                    }
                 }
                 
             }
@@ -82,7 +59,28 @@ public class Chamber : MonoBehaviour
                 chargeParticle.enabled = false;
             }
 
-            
+            if (Input.GetButtonUp("Fire1") || chargeTime > maxChargeTime)
+            {
+                gun.currentBulletCount -= 1;
+                chargeTime = 0;
+                chargeParticle.enabled = false;
+
+                //schoot prefab
+                if (gun.mag.currentBulletTypeNumber != 0)
+                {
+                    gun.barrel.ShootBullet();
+                    chamberTimer = 0;
+                    print("workingNotRay");
+                }
+
+                //schoot raycast
+                else
+                {
+                    gun.barrel.Shoot();
+                    chamberTimer = 0;
+                    print("workingRay");
+                }
+            }
         }
     }
 

@@ -28,7 +28,7 @@ public class DoubleBarrel : Barrel
                 if (hit.transform.gameObject.tag == "Player")
                 {
                     //damage multiplies with each chamber
-                    hit.transform.gameObject.GetComponent<Health>().healthCounter -= normalBarrelDamage;
+                    hit.transform.gameObject.GetComponent<Health>().healthCounter -= barrelDamage;
 
                 }
             }
