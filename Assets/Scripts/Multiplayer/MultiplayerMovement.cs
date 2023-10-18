@@ -21,7 +21,7 @@ public class MultiplayerMovement : NetworkBehaviour
     private float normalDrag;
     public float dragWhenPlayerNotMoving;
 
-    [Header("AirMovement")]
+    [Header("Air Movement")]
     public float airSpeed;
 
     [Header("Jumping")]
@@ -32,12 +32,19 @@ public class MultiplayerMovement : NetworkBehaviour
     public float timeInAirGravity;
     private float normalGravity;
 
+    [Header("Gun")]
+    public GameObject gun; //access player gun with onTrigger/onCollision
+    public bool EMPhit; //player gets hit by EMP bullet
+
+    [Header("Sound Manager")]
+    public SoundManager soundManager;
+
     public string spawnLocationsTag;
 
     private void Start()
     {
         beginningSpeed = speed;
-        normalDrag = GetComponent<Rigidbody>().drag;
+        normalDrag = r.drag;
         normalGravity = gravity;
         Debug.Log($"Player {GetComponentInParent<NetworkIdentity>().netId} connected to the server!");
         if (this.isLocalPlayer)
@@ -106,6 +113,9 @@ public class MultiplayerMovement : NetworkBehaviour
                 }
             }
 
+            //sound
+            soundManager.isGrounded = isGrounded;
+
             //player can only move when on ground
             if (isGrounded)
             {
@@ -135,6 +145,12 @@ public class MultiplayerMovement : NetworkBehaviour
             else
             {
                 r.drag = normalDrag;
+            }
+
+            //emp bullet hit
+            if (EMPhit)
+            {
+                StartCoroutine(reduceMovement());
             }
         }
     }
@@ -171,6 +187,9 @@ public class MultiplayerMovement : NetworkBehaviour
             {
                 r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
                 print("jumping");
+
+                //sound
+                soundManager.JumpingSound();
             }
         }
     }
@@ -182,6 +201,9 @@ public class MultiplayerMovement : NetworkBehaviour
         {
             //player does not get forced into ground
             r.velocity = new Vector3(r.velocity.x, 0f, r.velocity.z);
+
+            //sound
+            soundManager.LandingSound();
         }
     }
 
@@ -193,5 +215,14 @@ public class MultiplayerMovement : NetworkBehaviour
     private void OnTriggerExit(Collider other)
     {
         isGrounded = false;
+    }
+
+    //emp hit
+    IEnumerator reduceMovement()
+    {
+        speed = speed / 2;
+        yield return new WaitForSeconds(1);
+        speed = beginningSpeed;
+        EMPhit = false;
     }
 }
