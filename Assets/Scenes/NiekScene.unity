@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 400000
-  normalBarrelDamage: 10
+  barrelDamage: 10
   cam: {fileID: 568758130}
   barrelPosition: {fileID: 1213489168}
   bulletType: {fileID: 0}
@@ -3234,7 +3234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 400000
-  normalBarrelDamage: 5
+  barrelDamage: 5
   cam: {fileID: 568758130}
   barrelPosition: {fileID: 582698501}
   bulletType: {fileID: 0}
@@ -8078,7 +8078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 200000
-  normalBarrelDamage: 0
+  barrelDamage: 20
   cam: {fileID: 568758130}
   barrelPosition: {fileID: 531122379}
   bulletType: {fileID: 0}
@@ -8093,7 +8093,6 @@ MonoBehaviour:
   soundManager: {fileID: 1759544133}
   spreadShrapnelAngle: 40
   maxRaycastRange: 30
-  bigBarrelDamage: 10
   particle: {fileID: 6680982824165444025, guid: bb32a3df788599c4bb81c1337556c64d,
     type: 3}
 --- !u!1 &720915035
@@ -16795,7 +16794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 400000
-  normalBarrelDamage: 10
+  barrelDamage: 10
   cam: {fileID: 568758130}
   barrelPosition: {fileID: 1991459110}
   bulletType: {fileID: 0}
