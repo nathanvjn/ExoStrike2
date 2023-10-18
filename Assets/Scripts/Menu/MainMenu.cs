@@ -23,12 +23,34 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Color backButtonNormalColor;
     [SerializeField] Color backButtonSelectedColor;
     [SerializeField] Color backButtonClickColor;
+    [SerializeField] Scrollbar scroller;
+    [SerializeField] GameObject content;
+    Vector3 startPosContent;
+
+    private void Start()
+    {
+        startPosContent = content.transform.position;
+    }
 
     private void Update()
     {
         if (networkManager != null)
         {
             networkManager.networkAddress = input.text;
+        }
+
+        if (content != null)
+        {
+            scroller.value += -Input.mouseScrollDelta.y / 10;
+            if (scroller.value < 0)
+            {
+                scroller.value = 0;
+            }
+            else if (scroller.value > 1)
+            {
+                scroller.value = 1;
+            }
+            content.transform.position = new Vector3(startPosContent.x, startPosContent.y - scroller.value * (content.GetComponent<RectTransform>().rect.height - 800), startPosContent.z);
         }
     }
 
