@@ -8739,10 +8739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cbf36df6980124daf2926eb1ea3cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greenMaterial: {fileID: 0}
-  rubberMaterial: {fileID: 0}
-  shrapnelMaterial: {fileID: 0}
-  grenadeMaterial: {fileID: 0}
   magSize: 70
   bulletMagType: 0
   maxMagText: {fileID: 467359282}
@@ -16621,16 +16617,17 @@ MonoBehaviour:
   chamberTimer: 0
   chamberResetTime: 0.1
   chamberPickupNumber: 0
-  chamberType: 3
+  chamberType: 1
   chamberModels:
   - {fileID: 4918625747325741546}
   - {fileID: 5642958933564394731}
   - {fileID: 7185650716478566602}
   - {fileID: 201438749}
-  usingCharge: 1
+  usingCharge: 0
   maxChargeTime: 2
   chargeParticle: {fileID: 760353226}
   gun: {fileID: 1864026214}
+  soundManager: {fileID: 1759544133}
 --- !u!224 &1298442746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8964460483641882546, guid: 419efe90dec774b428f8e3b26dca7e45,
@@ -21951,6 +21948,7 @@ GameObject:
   - component: {fileID: 1759544135}
   - component: {fileID: 1759544137}
   - component: {fileID: 1759544136}
+  - component: {fileID: 1759544138}
   m_Layer: 0
   m_Name: soundManager
   m_TagString: Untagged
@@ -22358,6 +22356,7 @@ MonoBehaviour:
   shot: {fileID: 1759544132}
   gatling: {fileID: 1759544131}
   bigBarrel: {fileID: 1759544129}
+  noAmmo: {fileID: 1759544138}
   playerSliding: {fileID: 133924408}
   sliding: {fileID: 1759544135}
   jumping: {fileID: 1759544137}
@@ -22581,6 +22580,102 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5dece546460e32f4bb1083c7607b77e7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1759544138
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759544128}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e25b7d8680b58d24688e7fc0cf9daa83, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -24484,6 +24579,7 @@ MonoBehaviour:
   magText: {fileID: 1189370541}
   chamberText: {fileID: 2067738512}
   barrelText: {fileID: 1068775020}
+  soundManager: {fileID: 1759544133}
   resetTimer: 0
   timerText: {fileID: 1738214702}
   bigBarrel: {fileID: 6632842895538947953}
