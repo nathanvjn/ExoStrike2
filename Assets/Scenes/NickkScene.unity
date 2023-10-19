@@ -12879,16 +12879,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   port: 7777
   NoDelay: 1
-  SendTimeout: 5000
-  ReceiveTimeout: 30000
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  serverSendQueueLimitPerConnection: 10000
-  serverReceiveQueueLimitPerConnection: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
-  clientSendQueueLimit: 10000
-  clientReceiveQueueLimit: 10000
+  SendTimeout: 500000
+  ReceiveTimeout: 3000000
+  serverMaxMessageSize: 1638400
+  serverMaxReceivesPerTick: 1000000
+  serverSendQueueLimitPerConnection: 1000000
+  serverReceiveQueueLimitPerConnection: 1000000
+  clientMaxMessageSize: 1638400
+  clientMaxReceivesPerTick: 100000
+  clientSendQueueLimit: 1000000
+  clientReceiveQueueLimit: 1000000
 --- !u!114 &1769354926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12901,12 +12901,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   runInBackground: 1
   autoStartServerBuild: 1
   autoConnectClientBuild: 0
   sendRate: 60
-  offlineScene: 
+  offlineScene: Assets/Scenes/NickkScene.unity
   onlineScene: 
   transport: {fileID: 1769354925}
   networkAddress: localhost
@@ -12920,6 +12920,12 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 1586059731446129000, guid: 1a8a71530208a7e42914bf653da77bc0, type: 3}
+  - {fileID: 8369809976492856009, guid: c1801845302f53c4ca589f6ebdd153e2, type: 3}
+  - {fileID: 5908157617336883488, guid: 3cba845d10806ad429e433a24de6fb3c, type: 3}
+  - {fileID: 2115502670504657024, guid: 02c14b706c1aee84a8b431f7f505bbc0, type: 3}
+  - {fileID: 9203708114734299566, guid: 49ad7ccafd75c954095389f75d81162a, type: 3}
+  - {fileID: 3063272302239885337, guid: 09a39a01fb9fd844ebef05b94cdfc799, type: 3}
+  - {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a, type: 3}
   snapshotSettings:
     bufferTimeMultiplier: 2
     bufferLimit: 32
@@ -14232,7 +14238,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940972851}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1940972853
 Camera:
   m_ObjectHideFlags: 0
