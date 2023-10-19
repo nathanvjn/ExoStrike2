@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI chamberText;
     public TextMeshProUGUI barrelText;
 
+    public SoundManager soundManager;
+
     //reset
     public float resetTimer;
     public TextMeshProUGUI timerText;
@@ -45,26 +47,38 @@ public class Gun : MonoBehaviour
         //limit ammo size
         currentBulletCount = Mathf.Clamp(currentBulletCount, 0, mag.magSize);
 
-        if (Input.GetButton("Fire1") && chamber.chamberResetTime < chamber.chamberTimer && currentBulletCount >= 1 && chamber.usingCharge == false)
+        if (Input.GetButton("Fire1"))
         {
-  
-            currentBulletCount -= 1;
-
-            //schoot prefab
-            if (mag.currentBulletTypeNumber != 0)
+            if(chamber.chamberResetTime < chamber.chamberTimer && chamber.usingCharge == false)
             {
-                barrel.ShootBullet();
-                chamber.chamberTimer = 0;
-                print("workingNotRay");
-            }
+                if(currentBulletCount >= 1)
+                {
+                    currentBulletCount -= 1;
 
-            //schoot raycast
-            else
-            {
-                barrel.Shoot();
-                chamber.chamberTimer = 0;
-                print("workingRay");
+                    //schoot prefab
+                    if (mag.currentBulletTypeNumber != 0)
+                    {
+                        barrel.ShootBullet();
+                        chamber.chamberTimer = 0;
+                        print("workingNotRay");
+                    }
+
+                    //schoot raycast
+                    else
+                    {
+                        barrel.Shoot();
+                        chamber.chamberTimer = 0;
+                        print("workingRay");
+                    }
+                }
+
+                else
+                {
+                    //no ammo
+                    soundManager.NoAmmoSound();
+                }
             }
+            
         }
 
         resetTimer += Time.deltaTime;

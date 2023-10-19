@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource shot;
     public AudioSource gatling;
     public AudioSource bigBarrel;
+    public AudioSource noAmmo;
 
     //player
     public PlayerSliding playerSliding;
@@ -50,6 +51,14 @@ public class SoundManager : MonoBehaviour
         {
             landing.Play();
             inAirTime = 0;
+        }
+    }
+
+    public void NoAmmoSound()
+    {
+        if(noAmmo.isPlaying == false)
+        {
+            noAmmo.Play();
         }
     }
 

@@ -20,6 +20,7 @@ public class Chamber : MonoBehaviour
 
     //other components
     public Gun gun;
+    public SoundManager soundManager;
 
     private void Start()
     {
@@ -35,21 +36,31 @@ public class Chamber : MonoBehaviour
     {
         chamberTimer += Time.deltaTime;
 
+
+        //charge component code
         if(usingCharge)
         {
-            if (Input.GetButton("Fire1") && gun.currentBulletCount >= 1)
+            if (Input.GetButton("Fire1"))
             {
-                if(gun.barrel.barrelPosition != null)
+                if(gun.currentBulletCount >= 1)
                 {
-                    chargeTime += Time.deltaTime;
-                    chargeParticle.enabled = true;
-                    chargeParticle.positionCount = 2;
+                    if (gun.barrel.barrelPosition != null)
+                    {
+                        chargeTime += Time.deltaTime;
+                        chargeParticle.enabled = true;
+                        chargeParticle.positionCount = 2;
 
-                    Vector3 startPoint = gun.barrel.barrelPosition.position;
-                    Vector3 endPoint = gun.barrel.barrelPosition.position + transform.forward * (chargeTime * 4 / maxChargeTime);
+                        Vector3 startPoint = gun.barrel.barrelPosition.position;
+                        Vector3 endPoint = gun.barrel.barrelPosition.position + transform.forward * (chargeTime * 4 / maxChargeTime);
 
-                    chargeParticle.SetPosition(0, startPoint);
-                    chargeParticle.SetPosition(1, endPoint);
+                        chargeParticle.SetPosition(0, startPoint);
+                        chargeParticle.SetPosition(1, endPoint);
+                    }
+                }
+
+                else
+                {
+                    soundManager.NoAmmoSound();
                 }
                 
             }

@@ -8,7 +8,7 @@ public enum BulletType
     BULLET = 0, SHRAPNEL = 1, GRENADE = 2, BOUNCY = 3, EMP = 4
 }
 
-public class Mag : Effects
+public class Mag : MonoBehaviour
 {
     public int magSize;
     public BulletType bulletMagType;
