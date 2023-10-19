@@ -11,37 +11,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 430
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 114
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710784
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710576
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 251461d3f555c074c910c79205203c23,
         type: 3}
@@ -67,6 +67,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prism
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 251461d3f555c074c910c79205203c23,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
