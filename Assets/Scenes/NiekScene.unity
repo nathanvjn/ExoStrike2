@@ -8941,7 +8941,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f40fbdbb1198a3f478ca3dc11caef0e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8971,8 +8971,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.008666992
-        value: 0.17894554
+        time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -8980,8 +8980,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.53379655
-        value: 1
+        time: 0.61021256
+        value: 0.7948723
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -16621,13 +16621,13 @@ MonoBehaviour:
   chamberTimer: 0
   chamberResetTime: 0.1
   chamberPickupNumber: 0
-  chamberType: 1
+  chamberType: 3
   chamberModels:
   - {fileID: 4918625747325741546}
   - {fileID: 5642958933564394731}
   - {fileID: 7185650716478566602}
   - {fileID: 201438749}
-  usingCharge: 0
+  usingCharge: 1
   maxChargeTime: 2
   chargeParticle: {fileID: 760353226}
   gun: {fileID: 1864026214}

@@ -60,7 +60,7 @@ public class Chamber : MonoBehaviour
                 chargeParticle.enabled = false;
             }
 
-            if (Input.GetButtonUp("Fire1") || chargeTime > maxChargeTime)
+            if (Input.GetButtonUp("Fire1") && gun.currentBulletCount >= 1 || chargeTime > maxChargeTime && gun.currentBulletCount >= 1)
             {
                 gun.currentBulletCount -= 1;
                 chargeTime = 0;
