@@ -12,6 +12,9 @@ public class PlayerCamera : MonoBehaviour
     private float xRotation;
     private float yRotation;
 
+    public bool isrespawning;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +24,24 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        float mouseMovementX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseX;
-        float mouseMovementY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseY;
+        if(isrespawning == false)
+        {
+            float mouseMovementX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseX;
+            float mouseMovementY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseY;
 
-        yRotation += mouseMovementX;
-        xRotation -= mouseMovementY;
+            yRotation += mouseMovementX;
+            xRotation -= mouseMovementY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
+
+        else
+        {
+            transform.LookAt(player.transform.position);
+        }
+        
     }
 }

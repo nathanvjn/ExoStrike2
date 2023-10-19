@@ -94,9 +94,9 @@ public class Chamber : MonoBehaviour
 
         switch (chamberType)
         {
-            case ChamberType.REVOLVER: chamberResetTime = 2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.REVOLVER: chamberResetTime = 1.2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
             case ChamberType.AUTO: chamberResetTime = 0.1f; chamberModels[1].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
-            case ChamberType.SINGLE: chamberResetTime = 1f; chamberModels[2].SetActive(true); chamberModels[0].SetActive(false); chamberModels[1].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.SINGLE: chamberResetTime = 0.5f; chamberModels[2].SetActive(true); chamberModels[0].SetActive(false); chamberModels[1].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
             case ChamberType.CHARGE: usingCharge = true; chamberModels[3].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[1].SetActive(false); break;
         }
     }
@@ -106,9 +106,9 @@ public class Chamber : MonoBehaviour
         chamberType = (ChamberType)chamberPickupNumber;
         switch (chamberType)
         {
-            case ChamberType.REVOLVER: chamberResetTime = 2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.REVOLVER: chamberResetTime = 1.2f; chamberModels[0].SetActive(true); chamberModels[1].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
             case ChamberType.AUTO: chamberResetTime = 0.1f; chamberModels[1].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
-            case ChamberType.SINGLE: chamberResetTime = 1f; chamberModels[2].SetActive(true); chamberModels[0].SetActive(false); chamberModels[1].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
+            case ChamberType.SINGLE: chamberResetTime = 0.5f; chamberModels[2].SetActive(true); chamberModels[0].SetActive(false); chamberModels[1].SetActive(false); chamberModels[3].SetActive(false); usingCharge = false; break;
             case ChamberType.CHARGE: usingCharge = true; chamberModels[3].SetActive(true); chamberModels[0].SetActive(false); chamberModels[2].SetActive(false); chamberModels[1].SetActive(false); break;
         }
     }
