@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8670284575208981629}
   - component: {fileID: 3960864784685158920}
   - component: {fileID: 6809249275461575997}
-  - component: {fileID: 1336113828626024249}
+  - component: {fileID: 1927624201333858314}
   - component: {fileID: 1326142439465183289}
   m_Layer: 0
   m_Name: jumppad
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.4752502, y: 9.279999, z: -17.661362}
-  m_LocalScale: {x: 3.5271332, y: 0.5197043, z: 3.9206421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160780429302815030}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -9160073452191316925, guid: d757d2478e6c5ef4595017949086a49d, type: 3}
 --- !u!23 &6809249275461575997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffa6868ef679aab40a84566b1f5385c1, type: 2}
+  - {fileID: 2100000, guid: 26edf76edcaf6ce4a9ac8830c8943c88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1336113828626024249
+--- !u!65 &1927624201333858314
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,12 +100,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.6169674, y: 0.11516255, z: 1.6169673}
+  m_Center: {x: 0, y: 0.057581156, z: 0}
 --- !u!114 &1326142439465183289
 MonoBehaviour:
   m_ObjectHideFlags: 0

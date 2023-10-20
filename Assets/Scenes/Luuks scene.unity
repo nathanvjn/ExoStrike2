@@ -165,6 +165,7 @@ MonoBehaviour:
   shot: {fileID: 36463508}
   gatling: {fileID: 36463507}
   bigBarrel: {fileID: 36463506}
+  noAmmo: {fileID: 0}
   playerSliding: {fileID: 1993948670}
   sliding: {fileID: 36463505}
   jumping: {fileID: 36463504}
@@ -875,10 +876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cbf36df6980124daf2926eb1ea3cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greenMaterial: {fileID: 0}
-  rubberMaterial: {fileID: 0}
-  shrapnelMaterial: {fileID: 0}
-  grenadeMaterial: {fileID: 0}
   magSize: 70
   bulletMagType: 0
   maxMagText: {fileID: 1548520837}
@@ -1800,6 +1797,7 @@ MonoBehaviour:
   magText: {fileID: 1901965844}
   chamberText: {fileID: 209693633}
   barrelText: {fileID: 1474020760}
+  soundManager: {fileID: 0}
   resetTimer: 0
   timerText: {fileID: 1564568282}
   bigBarrel: {fileID: 1326738701}
@@ -1948,6 +1946,7 @@ MonoBehaviour:
   maxChargeTime: 2
   chargeParticle: {fileID: 886145191}
   gun: {fileID: 647716408}
+  soundManager: {fileID: 0}
 --- !u!4 &874145351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3030030947665529184, guid: c200373e22d2219458cee13d5440e728,
