@@ -13,10 +13,11 @@ public class Chamber : MonoBehaviour
     public GameObject[] chamberModels;
 
     //charge chamber
+    public bool usingChargeParticle;
     public bool usingCharge;
-    private float chargeTime;
+    public float chargeTime;
     public float maxChargeTime;
-    public LineRenderer chargeParticle;
+    
 
     //other components
     public Gun gun;
@@ -46,15 +47,9 @@ public class Chamber : MonoBehaviour
                 {
                     if (gun.barrel.barrelPosition != null)
                     {
+                        usingChargeParticle = true;
                         chargeTime += Time.deltaTime;
-                        chargeParticle.enabled = true;
-                        chargeParticle.positionCount = 2;
 
-                        Vector3 startPoint = gun.barrel.barrelPosition.position;
-                        Vector3 endPoint = gun.barrel.barrelPosition.position + transform.forward * (chargeTime * 4 / maxChargeTime);
-
-                        chargeParticle.SetPosition(0, startPoint);
-                        chargeParticle.SetPosition(1, endPoint);
                     }
                 }
 
@@ -67,15 +62,15 @@ public class Chamber : MonoBehaviour
 
             else
             {
+                usingChargeParticle = false;
                 chargeTime = 0;
-                chargeParticle.enabled = false;
             }
 
             if (Input.GetButtonUp("Fire1") && gun.currentBulletCount >= 1 || chargeTime > maxChargeTime && gun.currentBulletCount >= 1)
             {
                 gun.currentBulletCount -= 1;
                 chargeTime = 0;
-                chargeParticle.enabled = false;
+                usingChargeParticle = false;
 
                 //schoot prefab
                 if (gun.mag.currentBulletTypeNumber != 0)

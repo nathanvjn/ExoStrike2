@@ -18,10 +18,12 @@ public class DoubleBarrel : Barrel
             if (hit.transform != null)
             {
                 //particle line raycast
-                lineRenderer.positionCount = 2;
-                lineRenderer.SetPosition(0, barrelPositions[i].position);
-                lineRenderer.SetPosition(1, hit.point);
-                StartCoroutine(ShootRaycast());
+                GameObject prefabLineRenderer = Instantiate(lineRenderer, transform.position, Quaternion.identity);
+                prefabLineRenderer.SetActive(true);
+
+                prefabLineRenderer.GetComponent<LineRenderer>().positionCount = 2;
+                prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(0, barrelPosition.position);
+                prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(1, hit.point);
 
                 GameObject prefabRaycast = Instantiate(particleRaycast, hit.point, Quaternion.identity);
                 Destroy(prefabRaycast, 1);
@@ -33,12 +35,7 @@ public class DoubleBarrel : Barrel
                 }
             }
 
-            IEnumerator ShootRaycast()
-            {
-                lineRenderer.enabled = true;
-                yield return new WaitForSeconds(0.2f);
-                lineRenderer.enabled = false;
-            }
+            
 
             //particle
             GameObject prefab = Instantiate(particleMuzzle, particlePositions[i].position, Quaternion.identity);

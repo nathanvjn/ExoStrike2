@@ -18,7 +18,7 @@ public class Barrel : MonoBehaviour
     public GameObject particleRaycast;
     public GameObject particleMuzzle;
     public Transform particlePosition;
-    public LineRenderer lineRenderer;
+    public GameObject lineRenderer;
 
     public SoundManager soundManager;
 
@@ -33,11 +33,11 @@ public class Barrel : MonoBehaviour
         if (rayHit.transform != null)
         {
             //particle line raycast
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, barrelPosition.position);
-            lineRenderer.SetPosition(1, rayHit.point);
+            GameObject prefabLineRenderer = Instantiate(lineRenderer, transform.position, Quaternion.identity);
 
-            StartCoroutine(ShootRaycast());
+            prefabLineRenderer.GetComponent<LineRenderer>().positionCount = 2;
+            prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(0, barrelPosition.position);
+            prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(1, rayHit.point);
 
             GameObject prefabRaycast = Instantiate(particleRaycast, rayHit.point, Quaternion.identity);
             Destroy(prefabRaycast, 1);
@@ -72,13 +72,6 @@ public class Barrel : MonoBehaviour
         }
 
         Destroy(prefab, 0.13f);
-
-        IEnumerator ShootRaycast()
-        {
-            lineRenderer.enabled = true;
-            yield return new WaitForSeconds(0.2f);
-            lineRenderer.enabled = false;
-        }
 
         //sound
         soundManager.NormalShotSound();

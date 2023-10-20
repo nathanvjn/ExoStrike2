@@ -34,10 +34,11 @@ public class BigBarrel : Barrel
         if (Physics.Raycast(barrelPosition.position, rayDirection, out bigBarrelHit, maxRaycastRange))
         {
             //particle line raycast
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, barrelPosition.position);
-            lineRenderer.SetPosition(1, bigBarrelHit.point);
-            StartCoroutine(ShootRaycast());
+            GameObject prefabLineRenderer = Instantiate(lineRenderer, transform.position, Quaternion.identity);
+
+            prefabLineRenderer.GetComponent<LineRenderer>().positionCount = 2;
+            prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(0, barrelPosition.position);
+            prefabLineRenderer.GetComponent<LineRenderer>().SetPosition(1, bigBarrelHit.point);
 
             GameObject prefabRaycast = Instantiate(particleRaycast, bigBarrelHit.point, Quaternion.identity);
             Destroy(prefabRaycast, 1);
@@ -53,13 +54,6 @@ public class BigBarrel : Barrel
         else
         {
             // Handle a miss
-        }
-
-        IEnumerator ShootRaycast()
-        {
-            lineRenderer.enabled = true;
-            yield return new WaitForSeconds(0.2f);
-            lineRenderer.enabled = false;
         }
 
         //particle raycast
