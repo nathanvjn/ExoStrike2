@@ -7,10 +7,24 @@ public class ChargeParticle : MonoBehaviour
     public Chamber chamber;
     public Gun gun;
 
+    public GameObject chargeObject;
+    public Material chargeMaterial;
+
+    private Vector3 startPoint;
+
+    public Color newEmissionColor;
+    private Color beginningColor;
+
+    private float intensitySize;
+    public float intensitySizeIncreaseAmount;
+
+    private float intensityEmmision;
+    public float intensityEmmisionIncreaseAmount;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        beginningColor = chargeMaterial.color;
     }
 
     // Update is called once per frame
@@ -21,19 +35,28 @@ public class ChargeParticle : MonoBehaviour
 
         if(chamber.usingChargeParticle && chamber.usingCharge)
         {
-            GetComponent<LineRenderer>().enabled = true;
-            GetComponent<LineRenderer>().positionCount = 2;
+            chargeObject.SetActive(true);
 
-            Vector3 startPoint = gun.barrel.barrelPosition.position;
+            startPoint = gun.barrel.barrelPosition.position;
             Vector3 endPoint = gun.barrel.barrelPosition.position + transform.forward * (chargeTime * 4 / maxChargeTime);
+            chargeObject.transform.localScale = new Vector3(intensitySize, intensitySize, intensitySize);
 
-            GetComponent<LineRenderer>().SetPosition(0, startPoint);
-            GetComponent<LineRenderer>().SetPosition(1, endPoint);
+            chargeObject.transform.position = endPoint;
+            chargeMaterial.SetColor("_EmissionColor", newEmissionColor * intensityEmmision);
+            chargeMaterial.EnableKeyword("_EMISSION");
+
+            intensityEmmision += intensityEmmisionIncreaseAmount;
+            intensitySize += intensitySizeIncreaseAmount;
         }
 
         else
         {
-            GetComponent<LineRenderer>().enabled = false;
+            chargeObject.SetActive(false);
+            chargeObject.transform.position = startPoint;
+            chargeMaterial.color = beginningColor;
+
+            intensitySize = 0;
+            intensityEmmision = 0;
         }
     }
 }
