@@ -10662,6 +10662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
+      propertyPath: maxGravity
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 1759544133}
