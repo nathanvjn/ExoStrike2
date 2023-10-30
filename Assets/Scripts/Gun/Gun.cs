@@ -81,8 +81,15 @@ public class Gun : MonoBehaviour
             
         }
 
+        /*
         resetTimer += Time.deltaTime;
         if(resetTimer > 10)
+        {
+            ResetComponents();
+        }
+        */
+
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             ResetComponents();
         }
