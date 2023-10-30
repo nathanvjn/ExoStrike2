@@ -6,6 +6,8 @@ public class EMPBullet : MonoBehaviour
 {
     public float bulletDamage;
     public float lifetime;
+    public GameObject particle;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -22,6 +24,7 @@ public class EMPBullet : MonoBehaviour
 
         else
         {
+            GameObject prefab = Instantiate(particle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

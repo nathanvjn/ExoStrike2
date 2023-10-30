@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 10
   lifetime: 3
+  particle: {fileID: 5983047521948002785, guid: 776053ec94992dc4fa6a9d8d8df514d4,
+    type: 3}
 --- !u!114 &-6279328986413036158
 MonoBehaviour:
   m_ObjectHideFlags: 0
