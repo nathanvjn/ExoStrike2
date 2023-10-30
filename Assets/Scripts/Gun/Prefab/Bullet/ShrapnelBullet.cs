@@ -11,12 +11,18 @@ public class ShrapnelBullet : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Health>().healthCounter -= bulletDamage;
+            Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Bullet")
+        else if (collision.gameObject.tag == "Bullet")
         {
             //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

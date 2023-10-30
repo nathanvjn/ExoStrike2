@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EMPBullet : MonoBehaviour
+public class BouncyBullet : MonoBehaviour
 {
     public float bulletDamage;
     public float lifetime;
@@ -11,18 +11,13 @@ public class EMPBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Health>().healthCounter -= bulletDamage;
-            collision.gameObject.GetComponent<PlayerMovement>().EMPhit = true;
+            Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Bullet")
+        else if (collision.gameObject.tag == "Bullet")
         {
             //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
-        }
-
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

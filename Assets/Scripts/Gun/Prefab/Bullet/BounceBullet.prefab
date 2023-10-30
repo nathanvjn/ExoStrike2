@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 4921694417349026886}
   - component: {fileID: 469428544809276281}
   - component: {fileID: 1697438554268635590}
-  - component: {fileID: 1916857085613143145}
   - component: {fileID: 8625290934037070686}
   - component: {fileID: 6910462364099407520}
+  - component: {fileID: 906831724829796036}
   m_Layer: 0
   m_Name: BounceBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,20 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &1916857085613143145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369809976492856009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1141cbc636d25c4e870f7fee44a1b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 10
-  lifetime: 3
 --- !u!114 &8625290934037070686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +188,17 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &906831724829796036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8369809976492856009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae42d5da5ae05243bb01f8ec6e89297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 10
+  lifetime: 3
