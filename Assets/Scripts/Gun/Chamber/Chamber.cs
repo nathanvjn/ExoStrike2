@@ -17,6 +17,11 @@ public class Chamber : MonoBehaviour
     public bool usingCharge;
     public float chargeTime;
     public float maxChargeTime;
+
+    //charge timout time
+    private float chargeTimeoutTime;
+    public float chargeTimeoutMax;
+    private bool chargeTimeout;
     
 
     //other components
@@ -39,7 +44,7 @@ public class Chamber : MonoBehaviour
 
 
         //charge component code
-        if(usingCharge)
+        if(usingCharge && chargeTimeout == false)
         {
             if (Input.GetButton("Fire1"))
             {
@@ -71,6 +76,7 @@ public class Chamber : MonoBehaviour
                 gun.currentBulletCount -= 1;
                 chargeTime = 0;
                 usingChargeParticle = false;
+                chargeTimeout = true;
 
                 //schoot prefab
                 if (gun.mag.currentBulletTypeNumber != 0)
@@ -87,6 +93,16 @@ public class Chamber : MonoBehaviour
                     chamberTimer = 0;
                     print("workingRay");
                 }
+            }
+        }
+
+        if(chargeTimeout)
+        {
+            chargeTimeoutTime += Time.deltaTime;
+            if(chargeTimeoutTime > chargeTimeoutMax)
+            {
+                chargeTimeout = false;
+                chargeTimeoutTime = 0;
             }
         }
     }

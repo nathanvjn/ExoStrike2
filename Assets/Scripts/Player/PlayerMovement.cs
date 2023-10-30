@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed;
     public float timeInAirGravity;
     private float normalGravity;
+    public float maxGravity;
 
     [Header("Gun")]
     public GameObject gun; //access player gun with onTrigger/onCollision
@@ -106,6 +107,9 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(reduceMovement());
         }
+
+        //limit jump gravity
+        gravity = Mathf.Clamp(gravity, 0, maxGravity);
 
     }
 
