@@ -18,10 +18,6 @@ public class Gun : MonoBehaviour
 
     public SoundManager soundManager;
 
-    //reset
-    public float resetTimer;
-    public TextMeshProUGUI timerText;
-
     [Header("BarrelType")]
     public GameObject bigBarrel;
     public GameObject doubleBarrel;
@@ -42,7 +38,6 @@ public class Gun : MonoBehaviour
         ammoText.text = currentBulletCount.ToString();
         magText.text = mag.bulletMagType.ToString();
         chamberText.text = chamber.chamberType.ToString();
-        timerText.text = resetTimer.ToString();
 
         //limit ammo size
         currentBulletCount = Mathf.Clamp(currentBulletCount, 0, mag.magSize);
@@ -116,8 +111,5 @@ public class Gun : MonoBehaviour
                 barrelText.text = barrels[i].name.ToString();
             }
         }
-
-        //reset timer
-        resetTimer = 0;
     }
 }
