@@ -20237,14 +20237,14 @@ MonoBehaviour:
   chamberTimer: 0
   chamberResetTime: 0.1
   chamberPickupNumber: 0
-  chamberType: 3
+  chamberType: 1
   chamberModels:
   - {fileID: 4918625747325741546}
   - {fileID: 5642958933564394731}
   - {fileID: 7185650716478566602}
   - {fileID: 201438749}
   usingChargeParticle: 0
-  usingCharge: 1
+  usingCharge: 0
   chargeTime: 0
   maxChargeTime: 2
   chargeTimeoutMax: 1
