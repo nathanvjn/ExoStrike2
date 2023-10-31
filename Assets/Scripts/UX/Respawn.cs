@@ -10,9 +10,8 @@ public class Respawn : MonoBehaviour
     public GameObject gun;
     public PlayerCamera playerCamera;
 
-    public bool isGrounded;
-    private Vector3 lastPositionStanding;
     private Vector3 camRespawningPosition;
+    public Transform respawnPosition;
 
     public GameObject respawnTextObject;
     public TextMeshProUGUI respawnText;
@@ -29,17 +28,9 @@ public class Respawn : MonoBehaviour
     void Update()
     {
         //if player position is lower than barrier
-        if(transform.position.y > player.transform.position.y && playerCamera.isrespawning == false && isGrounded == false)
+        if(transform.position.y > player.transform.position.y && playerCamera.isrespawning == false)
         {
             Respawning();
-        }
-        
-        isGrounded = player.GetComponent<PlayerMovement>().isGrounded;
-
-        //calculate last position when player was on ground
-        if(isGrounded)
-        {
-            lastPositionStanding = player.transform.position;
         }
 
         if(playerCamera.isrespawning)
@@ -50,20 +41,24 @@ public class Respawn : MonoBehaviour
 
             if(respawnCount < 0)
             {
-                respawnCount = maxRespawnTime;
-                playerCamera.isrespawning = false;
 
                 //set canvas to not active
                 respawnTextObject.SetActive(false);
 
                 //set player position to last time standing
-                player.transform.position = lastPositionStanding;
+                player.transform.position = respawnPosition.position;
 
                 //reset cam position in player
                 cam.transform.position = new Vector3(0, 0.65f, 0);
 
                 //set gun active
                 gun.SetActive(true);
+
+                if(respawnCount < -0.2f)
+                {
+                    respawnCount = maxRespawnTime;
+                    playerCamera.isrespawning = false;
+                }
             }
         }
     }
