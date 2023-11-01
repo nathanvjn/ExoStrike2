@@ -81,7 +81,7 @@ public class MultiBarrel : Barrel
         {
             for (int i = 0; i < barrelPositions.Length; i++)
             {
-                float numBullets = Random.Range(7, 15);
+                float numBullets = Random.Range(3, 4);
                 for (int i2 = 0; i2 < numBullets; i2++)
                 {
                     // Instantiate the bullet with the correct initial rotation

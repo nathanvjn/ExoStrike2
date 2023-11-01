@@ -15535,6 +15535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5191390513381152678, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191390513381152678, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
@@ -15607,6 +15612,26 @@ PrefabInstance:
         type: 3}
       propertyPath: usingNormalBarrel
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147510403687112972, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147510403687112972, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: field of view
+      value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147510403687112972, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147510403687112972, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8211261337882296351, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
