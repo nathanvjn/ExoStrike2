@@ -11,18 +11,20 @@ public class Respawn : MonoBehaviour
     public PlayerCamera playerCamera;
 
     private Vector3 camRespawningPosition;
-    public Transform respawnPosition;
+    private Transform respawnPosition;
 
     public GameObject respawnTextObject;
     public TextMeshProUGUI respawnText;
     private float respawnCount;
     public float maxRespawnTime;
 
+    public Transform[] spawnLocations;
+
 
     private void Start()
     {
         respawnCount = maxRespawnTime;
-        
+        respawnPosition = spawnLocations[0];
     }
 
     void Update()
@@ -58,6 +60,19 @@ public class Respawn : MonoBehaviour
                 {
                     respawnCount = maxRespawnTime;
                     playerCamera.isrespawning = false;
+                }
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            int randomNumber = Random.Range(0, spawnLocations.Length);
+            for (int i = 0; i < spawnLocations.Length; i++)
+            {
+                if(i == randomNumber)
+                {
+                    player.transform.position = spawnLocations[i].position;
+                    respawnPosition = spawnLocations[i];
                 }
             }
         }
