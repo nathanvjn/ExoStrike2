@@ -3000,7 +3000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &261108192
 Transform:
   m_ObjectHideFlags: 0
@@ -3993,7 +3993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &366340592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18206,6 +18206,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9006320718661958487, guid: 282641d7c0d71a1428d8a4071205384e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24545,6 +24550,12 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 708426932264484379, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58cfe141ffb64ca4a99e3bf9ef72e8a6,
+        type: 2}
     - target: {fileID: 759528326642290358, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -24635,6 +24646,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 9.199997
       objectReference: {fileID: 0}
+    - target: {fileID: 4561771663178502694, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58cfe141ffb64ca4a99e3bf9ef72e8a6,
+        type: 2}
     - target: {fileID: 5093167896702423372, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: gun
@@ -24670,6 +24687,12 @@ PrefabInstance:
       propertyPath: jumpPadForce
       value: 70000
       objectReference: {fileID: 0}
+    - target: {fileID: 5483864352864211092, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58cfe141ffb64ca4a99e3bf9ef72e8a6,
+        type: 2}
     - target: {fileID: 6007132996580954753, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24690,6 +24713,12 @@ PrefabInstance:
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 1759544133}
+    - target: {fileID: 6907412652588262066, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 58cfe141ffb64ca4a99e3bf9ef72e8a6,
+        type: 2}
     - target: {fileID: 6929127267165138215, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -28179,7 +28208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1893849276
 Transform:
   m_ObjectHideFlags: 0
@@ -31515,6 +31544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: componentPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 2826975306122247955, guid: 4fe55cb5bf6f7ea428b97ffe0a361967,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5116194777128215335, guid: 4fe55cb5bf6f7ea428b97ffe0a361967,
         type: 3}
       propertyPath: gun
@@ -32645,7 +32679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5421741427797615016
 Transform:
   m_ObjectHideFlags: 0
@@ -33958,6 +33992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ammoPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793801864015241027, guid: c40692b77f66f0644870ebda23a688d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3907597524520739187, guid: c40692b77f66f0644870ebda23a688d5,
         type: 3}
