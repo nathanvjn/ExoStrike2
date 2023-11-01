@@ -108,15 +108,15 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(reduceMovement());
         }
 
-        //limit jump gravity
-        gravity = Mathf.Clamp(gravity, 0, maxGravity);
-
     }
 
     private void FixedUpdate()
     {
+        //limit jump gravity
+        gravity = Mathf.Clamp(gravity, 0, maxGravity);
+
         //limit speed
-        if(r.velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
+        if (r.velocity.magnitude > maxSpeed && GetComponent<PlayerSliding>().isSliding == false)
         {
             GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(r.velocity, maxSpeed);
         }

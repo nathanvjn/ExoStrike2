@@ -15159,8 +15159,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
+      propertyPath: jumpSpeed
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
       propertyPath: maxGravity
-      value: 100000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
@@ -24535,6 +24540,11 @@ PrefabInstance:
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 1759544133}
+    - target: {fileID: 603508658713759668, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 759528326642290358, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -24655,6 +24665,11 @@ PrefabInstance:
       propertyPath: barrelObjects.Array.data[3]
       value: 
       objectReference: {fileID: 9030211053722614082}
+    - target: {fileID: 5238695214631216736, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: jumpPadForce
+      value: 70000
+      objectReference: {fileID: 0}
     - target: {fileID: 6007132996580954753, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
