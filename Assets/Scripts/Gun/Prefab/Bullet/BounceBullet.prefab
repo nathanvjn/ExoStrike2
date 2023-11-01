@@ -202,3 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 10
   lifetime: 3
+  noEmmisionMaterial: {fileID: 2100000, guid: 8d1354da2f2d7cf41a7216dcd39ae0bb, type: 2}
+  emmisionMaterial: {fileID: 2100000, guid: 52e8e5b0ab71e2847baed4c56dbb6948, type: 2}
+  maxEmmisionCount: 0.1
