@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1711149190724673861}
   - component: {fileID: 5744454209055401371}
   m_Layer: 0
-  m_Name: msVFX_Stylized Smoke 1
+  m_Name: msVFX_Stylized Smoke backup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,14 +574,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 8
-    angle: 0
-    length: 0.67
+    type: 0
+    angle: 80
+    length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0.37
+    radiusThickness: 0.51
     donutRadius: 0.2
-    m_Position: {x: 0, y: 180, z: 0}
-    m_Rotation: {x: 90, y: 0, z: 0}
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 400, y: 400, z: 400}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -658,7 +658,7 @@ ParticleSystem:
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
-    sphericalDirectionAmount: 1
+    sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
       value: 1
