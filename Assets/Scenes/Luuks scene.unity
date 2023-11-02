@@ -4204,6 +4204,7 @@ MonoBehaviour:
   chamberText: {fileID: 2131695314}
   barrelText: {fileID: 827655058}
   soundManager: {fileID: 7446991}
+  gunAnimator: {fileID: 0}
   bigBarrel: {fileID: 1619456035}
   doubleBarrel: {fileID: 1619456031}
   normalBarrel: {fileID: 1619456037}
@@ -10508,7 +10509,7 @@ PrefabInstance:
     - target: {fileID: 1059626128166269806, guid: 0649c098789f3f04d8597ad802c682be,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8478466009723022522, guid: 0649c098789f3f04d8597ad802c682be,
         type: 3}
