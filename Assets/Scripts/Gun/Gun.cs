@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI barrelText;
 
     public SoundManager soundManager;
+    public Animator gunAnimator;
 
     [Header("BarrelType")]
     public GameObject bigBarrel;
@@ -48,6 +49,7 @@ public class Gun : MonoBehaviour
             {
                 if(currentBulletCount >= 1)
                 {
+                    gunAnimator.Play("Shooting", 0);
                     currentBulletCount -= 1;
 
                     //schoot prefab
@@ -111,5 +113,10 @@ public class Gun : MonoBehaviour
                 barrelText.text = barrels[i].name.ToString();
             }
         }
+    }
+
+    public void ResetShootAnimation()
+    {
+        gunAnimator.SetBool("Shooting", false);
     }
 }

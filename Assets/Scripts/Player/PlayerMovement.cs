@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Gun")]
     public GameObject gun; //access player gun with onTrigger/onCollision
     public bool EMPhit; //player gets hit by EMP bullet
+    public Animator gunAnimator;
 
     [Header("Sound Manager")]
     public SoundManager soundManager;
@@ -86,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
             // Calculate the new velocity based on input
             airMovement = transform.right * sideSpeed * airSpeed;
             r.AddForce(airMovement);
+
+            gunAnimator.SetBool("gunSway", false);
         }
 
         // Set the Rigidbody's velocity directly
@@ -95,11 +98,16 @@ public class PlayerMovement : MonoBehaviour
         if (sideSpeed < 0.6f && forwardSpeed < 0.6f && isGrounded)
         {
             r.drag = dragWhenPlayerNotMoving;
+            gunAnimator.SetBool("gunSway", false);
         }
 
         else
         {
             r.drag = normalDrag;
+            if(isGrounded)
+            {
+                gunAnimator.SetBool("gunSway", true);
+            }
         }
 
         //emp bullet hit

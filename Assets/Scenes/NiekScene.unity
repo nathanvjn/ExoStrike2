@@ -2982,7 +2982,7 @@ PrefabInstance:
     - target: {fileID: 3741152476784902277, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3741152476784902277, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
@@ -3210,6 +3210,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1864026214}
+    - targetCorrespondingSourceObject: {fileID: 1781937584916503002, guid: c200373e22d2219458cee13d5440e728,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3741152476602083014}
     - targetCorrespondingSourceObject: {fileID: 1441831669368383430, guid: c200373e22d2219458cee13d5440e728,
         type: 3}
       insertIndex: -1
@@ -15580,6 +15584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
+      propertyPath: gunSwing
+      value: 
+      objectReference: {fileID: 3741152476602083014}
+    - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
       propertyPath: maxSpeed
       value: 50
       objectReference: {fileID: 0}
@@ -15593,6 +15602,11 @@ PrefabInstance:
       propertyPath: maxGravity
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: gunAnimator
+      value: 
+      objectReference: {fileID: 3741152476602083014}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: soundManager
@@ -28830,6 +28844,7 @@ MonoBehaviour:
   chamberText: {fileID: 2067738512}
   barrelText: {fileID: 1068775020}
   soundManager: {fileID: 1759544133}
+  gunAnimator: {fileID: 3741152476602083014}
   bigBarrel: {fileID: 6632842895538947953}
   doubleBarrel: {fileID: 1414097481}
   normalBarrel: {fileID: 7842674409563955843}
@@ -33123,6 +33138,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 254207552}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &3741152476602083014
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781937584901685146}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69813fab8396f9f4a8e6a23ad49c4383, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &3814520971438478886
 MeshFilter:
   m_ObjectHideFlags: 0
