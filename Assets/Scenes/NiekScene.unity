@@ -19232,7 +19232,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8ec677a3a9209b54a8f7cbde2967023c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 265ae7f77e641a740805384123b2fce4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1142797951
 Transform:
@@ -26243,6 +26243,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 9.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6100182877210923239, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6189124035631009896, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -26289,6 +26294,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.78
       objectReference: {fileID: 0}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1864026214}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1759544133}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6632842895538947953}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1414097481}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7842674409563955843}
+    - target: {fileID: 8558676082718700330, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 9030211053722614082}
     - target: {fileID: 8753667957823081805, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: m_Name
