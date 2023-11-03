@@ -13,7 +13,6 @@ public class EMPBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Health>().healthCounter -= bulletDamage;
-            collision.gameObject.GetComponent<PlayerMovement>().EMPhit = true;
         }
 
         if (collision.gameObject.tag == "Bullet")

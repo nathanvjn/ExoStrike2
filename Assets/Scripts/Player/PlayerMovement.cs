@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gun")]
     public GameObject gun; //access player gun with onTrigger/onCollision
-    public bool EMPhit; //player gets hit by EMP bullet
     public Animator gunAnimator;
 
     [Header("Sound Manager")]
@@ -110,12 +109,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //emp bullet hit
-        if(EMPhit)
-        {
-            StartCoroutine(reduceMovement());
-        }
-
     }
 
     private void FixedUpdate()
@@ -180,13 +173,5 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = false;
     }
-
-    //emp hit
-    IEnumerator reduceMovement()
-    {
-        speed = speed / 2;
-        yield return new WaitForSeconds(1);
-        speed = beginningSpeed;
-        EMPhit = false;
-    }
+   
 }
