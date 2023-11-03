@@ -162,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
         //sound
         soundManager.LandingSound();
+        print("working");
     }
 
     private void OnTriggerStay(Collider other)

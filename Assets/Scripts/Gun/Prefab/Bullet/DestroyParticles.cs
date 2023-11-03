@@ -7,6 +7,6 @@ public class DestroyParticles : MonoBehaviour
     
     void Update()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.5f);
     }
 }

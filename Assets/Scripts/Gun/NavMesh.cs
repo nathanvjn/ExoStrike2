@@ -42,6 +42,16 @@ public class NavMesh : MonoBehaviour
             if (Vector3.Distance(transform.position, positions[2].position) < 1)
             {
                 bools[2] = false;
+                bools[3] = true;
+            }
+        }
+
+        if (bools[3])
+        {
+            agent.destination = positions[3].position;
+            if (Vector3.Distance(transform.position, positions[3].position) < 1)
+            {
+                bools[3] = false;
                 bools[0] = true;
             }
         }
