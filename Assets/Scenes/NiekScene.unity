@@ -21119,6 +21119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chamberTimer: 0
   chamberResetTime: 0.1
+  usingRevolver: 0
   chamberPickupNumber: 0
   chamberType: 1
   chamberModels:

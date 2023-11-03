@@ -43,49 +43,55 @@ public class Gun : MonoBehaviour
         //limit ammo size
         currentBulletCount = Mathf.Clamp(currentBulletCount, 0, mag.magSize);
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && chamber.usingRevolver == false)
         {
-            if(chamber.chamberResetTime < chamber.chamberTimer && chamber.usingCharge == false)
+            if (chamber.chamberResetTime < chamber.chamberTimer && chamber.usingCharge == false)
             {
-                if(currentBulletCount >= 1)
-                {
-                    gunAnimator.Play("Shooting", 0);
-                    currentBulletCount -= 1;
-
-                    //schoot prefab
-                    if (mag.currentBulletTypeNumber != 0)
-                    {
-                        barrel.ShootBullet();
-                        chamber.chamberTimer = 0;
-                        print("workingNotRay");
-                    }
-
-                    //schoot raycast
-                    else
-                    {
-                        barrel.Shoot();
-                        chamber.chamberTimer = 0;
-                        print("workingRay");
-                    }
-                }
-
-                else
-                {
-                    //no ammo
-                    soundManager.NoAmmoSound();
-                }
+                CheckIfAmmo();
             }
             
         }
 
-        /*
-        resetTimer += Time.deltaTime;
-        if(resetTimer > 10)
+        else if(Input.GetButtonDown("Fire1") && chamber.usingRevolver)
         {
-            ResetComponents();
+            if(chamber.usingCharge == false)
+            {
+                CheckIfAmmo();
+            }
         }
-        */
 
+        void CheckIfAmmo()
+        {
+            if (currentBulletCount >= 1)
+            {
+                gunAnimator.Play("Shooting", 0);
+                currentBulletCount -= 1;
+
+                //schoot prefab
+                if (mag.currentBulletTypeNumber != 0)
+                {
+                    barrel.ShootBullet();
+                    chamber.chamberTimer = 0;
+                    print("workingNotRay");
+                }
+
+                //schoot raycast
+                else
+                {
+                    barrel.Shoot();
+                    chamber.chamberTimer = 0;
+                    print("workingRay");
+                }
+            }
+
+            else
+            {
+                //no ammo
+                soundManager.NoAmmoSound();
+            }
+        }
+
+        //devtool
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             ResetComponents();
