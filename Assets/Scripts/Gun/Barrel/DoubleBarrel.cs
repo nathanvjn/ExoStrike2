@@ -82,7 +82,7 @@ public class DoubleBarrel : Barrel
                     // Instantiate the bullet with the correct initial rotation
                     GameObject prefabBullet = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
 
-                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-4, 4), Random.Range(-4, 4), 0f);
+                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
                     //create a raycast direction from the spread rotation
                     Vector3 rayDirection = spreadRotation * cam.forward;

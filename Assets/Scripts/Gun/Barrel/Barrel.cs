@@ -13,6 +13,7 @@ public class Barrel : MonoBehaviour
     public bool usingShrapnel;
     private RaycastHit rayHit;
     public float bulletSize;
+    public float shrapnelSpread;
 
     [Header("Particles")]
     public GameObject particleRaycast;
@@ -96,7 +97,7 @@ public class Barrel : MonoBehaviour
                 // Instantiate the bullet with the correct initial rotation
                 GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, Quaternion.identity);
 
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
+                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
                 //create a raycast direction from the spread rotation
                 Vector3 rayDirection = spreadRotation * cam.forward;

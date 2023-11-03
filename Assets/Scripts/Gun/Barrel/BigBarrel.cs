@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BigBarrel : Barrel
 {
-    public float spreadShrapnelAngle; //maximum spread rotation
     public float maxRaycastRange;
 
     //particle
@@ -24,7 +23,7 @@ public class BigBarrel : Barrel
 
         print("bigBarrel");
         //calculate a random rotation within the specified spread angle
-        Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
+        Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
         //create a raycast direction from the spread rotation
         Vector3 rayDirection = spreadRotation * cam.forward;
@@ -99,7 +98,7 @@ public class BigBarrel : Barrel
                 // Instantiate the bullet with the correct initial rotation
                 GameObject prefabBullet = Instantiate(bulletType, barrelPosition.position, Quaternion.identity);
 
-                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
+                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
                 //create a raycast direction from the spread rotation
                 Vector3 rayDirection = spreadRotation * cam.forward;
@@ -112,7 +111,7 @@ public class BigBarrel : Barrel
         else
         {
             // Calculate a random rotation within the specified spread angle
-            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), Random.Range(-spreadShrapnelAngle, spreadShrapnelAngle), 0f);
+            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
             // Combine the spreadRotation with the barrelPosition.forward
             Quaternion combinedRotation = Quaternion.LookRotation(spreadRotation * cam.forward);

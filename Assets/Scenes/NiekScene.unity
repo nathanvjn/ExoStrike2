@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1684,6 +1684,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.3
+  shrapnelSpread: 15
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -3597,6 +3598,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.1
+  shrapnelSpread: 15
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -4266,7 +4268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db11228c23499742957c29c86d7afba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 366340595}
 --- !u!114 &366340593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4279,25 +4280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af2d410bf489d842a543a60d605af5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrains:
-  - {fileID: 366340595}
-  splatmapResolution: 256
-  colorMapResolution: 256
-  layerSettings:
-  - enabled: 1
-    layer: {fileID: 8574412962073106934, guid: 1e7cd58a18bf8054cb603f7afee35cf5, type: 2}
-    modifierStack:
-    - {fileID: 0}
-  - enabled: 1
-    layer: {fileID: 8574412962073106934, guid: 538775deb4833a543a0fe7721e45a7f0, type: 2}
-    modifierStack: []
-  autoRepaint: 1
-  terrainListeners:
-  - {fileID: 366340592}
-  bounds:
-    m_Center: {x: 500, y: 300, z: 500}
-    m_Extent: {x: 500, y: 300, z: 500}
-  filterShader: {fileID: 4800000, guid: 0f44df78e3d64d9cb2616cac3d84cb77, type: 3}
 --- !u!154 &366340594
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -13349,6 +13331,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.5
+  shrapnelSpread: 30
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -13357,7 +13340,6 @@ MonoBehaviour:
   lineRenderer: {fileID: 5935686940765707793, guid: 70f1a893af0774745bce45c92000d6c8,
     type: 3}
   soundManager: {fileID: 1759544133}
-  spreadShrapnelAngle: 40
   maxRaycastRange: 30
   particle: {fileID: 6680982824165444025, guid: bb32a3df788599c4bb81c1337556c64d,
     type: 3}
@@ -13679,7 +13661,7 @@ MonoBehaviour:
     type: 3}
   bounceBullet: {fileID: 8369809976492856009, guid: c1801845302f53c4ca589f6ebdd153e2,
     type: 3}
-  EMPBullet: {fileID: 5908157617336883488, guid: 3cba845d10806ad429e433a24de6fb3c,
+  EMPBullet: {fileID: 5908157617336883488, guid: dbe95ec4746b0a645a58dcba36933119,
     type: 3}
   currentBullet: {fileID: 0}
   magModels:
@@ -22375,6 +22357,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.3
+  shrapnelSpread: 4
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,

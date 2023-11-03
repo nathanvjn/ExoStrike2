@@ -88,7 +88,7 @@ public class MultiBarrel : Barrel
                     GameObject prefabBullet = Instantiate(bulletType, barrelPositions[i].position, Quaternion.identity);
                     prefabBullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
 
-                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-20, 20), Random.Range(-20, 20), 0f);
+                    Quaternion spreadRotation = Quaternion.Euler(Random.Range(-shrapnelSpread, shrapnelSpread), Random.Range(-shrapnelSpread, shrapnelSpread), 0f);
 
                     //create a raycast direction from the spread rotation
                     Vector3 rayDirection = spreadRotation * cam.forward;
