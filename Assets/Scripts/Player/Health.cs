@@ -6,12 +6,11 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     public float healthCounter;
-    public TextMeshProUGUI comboText;
 
     private float previousDamageCount;
-
-    private float comboTimer; //time until combo resets
     public float comboCount;
+
+    public Score score;
 
     private void Start()
     {
@@ -22,31 +21,18 @@ public class Health : MonoBehaviour
     private void Update()
     {
 
-        if (comboText != null)
-        {
-            comboText.text = comboCount.ToString();
-        }
-
         //combo counter
         if (healthCounter != previousDamageCount)
         {
-            comboCount += (healthCounter - previousDamageCount);
+            comboCount += healthCounter;
+            score.comboCount += comboCount;
+            comboCount = 0;
 
             // Update the previousValue to the new value
-            previousDamageCount = healthCounter;
+            healthCounter = 0;
+            previousDamageCount = 0;
 
-            //set combo timer
-            comboTimer = 1;
-        }
-
-        if(comboTimer > 0)
-        {
-            comboTimer -= Time.deltaTime;
-        }
-
-        else
-        {
-            comboCount = 0;
+            score.ResetComboTime();
         }
 
     }

@@ -6770,9 +6770,10 @@ GameObject:
   - component: {fileID: 534192256}
   - component: {fileID: 534192261}
   - component: {fileID: 534192260}
+  - component: {fileID: 534192262}
   m_Layer: 0
   m_Name: Robot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6905,6 +6906,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &534192262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534192255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9079f483214af8c488a0f88dedd1e758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCounter: 0
+  comboCount: 0
+  score: {fileID: 1665334148}
 --- !u!114 &540869862 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1971886582148170181, guid: 419efe90dec774b428f8e3b26dca7e45,
@@ -15217,8 +15233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthCounter: 0
-  comboText: {fileID: 540869862}
   comboCount: 0
+  score: {fileID: 1665334148}
 --- !u!136 &896476432
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23800,9 +23816,10 @@ GameObject:
   - component: {fileID: 1494781777}
   - component: {fileID: 1494781776}
   - component: {fileID: 1494781775}
+  - component: {fileID: 1494781781}
   m_Layer: 0
   m_Name: Robot (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23935,6 +23952,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1494781781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494781774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9079f483214af8c488a0f88dedd1e758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCounter: 0
+  comboCount: 0
+  score: {fileID: 1665334148}
 --- !u!1 &1494951445
 GameObject:
   m_ObjectHideFlags: 0
@@ -26041,6 +26073,26 @@ Transform:
   - {fileID: 1778431180}
   m_Father: {fileID: 366340596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1665334144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1251499919335890801, guid: 419efe90dec774b428f8e3b26dca7e45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1409405639170608600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1665334148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665334144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d964ee5ac143d4ab77ebac6f12d2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboText: {fileID: 540869862}
+  comboCount: 0
 --- !u!4 &1687552331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ea693dc6b7c3f84c815ce275e8d4529,
@@ -32467,7 +32519,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 467359280}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1251499919335890801, guid: 419efe90dec774b428f8e3b26dca7e45,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1665334148}
   m_SourcePrefab: {fileID: 100100000, guid: 419efe90dec774b428f8e3b26dca7e45, type: 3}
 --- !u!4 &1416259155603694398
 Transform:
