@@ -26917,6 +26917,7 @@ MonoBehaviour:
   gatling: {fileID: 1759544131}
   bigBarrel: {fileID: 1759544129}
   noAmmo: {fileID: 1759544138}
+  bounce: {fileID: 0}
   playerSliding: {fileID: 133924408}
   sliding: {fileID: 0}
   jumping: {fileID: 1759544137}

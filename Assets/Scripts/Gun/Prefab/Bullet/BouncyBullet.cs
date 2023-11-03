@@ -9,6 +9,7 @@ public class BouncyBullet : MonoBehaviour
 
     public Material noEmmisionMaterial;
     public Material emmisionMaterial;
+    public GameObject bounceSoundObject;
 
     private bool activateEmmision;
     private float emmisionCounter;
@@ -31,6 +32,7 @@ public class BouncyBullet : MonoBehaviour
         else
         {
             activateEmmision = true;
+            GameObject prefabSound = Instantiate(bounceSoundObject, transform.position, Quaternion.identity);
         }
     }
 
