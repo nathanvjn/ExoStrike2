@@ -1098,6 +1098,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.3
+  shrapnelSpread: 0
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -1678,6 +1679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.41999927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995236379775411412, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3158540098479999611, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
@@ -3274,6 +3280,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.1
+  shrapnelSpread: 0
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -3742,6 +3749,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.5
+  shrapnelSpread: 0
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -3750,7 +3758,6 @@ MonoBehaviour:
   lineRenderer: {fileID: 5935686940765707793, guid: 70f1a893af0774745bce45c92000d6c8,
     type: 3}
   soundManager: {fileID: 7446991}
-  spreadShrapnelAngle: 40
   maxRaycastRange: 30
   particle: {fileID: 6680982824165444025, guid: bb32a3df788599c4bb81c1337556c64d,
     type: 3}
@@ -4246,6 +4253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chamberTimer: 0
   chamberResetTime: 0.1
+  usingRevolver: 0
   chamberPickupNumber: 0
   chamberType: 1
   chamberModels:
@@ -10144,6 +10152,7 @@ MonoBehaviour:
   bulletType: {fileID: 0}
   usingShrapnel: 0
   bulletSize: 0.3
+  shrapnelSpread: 0
   particleRaycast: {fileID: 143890179384417695, guid: 7cbf240ee1315c742b1a5e385256a20e,
     type: 3}
   particleMuzzle: {fileID: 8049676622543682012, guid: 5f940eb80d61bc54285d4427e146ca9a,
@@ -10515,74 +10524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1481022970003440165
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1208
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 208
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2728154664920482455, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3357304441330554925, guid: aef61733aa7f4914fb2553711142ab56,
-        type: 3}
-      propertyPath: m_Name
-      value: pickup generator zonder effect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aef61733aa7f4914fb2553711142ab56, type: 3}
 --- !u!1001 &5979223456860426106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10743,4 +10684,3 @@ SceneRoots:
   - {fileID: 2131695306}
   - {fileID: 1515043410}
   - {fileID: 5979223456860426106}
-  - {fileID: 1481022970003440165}
