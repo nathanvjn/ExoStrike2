@@ -26918,7 +26918,7 @@ MonoBehaviour:
   bigBarrel: {fileID: 1759544129}
   noAmmo: {fileID: 1759544138}
   playerSliding: {fileID: 133924408}
-  sliding: {fileID: 1759544135}
+  sliding: {fileID: 0}
   jumping: {fileID: 1759544137}
   landing: {fileID: 1759544136}
   isGrounded: 0

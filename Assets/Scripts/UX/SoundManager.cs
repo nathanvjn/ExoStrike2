@@ -62,6 +62,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /*
     private void Update()
     {
         if(playerSliding.isSliding && !sliding.isPlaying)
@@ -80,4 +81,5 @@ public class SoundManager : MonoBehaviour
             inAirTime += Time.deltaTime;
         }
     }
+    */
 }
