@@ -5177,7 +5177,7 @@ PrefabInstance:
     - target: {fileID: 1345722974967882916, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
       propertyPath: jumpPadForce
-      value: 70000
+      value: 80000
       objectReference: {fileID: 0}
     - target: {fileID: 1628724499933320647, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
@@ -5187,7 +5187,7 @@ PrefabInstance:
     - target: {fileID: 1881278966843909839, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
       propertyPath: jumpPadForce
-      value: 70000
+      value: 80000
       objectReference: {fileID: 0}
     - target: {fileID: 2219470515777176374, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
@@ -5227,7 +5227,7 @@ PrefabInstance:
     - target: {fileID: 3581072040456577843, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
       propertyPath: jumpPadForce
-      value: 70000
+      value: 80000
       objectReference: {fileID: 0}
     - target: {fileID: 3790276444604413198, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
@@ -5327,7 +5327,7 @@ PrefabInstance:
     - target: {fileID: 8366753188750423874, guid: 13a4d6836b759a44db03f4b83487ca68,
         type: 3}
       propertyPath: jumpPadForce
-      value: 70000
+      value: 80000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
