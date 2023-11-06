@@ -21085,6 +21085,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 7.300003
       objectReference: {fileID: 0}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1864026214}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1759544133}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6632842895538947953}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1414097481}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7842674409563955843}
+    - target: {fileID: 7238553675675230299, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 9030211053722614082}
     - target: {fileID: 7535554802174903914, guid: 02a89fc0bd1c9984bb416ba5863f13e2,
         type: 3}
       propertyPath: gun
