@@ -22,6 +22,7 @@ public class Barrel : MonoBehaviour
     public GameObject lineRenderer;
 
     public SoundManager soundManager;
+    public GameObject targetParticle;
 
     //overloading (give bool when raycasting)
     //als er geen andere barrel scripts zijn die overriden is het de default barrel
@@ -46,6 +47,13 @@ public class Barrel : MonoBehaviour
             if (rayHit.transform.gameObject.tag == "Player")
             {
                 rayHit.transform.gameObject.GetComponent<Health>().healthCounter -= barrelDamage;
+            }
+
+            else if(rayHit.transform.gameObject.tag == "Target")
+            {
+                GameObject particleTarget = Instantiate(targetParticle, rayHit.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
+                Destroy(particleTarget, 0.7f);
+                Destroy(rayHit.transform.gameObject);
             }
         }
 
