@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.627451, g: 0.5280227, b: 0.41960785, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 7f7115f78a2eb42429b4a0c1cce6c05c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -3779,6 +3779,21 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpPadForce
       value: 120000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973272685908302114, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.67294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973272685908302114, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.67294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973272685908302114, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.67294
       objectReference: {fileID: 0}
     - target: {fileID: 8979220587594529186, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
