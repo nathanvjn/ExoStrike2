@@ -15831,6 +15831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5191390513381152678, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
+      propertyPath: m_RendererIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191390513381152678, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
@@ -26182,6 +26187,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1864026214}
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1759544133}
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6632842895538947953}
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1414097481}
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7842674409563955843}
+    - target: {fileID: 467127015992148599, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
+        type: 3}
+      propertyPath: barrelObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 9030211053722614082}
     - target: {fileID: 568484555989934511, guid: 37128f9c62c044e4d9e1ccaaa4fc95e9,
         type: 3}
       propertyPath: gun

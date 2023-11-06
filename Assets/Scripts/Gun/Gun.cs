@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
 
         else if(Input.GetButtonDown("Fire1") && chamber.usingRevolver)
         {
-            if(chamber.usingCharge == false)
+            if(chamber.chamberResetTime < chamber.chamberTimer && chamber.usingCharge == false)
             {
                 CheckIfAmmo();
             }
