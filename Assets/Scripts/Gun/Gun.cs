@@ -31,7 +31,12 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        
+        // Get the current quality level
+        int currentQualityLevel = QualitySettings.GetQualityLevel();
+
+        // Set the quality level to a higher preset (you can choose the preset that suits your needs)
+        // For example, set it to the highest available preset:
+        QualitySettings.SetQualityLevel(QualitySettings.names.Length - 1);
     }
 
     void Update()
