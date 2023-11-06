@@ -15,6 +15,9 @@ public class BouncyBullet : MonoBehaviour
     private float emmisionCounter;
     public float maxEmmisionCount;
 
+    [Header("Particles")]
+    public GameObject targetParticle;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -27,6 +30,13 @@ public class BouncyBullet : MonoBehaviour
         {
             //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+
+        else if (collision.transform.gameObject.tag == "Target")
+        {
+            GameObject particleTarget = Instantiate(targetParticle, collision.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
+            Destroy(particleTarget, 0.7f);
+            Destroy(collision.transform.gameObject);
         }
 
         else

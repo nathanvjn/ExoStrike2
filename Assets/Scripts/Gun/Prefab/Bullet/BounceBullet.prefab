@@ -207,3 +207,5 @@ MonoBehaviour:
   bounceSoundObject: {fileID: 743744889269621099, guid: 0d4894dab578da34eb2cda4041b1a840,
     type: 3}
   maxEmmisionCount: 0.1
+  targetParticle: {fileID: 6455905952234321732, guid: 5d913cac8798fbe4d851f15359455d90,
+    type: 3}

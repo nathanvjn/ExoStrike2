@@ -7,6 +7,7 @@ public class ShrapnelBullet : MonoBehaviour
     public float bulletDamage;
     public float lifetime;
     public GameObject particle;
+    public GameObject targetParticle;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -20,6 +21,13 @@ public class ShrapnelBullet : MonoBehaviour
         {
             //ignore collision with other bullets
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+
+        else if (collision.transform.gameObject.tag == "Target")
+        {
+            GameObject particleTarget = Instantiate(targetParticle, collision.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
+            Destroy(particleTarget, 0.7f);
+            Destroy(collision.transform.gameObject);
         }
 
         else

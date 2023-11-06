@@ -124,6 +124,8 @@ MonoBehaviour:
   explosionDamage: 20
   lifetime: 3
   explosionSound: {fileID: -3067615315304437225}
+  targetParticle: {fileID: 6455905952234321732, guid: 5d913cac8798fbe4d851f15359455d90,
+    type: 3}
 --- !u!82 &-3067615315304437225
 AudioSource:
   m_ObjectHideFlags: 0

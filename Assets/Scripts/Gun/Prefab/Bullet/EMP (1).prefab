@@ -5062,6 +5062,8 @@ MonoBehaviour:
   lifetime: 3
   particle: {fileID: 1060505736480733309, guid: 59a7986d5e4544d47b4cb21eab5b5e48,
     type: 3}
+  targetParticle: {fileID: 6455905952234321732, guid: 5d913cac8798fbe4d851f15359455d90,
+    type: 3}
 --- !u!114 &-4802866643652990404
 MonoBehaviour:
   m_ObjectHideFlags: 0
