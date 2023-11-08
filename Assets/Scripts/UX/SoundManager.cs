@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource bigBarrel;
     public AudioSource noAmmo;
     public AudioSource bounce;
+    public AudioSource charge;
 
     //player
     public PlayerSliding playerSliding;
@@ -67,6 +68,19 @@ public class SoundManager : MonoBehaviour
             landing.Play();
             inAirTime = 0;
         }
+    }
+
+    public void ChargeSound()
+    {
+        if(charge.isPlaying == false)
+        {
+            charge.Play();
+        }
+    }
+
+    public void StopCharge()
+    {
+        charge.Stop();
     }
 
     public void NoAmmoSound()

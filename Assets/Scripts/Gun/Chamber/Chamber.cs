@@ -53,6 +53,8 @@ public class Chamber : MonoBehaviour
                 {
                     if (gun.barrel.barrelPosition != null)
                     {
+                        print("playerCharge");
+                        soundManager.ChargeSound();
                         usingChargeParticle = true;
                         chargeTime += Time.deltaTime;
 
@@ -74,6 +76,8 @@ public class Chamber : MonoBehaviour
 
             if (Input.GetButtonUp("Fire1") && gun.currentBulletCount >= 1 || chargeTime > maxChargeTime && gun.currentBulletCount >= 1)
             {
+                print("stopCharge");
+                soundManager.StopCharge();
                 gun.currentBulletCount -= 1;
                 chargeTime = 0;
                 usingChargeParticle = false;
