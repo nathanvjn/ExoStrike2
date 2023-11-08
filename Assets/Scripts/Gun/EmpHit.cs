@@ -6,6 +6,7 @@ public class EmpHit : MonoBehaviour
 {
     public Material blueMaterial;
     private Material normalMaterial;
+    public GameObject body;
     private float normalSpeed;
 
     public bool hitByEMP;
@@ -13,7 +14,7 @@ public class EmpHit : MonoBehaviour
     private float empCounter;
     void Start()
     {
-        normalMaterial = GetComponent<Renderer>().material;
+        normalMaterial = body.GetComponent<Renderer>().material;
         normalSpeed = GetComponent<NavMeshAgent>().speed;
     }
 
@@ -23,12 +24,12 @@ public class EmpHit : MonoBehaviour
         if(hitByEMP)
         {
             GetComponent<NavMeshAgent>().speed = 0;
-            GetComponent<Renderer>().material = blueMaterial;
+            body.GetComponent<Renderer>().material = blueMaterial;
             empCounter += Time.deltaTime;
             if(empCounter > maxEMPtime)
             {
                 GetComponent<NavMeshAgent>().speed = normalSpeed;
-                GetComponent<Renderer>().material = normalMaterial;
+                body.GetComponent<Renderer>().material = normalMaterial;
                 empCounter = 0;
                 hitByEMP = false;
             }
