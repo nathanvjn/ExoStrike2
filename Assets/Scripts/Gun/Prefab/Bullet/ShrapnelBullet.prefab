@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1141cbc636d25c4e870f7fee44a1b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
+  bulletDamage: 5
   lifetime: 3
   particle: {fileID: 5983047521948002785, guid: 776053ec94992dc4fa6a9d8d8df514d4,
     type: 3}
