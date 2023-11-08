@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Gun")]
     public GameObject gun; //access player gun with onTrigger/onCollision
     public Animator gunAnimator;
+    private float gunSwayTime;
 
     [Header("Sound Manager")]
     public SoundManager soundManager;
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Calculate the new velocity based on input
             movement = transform.forward * forwardSpeed * speed + transform.right * sideSpeed * speed;
+            gunSwayTime = 0;
         }
 
         //air movement speed
@@ -87,7 +89,12 @@ public class PlayerMovement : MonoBehaviour
             airMovement = transform.right * sideSpeed * airSpeed;
             r.AddForce(airMovement);
 
-            gunAnimator.SetBool("gunSway", false);
+            gunSwayTime += Time.deltaTime;
+            if(gunSwayTime > 0.2f)
+            {
+                gunAnimator.SetBool("gunSway", false);
+                gunSwayTime = 0;
+            }
         }
 
         // Set the Rigidbody's velocity directly

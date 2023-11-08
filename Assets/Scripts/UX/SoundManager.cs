@@ -51,9 +51,15 @@ public class SoundManager : MonoBehaviour
         jumping.Play();
     }
 
+
+    private void Update()
+    {
+        inAirTime += Time.deltaTime;
+    }
+
     public void LandingSound()
     {
-        if(inAirTime > 0.5)
+        if(inAirTime > 0.5f)
         {
             landing.Play();
             inAirTime = 0;

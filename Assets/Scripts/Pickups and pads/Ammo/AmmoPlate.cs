@@ -7,6 +7,7 @@ public class AmmoPlate : MonoBehaviour
     public float timeBeforeRespawn; //tijd tot de ammo weer spawned
     public float respawnTime; //counter
     public GameObject ammoPrefab;
+    public GameObject textObject;
 
     void Update()
     {
@@ -20,11 +21,13 @@ public class AmmoPlate : MonoBehaviour
         else
         {
             ammoPrefab.SetActive(false);
+            textObject.SetActive(false);
         }
     }
 
     void SetAmmoPickupActive()
     {
         ammoPrefab.SetActive(true);
+        textObject.SetActive(true);
     }
 }
