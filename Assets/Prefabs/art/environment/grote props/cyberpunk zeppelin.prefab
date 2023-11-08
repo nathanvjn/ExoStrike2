@@ -365,6 +365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
         type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 1
       objectReference: {fileID: 0}
