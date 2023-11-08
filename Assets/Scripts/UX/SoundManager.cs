@@ -15,10 +15,10 @@ public class SoundManager : MonoBehaviour
 
     //player
     public PlayerSliding playerSliding;
+    public PlayerMovement playerMovement;
     public AudioSource sliding;
     public AudioSource jumping;
     public AudioSource landing;
-    public bool isGrounded;
     private float inAirTime;
 
     public void GatlingShotSound()
@@ -54,7 +54,10 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        inAirTime += Time.deltaTime;
+        if(playerMovement.isGrounded == false)
+        {
+            inAirTime += Time.deltaTime;
+        }
     }
 
     public void LandingSound()

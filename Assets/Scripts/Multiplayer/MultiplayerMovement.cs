@@ -113,9 +113,6 @@ public class MultiplayerMovement : NetworkBehaviour
                 }
             }
 
-            //sound
-            soundManager.isGrounded = isGrounded;
-
             //player can only move when on ground
             if (isGrounded)
             {
