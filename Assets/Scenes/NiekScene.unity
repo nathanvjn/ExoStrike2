@@ -6807,6 +6807,7 @@ GameObject:
   - component: {fileID: 534192261}
   - component: {fileID: 534192260}
   - component: {fileID: 534192262}
+  - component: {fileID: 534192263}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Player
@@ -6958,6 +6959,21 @@ MonoBehaviour:
   healthCounter: 0
   comboCount: 0
   score: {fileID: 1665334148}
+--- !u!114 &534192263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534192255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a874e962f8749e74fb695b6699aa23a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueMaterial: {fileID: 2100000, guid: dcebd3804d9fc7c4c9b543df90fd7d54, type: 2}
+  hitByEMP: 0
+  maxEMPtime: 1
 --- !u!114 &540869862 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1971886582148170181, guid: 419efe90dec774b428f8e3b26dca7e45,
@@ -23895,6 +23911,7 @@ GameObject:
   - component: {fileID: 1494781776}
   - component: {fileID: 1494781775}
   - component: {fileID: 1494781781}
+  - component: {fileID: 1494781782}
   m_Layer: 0
   m_Name: Robot (1)
   m_TagString: Player
@@ -24046,6 +24063,21 @@ MonoBehaviour:
   healthCounter: 0
   comboCount: 0
   score: {fileID: 1665334148}
+--- !u!114 &1494781782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494781774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a874e962f8749e74fb695b6699aa23a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueMaterial: {fileID: 2100000, guid: dcebd3804d9fc7c4c9b543df90fd7d54, type: 2}
+  hitByEMP: 0
+  maxEMPtime: 1
 --- !u!1 &1494951445
 GameObject:
   m_ObjectHideFlags: 0
@@ -27699,10 +27731,10 @@ MonoBehaviour:
   noAmmo: {fileID: 1759544138}
   bounce: {fileID: 0}
   playerSliding: {fileID: 133924408}
+  playerMovement: {fileID: 0}
   sliding: {fileID: 0}
   jumping: {fileID: 1759544137}
   landing: {fileID: 1759544136}
-  isGrounded: 0
 --- !u!4 &1759544134
 Transform:
   m_ObjectHideFlags: 0
