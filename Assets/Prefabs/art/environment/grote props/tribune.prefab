@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hologram floating (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1732923624626510503, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -106,6 +111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: hologram floating
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732923624626510503, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
         type: 3}
@@ -246,10 +256,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8575973616878420462, guid: f6396fa6d2c202d45a5309ab495b6387,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -4018728881149837963, guid: f6396fa6d2c202d45a5309ab495b6387,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f6396fa6d2c202d45a5309ab495b6387,
         type: 3}
       propertyPath: m_Name
       value: tribune
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6396fa6d2c202d45a5309ab495b6387,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2260917728774303825, guid: f6396fa6d2c202d45a5309ab495b6387,
         type: 3}
