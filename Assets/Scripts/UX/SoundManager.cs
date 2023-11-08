@@ -11,7 +11,6 @@ public class SoundManager : MonoBehaviour
     public AudioSource gatling;
     public AudioSource bigBarrel;
     public AudioSource noAmmo;
-    public AudioSource bounce;
     public AudioSource charge;
 
     //player
@@ -30,11 +29,6 @@ public class SoundManager : MonoBehaviour
     public void NormalShotSound()
     {
         shot.Play();
-    }
-
-    public void Bounce()
-    {
-        bounce.Play();
     }
 
     public void BigBarrelShotSound()
