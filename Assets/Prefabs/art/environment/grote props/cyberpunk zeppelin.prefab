@@ -70,7 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51b2865094459674ab15eb5ddb3d487c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6904857617034278408}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51b2865094459674ab15eb5ddb3d487c,
         type: 3}
@@ -104,3 +108,108 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.246536, y: 5.556494, z: 21.180702}
   m_Center: {x: 0, y: 2.778247, z: -0.1453743}
+--- !u!4 &4456059497060864947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51b2865094459674ab15eb5ddb3d487c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4205697936789402712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9029893311218422265
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4456059497060864947}
+    m_Modifications:
+    - target: {fileID: 1732923624626510503, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_Name
+      value: hologram floating
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.735718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463697786976903072, guid: abe00fa7d6920a243bf1413d12e7ab64,
+        type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.5853678
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abe00fa7d6920a243bf1413d12e7ab64, type: 3}
+--- !u!4 &6904857617034278408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2486650500337100785, guid: abe00fa7d6920a243bf1413d12e7ab64,
+    type: 3}
+  m_PrefabInstance: {fileID: 9029893311218422265}
+  m_PrefabAsset: {fileID: 0}
