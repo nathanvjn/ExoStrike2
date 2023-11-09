@@ -36,8 +36,7 @@ public class DoubleBarrel : Barrel
 
                 else if (hit.transform.gameObject.tag == "Target")
                 {
-                    GameObject particleTarget = Instantiate(targetParticle, hit.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
-                    Destroy(particleTarget, 0.7f);
+
                     Destroy(hit.transform.gameObject);
                 }
             }

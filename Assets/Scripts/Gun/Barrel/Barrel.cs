@@ -51,8 +51,7 @@ public class Barrel : MonoBehaviour
 
             else if(rayHit.transform.gameObject.tag == "Target")
             {
-                GameObject particleTarget = Instantiate(targetParticle, rayHit.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
-                Destroy(particleTarget, 0.7f);
+
                 Destroy(rayHit.transform.gameObject);
             }
         }

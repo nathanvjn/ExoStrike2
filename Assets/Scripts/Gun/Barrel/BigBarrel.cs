@@ -51,8 +51,7 @@ public class BigBarrel : Barrel
 
             else if (bigBarrelHit.transform.gameObject.tag == "Target")
             {
-                GameObject particleTarget = Instantiate(targetParticle, bigBarrelHit.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
-                Destroy(particleTarget, 0.7f);
+
                 Destroy(bigBarrelHit.transform.gameObject);
             }
         }
