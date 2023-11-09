@@ -17648,7 +17648,7 @@ PrefabInstance:
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: airSpeed
-      value: 70
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7077724799406195865, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
@@ -17693,6 +17693,11 @@ PrefabInstance:
     - target: {fileID: 7690255792039864355, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: usingNormalBarrel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119553960209523745, guid: c50c3748d28111e408750d7636135eb2,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8147510403687112972, guid: c50c3748d28111e408750d7636135eb2,
