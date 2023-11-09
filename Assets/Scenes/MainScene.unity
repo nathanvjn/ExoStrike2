@@ -29164,6 +29164,22 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5810938538394914795, guid: 419efe90dec774b428f8e3b26dca7e45,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c8f0f2e29899c0499e0a4fd11fe6df1,
+        type: 3}
+    - target: {fileID: 5810938538394914795, guid: 419efe90dec774b428f8e3b26dca7e45,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810938538394914795, guid: 419efe90dec774b428f8e3b26dca7e45,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7047332857542835475, guid: 419efe90dec774b428f8e3b26dca7e45,
         type: 3}
       propertyPath: m_fontAsset
