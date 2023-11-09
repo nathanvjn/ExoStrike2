@@ -171,7 +171,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        isGrounded = true;
+        if(other.gameObject.tag != "Pickup")
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -1194,6 +1194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fullammobox
       objectReference: {fileID: 0}
+    - target: {fileID: 2749015592122255527, guid: 9a5a0ce4a5db35c41930d353eb2c861c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pickup
+      objectReference: {fileID: 0}
     - target: {fileID: 3273456883369071133, guid: 9a5a0ce4a5db35c41930d353eb2c861c,
         type: 3}
       propertyPath: m_LocalPosition.x
