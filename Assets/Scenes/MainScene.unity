@@ -16295,7 +16295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &625859408
 Transform:
   m_ObjectHideFlags: 0
@@ -18026,7 +18026,7 @@ PrefabInstance:
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: slidingSpeed
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
@@ -18036,7 +18036,7 @@ PrefabInstance:
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: amountOfSlowingDown
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4110092662511124602, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
