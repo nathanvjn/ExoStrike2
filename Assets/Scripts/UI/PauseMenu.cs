@@ -6,15 +6,13 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
-    public PlayerCamera playerCamera;
 
     public void Resume()
     {
         menu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerCamera.mouseY = playerCamera.mouseYstartValue;
-        playerCamera.mouseX = playerCamera.mouseXstartValue;
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -26,8 +24,7 @@ public class PauseMenu : MonoBehaviour
                 menu.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                playerCamera.mouseY = playerCamera.mouseYstartValue;
-                playerCamera.mouseX = playerCamera.mouseXstartValue;
+                Time.timeScale = 1;
             }
 
             else
@@ -35,8 +32,7 @@ public class PauseMenu : MonoBehaviour
                 menu.SetActive(true);
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                playerCamera.mouseY = 0;
-                playerCamera.mouseX = 0;
+                Time.timeScale = 0;
             }
         }
     }

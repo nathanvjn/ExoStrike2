@@ -8,5 +8,6 @@ public class PauseQuit : MonoBehaviour
     public void ButtonQuitToMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 }
