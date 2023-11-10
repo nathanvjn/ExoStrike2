@@ -16295,7 +16295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &625859408
 Transform:
   m_ObjectHideFlags: 0
@@ -18026,7 +18026,7 @@ PrefabInstance:
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: slidingSpeed
-      value: 40
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
@@ -18036,7 +18036,7 @@ PrefabInstance:
     - target: {fileID: 3977584014147390821, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
       propertyPath: amountOfSlowingDown
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4110092662511124602, guid: c50c3748d28111e408750d7636135eb2,
         type: 3}
@@ -38820,7 +38820,7 @@ Transform:
   m_GameObject: {fileID: 1520061105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.39, z: -6.14}
+  m_LocalPosition: {x: 0, y: 0.28, z: -6.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
