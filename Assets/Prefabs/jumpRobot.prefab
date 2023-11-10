@@ -123,11 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotJump: {fileID: 1985178236120814756}
-  jumpHeight: 50000
-  movementSpeed: 7
-  timeBeforeDestroy: 3.3
-  timeWhenJumping: 0.5
-  timeWhenLanding: 2.7
+  jumpHeight: 30000
+  movementSpeed: 8
+  timeBeforeDestroy: 3
+  timeWhenJumping: 0.4
+  timeWhenLanding: 2.1
 --- !u!54 &7943331215127467709
 Rigidbody:
   m_ObjectHideFlags: 0

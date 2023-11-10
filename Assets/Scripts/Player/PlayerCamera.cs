@@ -7,6 +7,9 @@ public class PlayerCamera : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
+    public float mouseXstartValue;
+    public float mouseYstartValue;
+
     public Transform orientation;
 
     private float xRotation;
@@ -20,6 +23,9 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        mouseXstartValue = mouseX;
+        mouseYstartValue = mouseY;
     }
 
     void Update()
